@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810191058767464904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.89, z: 0}
+  m_LocalPosition: {x: 0.53, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -496,7 +496,7 @@ Transform:
   - {fileID: 6213200627741303466}
   - {fileID: 7209495653702680602}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5049016620127273672
 MonoBehaviour:
@@ -687,18 +687,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 53e6473bd2e914017a85935f0571c2a3, type: 2}
-  bodyTransform: {fileID: 2242474296708880136}
   rb: {fileID: 2242474296708880142}
-  dustTrail: {fileID: 0}
   mySpriteRenderer: {fileID: 2242474296708880137}
-  myTrailRenderer: {fileID: 0}
+  myTrailRenderer: {fileID: 2242474295218993757}
   movementSpeed: 4
   dashSpeed: 8
   dashDuration: 0.2
   dashCooldown: 0.25
   dashSFX: {fileID: 0}
-  turningRate: 30
-  emissionRate: 10
 --- !u!114 &3670630973690761900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 53e6473bd2e914017a85935f0571c2a3, type: 2}
-  weaponTransform: {fileID: 1036198294408178084}
+  weaponTransform: {fileID: 5091753270962266220}
 --- !u!114 &4078731751336726614
 MonoBehaviour:
   m_ObjectHideFlags: 0

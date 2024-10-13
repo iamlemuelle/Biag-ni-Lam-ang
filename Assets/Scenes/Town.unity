@@ -16247,10 +16247,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 831630607, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1116348055, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -16363,14 +16359,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6369101377192978020, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 289
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932158259786684817, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 89566304a92314fe7831b956df882177, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17866,7 +17854,7 @@ PrefabInstance:
     - target: {fileID: 2242474296708880138, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: f364dd453d8c548029329639732d3afa, type: 2}
+      objectReference: {fileID: 9100000, guid: b7900b84707644da2ac931168f01c842, type: 2}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: levelText
       value: 

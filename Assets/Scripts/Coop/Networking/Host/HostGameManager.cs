@@ -17,8 +17,6 @@ using UnityEngine.SceneManagement;
 public class HostGameManager : IDisposable
 {
     private Allocation allocation;
-    private NetworkObject playerPrefab;
-
     private string joinCode;
     private string lobbyId;
 
@@ -26,11 +24,6 @@ public class HostGameManager : IDisposable
 
     private const int MaxConnections = 20;
     private const string GameSceneName = "Coop";
-
-    public HostGameManager(NetworkObject playerPrefab)
-    {
-        this.playerPrefab = playerPrefab;
-    }
 
     public async Task StartHostAsync()
     {
@@ -87,7 +80,7 @@ public class HostGameManager : IDisposable
             return;
         }
 
-        NetworkServer = new NetworkServer(NetworkManager.Singleton, playerPrefab);
+        NetworkServer = new NetworkServer(NetworkManager.Singleton);
 
         UserData userData = new UserData
         {
@@ -100,8 +93,6 @@ public class HostGameManager : IDisposable
         NetworkManager.Singleton.NetworkConfig.ConnectionData = payloadBytes;
 
         NetworkManager.Singleton.StartHost();
-
-        NetworkServer.OnClientLeft += HandleClientLeft;
 
         NetworkManager.Singleton.SceneManager.LoadScene(GameSceneName, LoadSceneMode.Single);
     }
@@ -116,44 +107,27 @@ public class HostGameManager : IDisposable
         }
     }
 
-    public void Dispose()
+    public async void Dispose()
     {
-        Shutdown();
-    }
-
-    public async void Shutdown()
-    {
-        if (string.IsNullOrEmpty(lobbyId)) { return; }
-
         HostSingleton.Instance.StopCoroutine(nameof(HearbeatLobby));
 
-        try
+        if (!string.IsNullOrEmpty(lobbyId))
         {
-            await Lobbies.Instance.DeleteLobbyAsync(lobbyId);
-        }
-        catch (LobbyServiceException e)
-        {
-            Debug.Log(e);
-        }
+            try
+            {
+                await Lobbies.Instance.DeleteLobbyAsync(lobbyId);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
 
-        lobbyId = string.Empty;
-
-        NetworkServer.OnClientLeft -= HandleClientLeft;
+            lobbyId = string.Empty;
+        }
 
         NetworkServer?.Dispose();
     }
 
-    private async void HandleClientLeft(string authId)
-    {
-        try
-        {
-            await LobbyService.Instance.RemovePlayerAsync(lobbyId, authId);
-        }
-        catch (LobbyServiceException e)
-        {
-            Debug.Log(e);
-        }
-    }
     public string GetJoinCode()
     {
         return joinCode;

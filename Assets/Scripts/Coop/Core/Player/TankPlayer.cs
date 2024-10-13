@@ -39,14 +39,6 @@ public class TankPlayer : NetworkBehaviour
         }
     }
 
-    public void Initialize(string authId)
-{
-    // Assuming you might want to do something with Auth ID
-    Debug.Log($"TankPlayer initialized with Auth ID: {authId}");
-
-    // Perform any other initialization tasks, if necessary
-}
-
     public override void OnNetworkDespawn()
     {
         if (IsServer)
