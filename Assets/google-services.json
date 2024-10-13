@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "53258680852",
+    "project_id": "biag-ni-lam-ang",
+    "storage_bucket": "biag-ni-lam-ang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53258680852:android:b9f21b828ca510cb82c501",
+        "android_client_info": {
+          "package_name": "com.biagnilamang"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53258680852:android:bbc0f640757e1f8e82c501",
+        "android_client_info": {
+          "package_name": "com.biagnilamang.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53258680852:android:f86d3dea23714c6b82c501",
+        "android_client_info": {
+          "package_name": "com.firebaseanalytic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
