@@ -276,25 +276,19 @@ MonoBehaviour:
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Pumatay ka ng sampung kalaban
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Papatayem ti sangapulo a kabusor
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Salamat sa pagtulong sa pagpuksa nitong mga peste dito.
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Pagyamanan iti panangtulongyo a mangpukaw kadagitoy a peste ditoy.
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
   isItemQuest: 0
   targetItem: Bolang Apoy
-  isEnemyQuest: 0
+  isEnemyQuest: 1
   targetEnemy: Slime
-  enemiesToKill: 5
+  enemiesToKill: 10
   rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
   rewardSpawnPoint: {fileID: 0}
 --- !u!1 &2068192189
@@ -495,27 +489,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 13
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Hanapin mo ang mahigawang aso
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Sapulen ti nalabbaga nga aso
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Arf arf...
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Arf arf...
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
-  targetItem: Bolang Apoy
+  isItemQuest: 1
+  targetItem: Aso
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5
@@ -571,26 +559,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 15
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Daan patungo sa Nayon ng mga Igorot"
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Dalan nga agturong iti Purok dagiti Igorot".
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Ikaw ay malapit na sa iyong paroroonan
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Asidegka iti destinasionmo
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
+  isItemQuest: 1
   targetItem: Bolang Apoy
   isEnemyQuest: 0
   targetEnemy: Slime
@@ -647,27 +629,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 12
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Hanapin mo ang mahiwagang manok
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Sapulem ay manok nga nalabbaga
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Kukkkokok...
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Kukkkokok...
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
-  targetItem: Bolang Apoy
+  isItemQuest: 1
+  targetItem: Manok
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5
@@ -723,29 +699,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 17
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Patayin ang mga kalaban na igorot
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Papatayen dagiti kabusor tapno ag-spawn
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Hanapin mo ang buto ni Don Juan
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Kitaem ti tulang ni Don Juan
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
   isItemQuest: 0
   targetItem: Bolang Apoy
-  isEnemyQuest: 0
-  targetEnemy: Slime
+  isEnemyQuest: 1
+  targetEnemy: Igorot
   enemiesToKill: 5
   rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
   rewardSpawnPoint: {fileID: 0}
@@ -799,27 +769,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 14
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Hanapin mo ang talisman
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Sapulem ay talisman
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Ang Anting anting naito ay magsisilbing gabay na mag protection sa aking paglalakbay
+    at mapapanatli ang siguradong kalakasan ko sa mga dadaan na araw
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Agserbi daytoy nga anting-anting a giya a mangsalaknib kaniak iti panagdaliasatko
+    ken mangtaginayon iti sigurado a pigsak kadagiti sumaganad nga aldaw.
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
-  targetItem: Bolang Apoy
+  isItemQuest: 1
+  targetItem: Talisman
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5
@@ -875,27 +841,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 19
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Tapos na ang iyong paglalakbay dito sa pangalawang yugto
+  - Pumasok ka dito para makapunta ka sa pangatlong yugto ng iyong buhay
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Nalpasen ti panagdaliasatmo ditoy maikadua a tukad
+  - Sumrekka ditoy tapno sumrekka iti maikatlo a paset ti biagmo
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Paalam at mag iingat ka palagi!
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Agpakada ken agannadkayo a kanayon!
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
-  targetItem: Bolang Apoy
+  isItemQuest: 1
+  targetItem: Igorot
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5
@@ -1174,7 +1136,7 @@ RectTransform:
   - {fileID: 8454252197644222620}
   - {fileID: 1964662517195391893}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1205,7 +1167,16 @@ MonoBehaviour:
   - {fileID: 502002221}
   - {fileID: 2068192191}
   - {fileID: 1832060436}
-  questCompleted: 0000000000000000000000
+  - {fileID: 3083119759909604536}
+  - {fileID: 7199948683806500326}
+  - {fileID: 3158516021696053849}
+  - {fileID: 5416650599033584224}
+  - {fileID: 5942889585402093368}
+  - {fileID: 2350224730499414816}
+  - {fileID: 64258724312868159}
+  - {fileID: 7437978555866793653}
+  - {fileID: 4899137813055775016}
+  questCompleted: 0000000000000000000000000000000000000000
   theDM: {fileID: 0}
   itemCollected: 
   enemyKilled: 
@@ -1455,24 +1426,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 16
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - Nasaan anq aking tatay nas i Don Juan?! ilabas nyo na sya dahila l a mko na kayo
+    anq huling nakasamanya
+  - Sya ang nagsimula nglahat at sya rin angmay kasalanann g lahat
+  - Humanda kayoa t hindi ko kayo mapapatawad
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Sadino ti ayan ni tatangko a Don Juan?! iruarmo ta ammok a sika ti naudi a kaduana
+  - Isu ti nangirugi iti amin ken isu met ti mapabasol iti amin
+  - Agsaganaka ket diakto pakawanen
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Papaslangin ko lahat ng mga taga Nayon!
+  - Hinding-hindi ko kayo kayang patawarin mga hayop kayo
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Patayek amin a pumurok!
+  - "Diak pulos mapakawankayo \u200B\u200Bnga animal"
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
   isItemQuest: 0
   targetItem: Bolang Apoy
@@ -1531,27 +1503,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 18
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - DONJUAN!!!! NANDITO NA AKOAT BAKIT HINDI KO NA NAABUTAN KAYO NA BUHAY, PINAGBAYAD
+    KO NA ANG MGA NAGKASALA SA NAYON NATINAT BAKIT GANTO ANG AKING MADADATNAN
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA A SIBIBIAG,
+    NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
   endTextTagalog:
-  - AHHHHHHHH!!!
+  - Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang kausapin
+    doon
   endTextIlocano:
-  - AHHHHHHHH!!!
+  - Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
-  targetItem: Bolang Apoy
+  isItemQuest: 1
+  targetItem: 'Buto '
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5
@@ -1607,26 +1576,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expAmount: 800
-  questNumber: 10
+  questNumber: 11
   theQM: {fileID: 5715044814869082157}
   questDescription: kahit ano lang muna dito hehehe
   questReward: 3 gallon ng tubig
   startTextTagalog:
-  - Lam-Ang?????
-  - Kailangan mo nang bumalik sa inyong bahay at kausapin mo si Namongan!!!!
-  - Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt ka dito
-    para may makuha ka.
+  - 'Pumulot ka ng limang talisman na iyong makikita '
+  - Ito ay konekta sa isang quest na maibibigay sa'yo mamaya
   startTextIlocano:
-  - Lam-Ang?????
-  - Masapul nga agsubli ka idiay balay mo ket kasaritam ni Namongan!!!!
-  - Sakbay nga agsublika, mapanka iti bubon ket makilangenka iti dayta tapno adda
-    magun-odmo.
+  - Pidutem ti lima nga anting-anting a makitam
+  - Naikonektar daytoy iti quest a maited kenka inton agangay
   endTextTagalog:
   - AHHHHHHHH!!!
   endTextIlocano:
   - AHHHHHHHH!!!
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
+  isItemQuest: 1
   targetItem: Bolang Apoy
   isEnemyQuest: 0
   targetEnemy: Slime

@@ -65,6 +65,51 @@ public class UIFade : Singleton<UIFade>
         SceneManager.LoadSceneAsync("Menu");
     }
 
+    public void DestroyUI_Canvas()
+    {
+        // Find the UI_Canvas object by name
+        GameObject uiCanvas = GameObject.Find("UI_Canvas");
+
+        // Check if the UI_Canvas exists and destroy it
+        if (uiCanvas != null)
+        {
+            Debug.Log("Destroying UI_Canvas");
+            Destroy(uiCanvas);
+        }
+        else
+        {
+            Debug.Log("UI_Canvas not found");
+        }
+
+        // Find the QuestManager object by name (assuming its name is "QuestManager")
+        GameObject questManager = GameObject.Find("QuestManager");
+
+        // Check if the QuestManager exists and destroy it
+        if (questManager != null)
+        {
+            Debug.Log("Destroying QuestManager");
+            Destroy(questManager);
+        }
+        else
+        {
+            Debug.Log("QuestManager not found");
+        }
+
+        // Find the QuestManager object by name (assuming its name is "QuestManager")
+        GameObject player = GameObject.Find("Lam-Ang");
+
+        // Check if the QuestManager exists and destroy it
+        if (player != null)
+        {
+            Debug.Log("Destroying Player");
+            Destroy(player);
+        }
+        else
+        {
+            Debug.Log("Player not found");
+        }
+    }
+
     private void DestroyAllDontDestroyOnLoadObjects()
     {
         // Create a temporary scene to hold DontDestroyOnLoad objects
