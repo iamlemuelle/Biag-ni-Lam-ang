@@ -43,6 +43,17 @@ public class DialogueHolder : MonoBehaviour
             Debug.LogError("Dialogue Manager not found in the scene!");
         }
 
+        // Find player and NPC images if they are not assigned
+        if (playerImage == null)
+        {
+            playerImage = GameObject.Find("Dialogue Box/Character").GetComponent<Image>(); // Adjust the path as necessary
+        }
+
+        if (npcImage == null)
+        {
+            npcImage = GameObject.Find("Dialogue Box/NPC").GetComponent<Image>(); // Adjust the path as necessary
+        }
+
         playerControls.Enable(); // Enable the input actions
     }
 
@@ -107,9 +118,19 @@ public class DialogueHolder : MonoBehaviour
         }
     }
 
-    // Method to update character portraits based on the current line
     public void UpdateCharacterImage()
     {
+        // Check if the Image references are null and attempt to find them if they are
+        if (playerImage == null)
+        {
+            playerImage = GameObject.Find("Character")?.GetComponent<Image>();
+        }
+        
+        if (npcImage == null)
+        {
+            npcImage = GameObject.Find("NPC")?.GetComponent<Image>();
+        }
+
         if (dMAn.dialogLines.Length > dMAn.currentLine)
         {
             string currentLine = dMAn.dialogLines[dMAn.currentLine];
@@ -128,18 +149,26 @@ public class DialogueHolder : MonoBehaviour
             // Update images based on who is speaking
             if (isPlayerSpeaking)
             {
-                playerImage.sprite = playerImages[dMAn.currentLine]; // Update to the correct player sprite
-                playerImage.gameObject.SetActive(true);
-                npcImage.gameObject.SetActive(false); // Hide NPC portrait when player speaks
+                if (playerImages.Length > dMAn.currentLine)
+                {
+                    playerImage.sprite = playerImages[dMAn.currentLine]; // Update to the correct player sprite
+                    playerImage.gameObject.SetActive(true);
+                    npcImage.gameObject.SetActive(false); // Hide NPC portrait when player speaks
+                }
             }
             else
             {
-                npcImage.sprite = npcImages[dMAn.currentLine]; // Update to the correct NPC sprite
-                npcImage.gameObject.SetActive(true);
-                playerImage.gameObject.SetActive(false); // Hide player portrait when NPC speaks
+                if (npcImages.Length > dMAn.currentLine)
+                {
+                    npcImage.sprite = npcImages[dMAn.currentLine]; // Update to the correct NPC sprite
+                    npcImage.gameObject.SetActive(true);
+                    playerImage.gameObject.SetActive(false); // Hide player portrait when NPC speaks
+                }
             }
         }
     }
+
+
 
 
     // Set the appropriate character images for the dialogue line
