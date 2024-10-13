@@ -25,10 +25,15 @@ public class TankPlayer : NetworkBehaviour
     {
         if (IsServer)
         {
-            UserData userData =
-                HostSingleton.Instance.GameManager.NetworkServer.GetUserDataByClientId(OwnerClientId);
+            UserData userData = HostSingleton.Instance.GameManager.NetworkServer.GetUserDataByClientId(OwnerClientId);
+            
+            // Use PlayerPrefs as a fallback if UserData is null or userName is empty
+            string playerName = userData != null && !string.IsNullOrEmpty(userData.userName) 
+                ? userData.userName 
+                : PlayerPrefs.GetString(NameSelector.PlayerNameKey, "Missing Name");
 
-            PlayerName.Value = userData.userName;
+            PlayerName.Value = playerName;
+            Debug.Log($"Assigned player name: {PlayerName.Value}");
 
             OnPlayerSpawned?.Invoke(this);
         }
@@ -38,6 +43,7 @@ public class TankPlayer : NetworkBehaviour
             virtualCamera.Priority = ownerPriority;
         }
     }
+
 
     public override void OnNetworkDespawn()
     {
