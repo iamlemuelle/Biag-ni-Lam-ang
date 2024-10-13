@@ -56,8 +56,41 @@ public class UIFade : Singleton<UIFade>
         }
     }
 
-    public void MainMenu() 
+    public void MainMenu()
     {
+        // Destroy all objects in DontDestroyOnLoad
+        DestroyAllDontDestroyOnLoadObjects();
+
+        // Load the main menu scene asynchronously
         SceneManager.LoadSceneAsync("Menu");
     }
+
+    private void DestroyAllDontDestroyOnLoadObjects()
+    {
+        // Create a temporary scene to hold DontDestroyOnLoad objects
+        var tempScene = SceneManager.CreateScene("TempScene");
+
+        // Get all root GameObjects from the current active scene
+        var dontDestroyObjects = GetAllDontDestroyOnLoadObjects();
+
+        // Move each object to the temporary scene and destroy it
+        foreach (var obj in dontDestroyObjects)
+        {
+            SceneManager.MoveGameObjectToScene(obj, tempScene);
+            Destroy(obj);
+        }
+    }
+
+    // Helper method to collect all DontDestroyOnLoad objects
+    private GameObject[] GetAllDontDestroyOnLoadObjects()
+    {
+        var temp = new GameObject("Temp");
+        DontDestroyOnLoad(temp); // Make it part of DontDestroyOnLoad
+        Scene dontDestroyOnLoadScene = temp.scene; // Get the scene reference
+        Destroy(temp); // Clean up the temp object
+
+        // Return all root objects in the DontDestroyOnLoad scene
+        return dontDestroyOnLoadScene.GetRootGameObjects();
+    }
+
 }
