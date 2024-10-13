@@ -15825,16 +15825,39 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.70305645
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5715303333763619900, guid: e88af04bb13884c7b82411be7d70e465, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715303333763619899, guid: e88af04bb13884c7b82411be7d70e465, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 726034797}
   m_SourcePrefab: {fileID: 100100000, guid: e88af04bb13884c7b82411be7d70e465, type: 3}
 --- !u!4 &726034795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5715303333763619898, guid: e88af04bb13884c7b82411be7d70e465, type: 3}
   m_PrefabInstance: {fileID: 726034794}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &726034796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715303333763619899, guid: e88af04bb13884c7b82411be7d70e465, type: 3}
+  m_PrefabInstance: {fileID: 726034794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &726034797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726034796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081b87a28ab884dc1ad3c7be5ff4fe7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questNumber: 1
+  itemName: Morang
 --- !u!1001 &788989364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16247,13 +16270,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 22752247, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 95087420, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1116348055, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.x
@@ -17245,6 +17264,14 @@ PrefabInstance:
       propertyPath: startTextTagalog.Array.data[0]
       value: Hanapin mo ang talisman
       objectReference: {fileID: 0}
+    - target: {fileID: 5715044814230743828, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: targetItem
+      value: Morang
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814230743828, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715044814493992541, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: isItemQuest
       value: 0
@@ -17987,11 +18014,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270855618123190830, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.51
+      value: -22.1
       objectReference: {fileID: 0}
     - target: {fileID: 5270855618123190830, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38
+      value: 13.7
       objectReference: {fileID: 0}
     - target: {fileID: 5270855618123190830, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: m_LocalPosition.z

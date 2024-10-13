@@ -24,7 +24,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
 
     private void Start() {
-        currentHealth = maxHealth;
+        LoadPlayerHealth();
 
         UpdateHealthSlider();
     }
@@ -74,5 +74,13 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
+    }
+
+    private void LoadPlayerHealth() {
+        if (PlayerPrefs.HasKey("PlayerHealth")) {
+            currentHealth = PlayerPrefs.GetInt("PlayerHealth");
+        } else {
+            currentHealth = maxHealth; // Default to max health if not found
+        }
     }
 }

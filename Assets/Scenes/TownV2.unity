@@ -600,7 +600,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 11
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -860,7 +860,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 11
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1797,12 +1797,12 @@ Tilemap:
     m_Data: {fileID: 1608739690, guid: 5bd31654638e1415689162819fc419f2, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -812654420, guid: 5bd31654638e1415689162819fc419f2, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1225170590, guid: 5bd31654638e1415689162819fc419f2, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1093565815, guid: 5bd31654638e1415689162819fc419f2, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -1267786918, guid: 5bd31654638e1415689162819fc419f2, type: 3}
   - m_RefCount: 2
@@ -16124,7 +16124,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95087420, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 186441468, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16212,7 +16212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1620287289, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1909912778, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.x
@@ -16443,6 +16443,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+--- !u!114 &1096617761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1695377716, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+  m_PrefabInstance: {fileID: 1096617760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc07a76cf64a445b94acc9035e2ca14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127414548
 GameObject:
   m_ObjectHideFlags: 0
@@ -16740,6 +16751,720 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3926584007457264334, guid: 6972c1f8b11fd4f479f1906b5092d227, type: 3}
   m_PrefabInstance: {fileID: 788989364}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1288723271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 158466344, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 502002221, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405613092, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isEnemyQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: enemiesToKill
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Pagyamanan iti panangtulongyo a mangpukaw kadagitoy a peste ditoy.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Salamat sa pagtulong sa pagpuksa nitong mga peste dito.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Papatayem ti sangapulo a kabusor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Pumatay ka ng sampung kalaban
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[1]
+      value: Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt
+        ka dito para may makuha ka.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068192191, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: targetEnemy
+      value: Igorot
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isEnemyQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Kitaem ti tulang ni Don Juan
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Hanapin mo ang buto ni Don Juan
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Papatayen dagiti kabusor tapno ag-spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Patayin ang mga kalaban na igorot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Patayek amin a pumurok!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[1]
+      value: "Diak pulos mapakawankayo \u200B\u200Bnga animal"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Papaslangin ko lahat ng mga taga Nayon!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[1]
+      value: Hinding-hindi ko kayo kayang patawarin mga hayop kayo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Sadino ti ayan ni tatangko a Don Juan?! iruarmo ta ammok a sika ti naudi
+        a kaduana
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[1]
+      value: Isu ti nangirugi iti amin ken isu met ti mapabasol iti amin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[2]
+      value: Agsaganaka ket diakto pakawanen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Nasaan anq aking tatay nas i Don Juan?! ilabas nyo na sya dahila l a
+        mko na kayo anq huling nakasamanya
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[1]
+      value: Sya ang nagsimula nglahat at sya rin angmay kasalanann g lahat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[2]
+      value: Humanda kayoa t hindi ko kayo mapapatawad
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Pidutem ti lima nga anting-anting a makitam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[1]
+      value: Naikonektar daytoy iti quest a maited kenka inton agangay
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: 'Pumulot ka ng limang talisman na iyong makikita '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[1]
+      value: Ito ay konekta sa isang quest na maibibigay sa'yo mamaya
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: targetItem
+      value: Aso
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Arf arf...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Arf arf...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Sapulen ti nalabbaga nga aso
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Hanapin mo ang mahigawang aso
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[1]
+      value: Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt
+        ka dito para may makuha ka.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: targetItem
+      value: Igorot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Agpakada ken agannadkayo a kanayon!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Paalam at mag iingat ka palagi!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Nalpasen ti panagdaliasatmo ditoy maikadua a tukad
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[1]
+      value: Sumrekka ditoy tapno sumrekka iti maikatlo a paset ti biagmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Tapos na ang iyong paglalakbay dito sa pangalawang yugto
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[1]
+      value: Pumasok ka dito para makapunta ka sa pangatlong yugto ng iyong buhay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: targetItem
+      value: Talisman
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Agserbi daytoy nga anting-anting a giya a mangsalaknib kaniak iti panagdaliasatko
+        ken mangtaginayon iti sigurado a pigsak kadagiti sumaganad nga aldaw.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Ang Anting anting naito ay magsisilbing gabay na mag protection sa aking
+        paglalakbay at mapapanatli ang siguradong kalakasan ko sa mga dadaan na araw
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Sapulem ay talisman
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Hanapin mo ang talisman
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814493992541, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: theDM
+      value: 
+      objectReference: {fileID: 1096617761}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: characterImageUI
+      value: 
+      objectReference: {fileID: 970786744}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 2035620162}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[11]
+      value: 
+      objectReference: {fileID: 1288723280}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[12]
+      value: 
+      objectReference: {fileID: 1288723279}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[13]
+      value: 
+      objectReference: {fileID: 1288723278}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[14]
+      value: 
+      objectReference: {fileID: 1288723277}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[15]
+      value: 
+      objectReference: {fileID: 1288723276}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[16]
+      value: 
+      objectReference: {fileID: 1288723275}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[17]
+      value: 
+      objectReference: {fileID: 1288723274}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[18]
+      value: 
+      objectReference: {fileID: 1288723273}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: quests.Array.data[19]
+      value: 
+      objectReference: {fileID: 1288723272}
+    - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questCompleted.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814869082159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: m_Name
+      value: Quest Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Asidegka iti destinasionmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Ikaw ay malapit na sa iyong paroroonan
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Dalan nga agturong iti Purok dagiti Igorot".
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Daan patungo sa Nayon ng mga Igorot"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: targetItem
+      value: Manok
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isEnemyQuest
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Kukkkokok...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Kukkkokok...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Sapulem ay manok nga nalabbaga
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: Hanapin mo ang mahiwagang manok
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: targetItem
+      value: 'Buto '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: isItemQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: questNumber
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: rewardSpawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang
+        kausapin doon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA
+        A SIBIBIAG, NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: DONJUAN!!!! NANDITO NA AKOAT BAKIT HINDI KO NA NAABUTAN KAYO NA BUHAY,
+        PINAGBAYAD KO NA ANG MGA NAGKASALA SA NAYON NATINAT BAKIT GANTO ANG AKING
+        MADADATNAN
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+--- !u!114 &1288723272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288723280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+  m_PrefabInstance: {fileID: 1288723271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1304535747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3926584007457264334, guid: 6972c1f8b11fd4f479f1906b5092d227, type: 3}

@@ -50,28 +50,31 @@ public async void Connect()
 
     // Sign up new user
    public async void SignUp()
-{
-    // Ensure services are initialized
-    bool initialized = await AuthenticationWrapper.InitializeAuthentication();
-    
-    if (initialized && IsValidInput())
     {
-        // Now you can safely call the sign-up method
-        await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(usernameField.text, passwordField.text);
-        if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
+        bool initialized = await AuthenticationWrapper.InitializeAuthentication();
+
+        if (initialized && IsValidInput())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(usernameField.text, passwordField.text);
+            if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
+            {
+                // Save the username in PlayerPrefs
+                PlayerPrefs.SetString(PlayerNameKey, usernameField.text);
+                PlayerPrefs.Save();  // Ensure it is written to disk
+
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                Debug.LogError("Sign-up failed.");
+            }
         }
         else
         {
-            Debug.LogError("Sign-up failed.");
+            Debug.LogError("Authentication services not initialized or invalid input.");
         }
     }
-    else
-    {
-        Debug.LogError("Authentication services not initialized or invalid input.");
-    }
-}
+
 
 
     // Login existing user
@@ -82,6 +85,10 @@ public async void Connect()
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(usernameField.text, passwordField.text);
             if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
             {
+                // Save the username in PlayerPrefs
+                PlayerPrefs.SetString(PlayerNameKey, usernameField.text);
+                PlayerPrefs.Save();  // Ensure it is written to disk
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
@@ -90,6 +97,7 @@ public async void Connect()
             }
         }
     }
+
 
     // Validate username and password input
     private bool IsValidInput()

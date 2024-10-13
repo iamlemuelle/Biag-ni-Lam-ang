@@ -47,7 +47,27 @@ public class AreaExit : MonoBehaviour
         // Wait a bit before loading the new scene
         yield return new WaitForSeconds(waitToLoadTime);
 
+        UIFade.Instance.DestroyUI_Canvas();
+
         // Load the next scene
-        SceneManager.LoadScene(sceneToLoad);
+        yield return SceneManager.LoadSceneAsync(sceneToLoad);
     }
+
+    private void DestroyUICanvas()
+    {
+        // Find the UI_Canvas object by name
+        GameObject uiCanvas = GameObject.Find("UI_Canvas");
+
+        // Check if the object exists and destroy it
+        if (uiCanvas != null)
+        {
+            Debug.Log("Destroying UI_Canvas");
+            Destroy(uiCanvas);
+        }
+        else
+        {
+            Debug.Log("UI_Canvas not found");
+        }
+    }
+
 }
