@@ -16443,6 +16443,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+--- !u!114 &1096617761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1695377716, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+  m_PrefabInstance: {fileID: 1096617760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc07a76cf64a445b94acc9035e2ca14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127414548
 GameObject:
   m_ObjectHideFlags: 0
@@ -17169,15 +17180,15 @@ PrefabInstance:
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: theDM
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1096617761}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: characterImageUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 970786744}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: rewardSpawnPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2035620162}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: quests.Array.size
       value: 20
