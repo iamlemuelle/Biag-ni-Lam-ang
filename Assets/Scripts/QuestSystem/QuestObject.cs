@@ -72,86 +72,32 @@ public class QuestObject : MonoBehaviour
     public void StartQuest()
     {
         string currentLanguage = LanguageManager.Instance.currentLanguage;
-
-        if (currentLanguage == "tag")
-        {
-            theQM.ShowQuestText(startTextTagalog);
-        }
-        else if (currentLanguage == "il")
-        {
-            theQM.ShowQuestText(startTextIlocano);
-        }
-        else
-        {
-            Debug.LogError("No dialogue available for language: " + currentLanguage);
-        }
-
-        theQM.ShowCharacterImage(characterImage); // Display the same character image for both languages
+        string[] dialogue = currentLanguage == "tag" ? startTextTagalog : startTextIlocano;
+        theQM.ShowQuestText(dialogue);
+        theQM.ShowCharacterImage(characterImage);
     }
 
     public void EndQuest()
     {
-        if (!theQM.questCompleted[questNumber])  // Ensure quest is only completed once
+        if (!theQM.questCompleted[questNumber])
         {
             string currentLanguage = LanguageManager.Instance.currentLanguage;
+            string[] dialogue = currentLanguage == "tag" ? endTextTagalog : endTextIlocano;
 
-            if (currentLanguage == "tag")
-            {
-                theQM.ShowQuestText(endTextTagalog);
-            }
-            else if (currentLanguage == "il")
-            {
-                theQM.ShowQuestText(endTextIlocano);
-            }
-            else
-            {
-                Debug.LogError("No dialogue available for language: " + currentLanguage);
-            }
-
+            theQM.ShowQuestText(dialogue);
             theQM.questCompleted[questNumber] = true;
             Experience.Instance.AddExperience(expAmount);
-            Debug.Log("Quest " + questNumber + " has been completed.");
-
-            // Trigger the QuestManager to handle completed quests
             theQM.QuestCompleted();
-
-            // Update quest log
             theQM.UpdateQuestLog();
-
-            // Instantiate reward if available
             InstantiateReward();
         }
     }
 
     private void InstantiateReward()
     {
-        // Check if a reward is set before instantiating
-        if (rewardPrefab != null)
+        if (rewardPrefab != null && rewardSpawnPoint != null)
         {
-            if (rewardSpawnPoint != null)
-            {
-                Instantiate(rewardPrefab, rewardSpawnPoint.position, rewardSpawnPoint.rotation);
-                Debug.Log("Reward instantiated: " + rewardPrefab.name);
-            }
-            else
-            {
-                Debug.LogWarning("RewardSpawnPoint is not set.");
-            }
-        }
-        else
-        {
-            Debug.Log("No reward set for this quest. Skipping reward instantiation.");
-        }
-
-        // Alternatively, update player's gold or other in-game resources as a reward
-        if (questReward == "Gold")
-        {
-            EconomyManager.Instance.UpdateCurrentGold();
-        }
-        else if (questReward == "Item")
-        {
-            // InventoryManager.Instance.AddItemToInventory("RewardItem");
-            Debug.Log("Added to your item");
+            Instantiate(rewardPrefab, rewardSpawnPoint.position, rewardSpawnPoint.rotation);
         }
     }
 

@@ -16545,6 +16545,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5450591385621495260, guid: 94726f68499074be3ab1754329f9e802, type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5450591385621495263, guid: 94726f68499074be3ab1754329f9e802, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.6271954
@@ -16565,6 +16569,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 2035620162}
+    - target: {fileID: 5450591385882539282, guid: 94726f68499074be3ab1754329f9e802, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5450591387184399596, guid: 94726f68499074be3ab1754329f9e802, type: 3}
       propertyPath: m_RootOrder
       value: 6

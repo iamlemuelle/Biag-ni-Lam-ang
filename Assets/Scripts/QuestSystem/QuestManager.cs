@@ -12,40 +12,59 @@ public class QuestManager : MonoBehaviour
     public string enemyKilled;
     public Image characterImageUI;
 
-    private int completedQuestCount = 0;  // Track how many quests are completed
-    private Transform playerTransform;  // Reference to the player's transform
+    private int completedQuestCount = 0; // Track how many quests are completed
+    private Transform playerTransform;   // Reference to the player's transform
 
     [Header("Reward System")]
-    [SerializeField] private GameObject[] rewardPrefabs; // Array of possible reward prefabs
-    [SerializeField] private Transform rewardSpawnPoint; // Where to spawn the reward
-    [SerializeField] private AnimationCurve animCurve;  // Animation curve for spawn
-    [SerializeField] private float heightY = 1.5f;  // Max height for the spawn animation
-    [SerializeField] private float popDuration = 1f;  // Duration for the spawn animation
+    [SerializeField] private GameObject[] rewardPrefabs; 
+    [SerializeField] private Transform rewardSpawnPoint;
+    [SerializeField] private AnimationCurve animCurve;
+    [SerializeField] private float heightY = 1.5f;
+    [SerializeField] private float popDuration = 1f;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject); // Keep QuestManager across scenes
     }
 
     void Start()
     {
+        InitializeQuestManager();
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(DelayedInitialization()); // Ensure references are valid after scene load
+    }
+
+    private IEnumerator DelayedInitialization()
+    {
+        yield return new WaitForSeconds(0.1f); // Slight delay to ensure everything is loaded
+        InitializeQuestManager();
+    }
+
+    private void InitializeQuestManager()
+    {
         if (theDM == null)
         {
-            theDM = FindObjectOfType<DialogueManager>();
+            theDM = FindObjectOfType<DialogueManager>(); // Find DialogueManager dynamically
+            Debug.Log("DialogueManager assigned.");
         }
 
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;  // Find player by tag
+        playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (playerTransform == null)
+        {
+            Debug.LogError("Player transform not found!");
+        }
 
         questCompleted = new bool[quests.Length];
 
-        // Dynamically assign quests if they haven't been assigned in the Inspector
-        if (quests.Length == 0)
+        if (quests.Length == 0) // Dynamically assign quests if not set in Inspector
         {
             quests = FindObjectsOfType<QuestObject>();
-
-            for (int i = 0; i < quests.Length; i++)
+            foreach (var quest in quests)
             {
-                quests[i].theQM = this;  // Make sure the QuestManager is linked
+                quest.theQM = this; // Link QuestManager to each QuestObject
             }
         }
     }
@@ -54,40 +73,35 @@ public class QuestManager : MonoBehaviour
     {
         if (theDM != null)
         {
-            theDM.dialogLines = questText;  // Assign the array of dialogues
+            theDM.dialogLines = questText;
             theDM.currentLine = 0;
             theDM.ShowDialogue();
+            Debug.Log("Showing quest text.");
         }
         else
         {
-            Debug.LogError("DialogueManager (theDM) is not assigned in QuestManager.");
+            Debug.LogError("DialogueManager not assigned.");
         }
     }
 
     public void ShowCharacterImage(Sprite characterImage)
     {
-        if (characterImage != null)
+        if (characterImageUI != null)
         {
             characterImageUI.sprite = characterImage;
-            characterImageUI.gameObject.SetActive(true);  // Make the image visible
-        }
-        else
-        {
-            characterImageUI.gameObject.SetActive(false); // Hide the image if none is available
+            characterImageUI.gameObject.SetActive(characterImage != null);
         }
     }
 
     public void UpdateQuestLog()
     {
-        // Logic to update the quest log UI
-        FindObjectOfType<QuestLog>().UpdateQuestLog();
+        FindObjectOfType<QuestLog>()?.UpdateQuestLog();
     }
 
     public void QuestCompleted()
     {
         completedQuestCount++;
-
-        if (completedQuestCount % 2 == 0) // Every 2 quests, instantiate a random reward
+        if (completedQuestCount % 2 == 0)
         {
             InstantiateRandomReward();
         }
@@ -97,30 +111,23 @@ public class QuestManager : MonoBehaviour
     {
         if (rewardPrefabs != null && rewardPrefabs.Length > 0)
         {
-            // Select a random reward from the array
             GameObject randomReward = rewardPrefabs[Random.Range(0, rewardPrefabs.Length)];
-
-            // Update the rewardSpawnPoint to the player's position
             rewardSpawnPoint.position = playerTransform.position;
 
-            // Instantiate the reward and start the animation coroutine
             GameObject reward = Instantiate(randomReward, rewardSpawnPoint.position, Quaternion.identity);
             StartCoroutine(AnimCurveSpawnRoutine(reward.transform));
-            Debug.Log("Random reward instantiated for completing quests!");
+            Debug.Log("Random reward instantiated.");
         }
         else
         {
-            Debug.LogWarning("RewardPrefabs is not set.");
+            Debug.LogWarning("No reward prefabs available.");
         }
     }
 
     private IEnumerator AnimCurveSpawnRoutine(Transform reward)
     {
         Vector2 startPoint = reward.position;
-        float randomX = reward.position.x + Random.Range(-2f, 2f);
-        float randomY = reward.position.y + Random.Range(-1f, 1f);
-
-        Vector2 endPoint = new Vector2(randomX, randomY);
+        Vector2 endPoint = startPoint + new Vector2(Random.Range(-2f, 2f), Random.Range(-1f, 1f));
         float timePassed = 0f;
 
         while (timePassed < popDuration)
@@ -128,9 +135,7 @@ public class QuestManager : MonoBehaviour
             timePassed += Time.deltaTime;
             float linearT = timePassed / popDuration;
             float heightT = animCurve.Evaluate(linearT);
-            float height = Mathf.Lerp(0f, heightY, heightT);
-
-            reward.position = Vector2.Lerp(startPoint, endPoint, linearT) + new Vector2(0f, height);
+            reward.position = Vector2.Lerp(startPoint, endPoint, linearT) + new Vector2(0f, Mathf.Lerp(0f, heightY, heightT));
             yield return null;
         }
     }
