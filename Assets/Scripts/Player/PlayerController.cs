@@ -147,10 +147,10 @@ public class PlayerController : Singleton<PlayerController>
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        if (mousePos.x < playerScreenPoint.x) {
+        if (movement.x  < 0) {
             mySpriteRenderer.flipX = true;
             facingLeft = true;
-        } else {
+        } else if (movement.x > 0) {
             mySpriteRenderer.flipX = false;
             facingLeft = false;
         }
