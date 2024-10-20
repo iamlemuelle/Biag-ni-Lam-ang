@@ -76,6 +76,79 @@ MonoBehaviour:
   enemiesToKill: 5
   rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
   rewardSpawnPoint: {fileID: 0}
+--- !u!1 &495781329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495781330}
+  - component: {fileID: 495781331}
+  m_Layer: 5
+  m_Name: Quest 32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &495781330
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495781329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &495781331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495781329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 31
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Malapit ka na kay Berkakan
+  - Kailangan mo siyang patayin!!!
+  startTextIlocano:
+  - DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA A SIBIBIAG,
+    NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
+  endTextTagalog:
+  - Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang kausapin
+    doon
+  endTextIlocano:
+  - Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Berkakan fight
+  isEnemyQuest: 0
+  targetEnemy: Berkakan
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
 --- !u!1 &502002219
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +219,223 @@ MonoBehaviour:
   targetItem: Apo Lakay
   isEnemyQuest: 0
   targetEnemy: Slime
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &732480955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 732480956}
+  - component: {fileID: 732480957}
+  m_Layer: 5
+  m_Name: Quest 31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &732480956
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732480955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &732480957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732480955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 31
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Hanapin si Berkakan
+  startTextIlocano:
+  - DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA A SIBIBIAG,
+    NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
+  endTextTagalog:
+  - Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang kausapin
+    doon
+  endTextIlocano:
+  - Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Coin
+  isEnemyQuest: 0
+  targetEnemy: Apoy
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &1083020079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1083020080}
+  - component: {fileID: 1083020081}
+  m_Layer: 5
+  m_Name: Quest 30
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1083020080
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083020079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1083020081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083020079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 30
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Pumulot ng mga barya sa tubig
+  startTextIlocano:
+  - DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA A SIBIBIAG,
+    NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
+  endTextTagalog:
+  - Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang kausapin
+    doon
+  endTextIlocano:
+  - Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Coin
+  isEnemyQuest: 0
+  targetEnemy: Apoy
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &1319549522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1319549523}
+  - component: {fileID: 1319549524}
+  m_Layer: 5
+  m_Name: Quest 34
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1319549523
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319549522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1319549524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319549522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 31
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - 'Patayin mo si Berkakan!! '
+  - Patayin mo ang halimaw na 'yan!!!
+  startTextIlocano:
+  - DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA A SIBIBIAG,
+    NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
+  endTextTagalog:
+  - Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang kausapin
+    doon
+  endTextIlocano:
+  - Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 0
+  targetItem: Berkakan fight
+  isEnemyQuest: 1
+  targetEnemy: Berkakan
   enemiesToKill: 5
   rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
   rewardSpawnPoint: {fileID: 0}
@@ -289,6 +579,79 @@ MonoBehaviour:
   isEnemyQuest: 1
   targetEnemy: Slime
   enemiesToKill: 10
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &1969707148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1969707149}
+  - component: {fileID: 1969707150}
+  m_Layer: 5
+  m_Name: Quest 33
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1969707149
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969707148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1969707150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969707148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 31
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - 'Patayin mo si Berkakan!! '
+  - Patayin mo ang halimaw na 'yan!!!
+  startTextIlocano:
+  - DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA A SIBIBIAG,
+    NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
+  endTextTagalog:
+  - Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang kausapin
+    doon
+  endTextIlocano:
+  - Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 0
+  targetItem: Berkakan fight
+  isEnemyQuest: 1
+  targetEnemy: Berkakan
+  enemiesToKill: 5
   rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
   rewardSpawnPoint: {fileID: 0}
 --- !u!1 &2068192189
@@ -573,7 +936,7 @@ MonoBehaviour:
   - Asidegka iti destinasionmo
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
   isItemQuest: 1
-  targetItem: Bolang Apoy
+  targetItem: Nayon
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5
@@ -719,6 +1082,523 @@ MonoBehaviour:
   enemiesToKill: 5
   rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
   rewardSpawnPoint: {fileID: 0}
+--- !u!1 &3078543139493189928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3582996156185419573}
+  - component: {fileID: 2461804299694482627}
+  m_Layer: 5
+  m_Name: Quest 20
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3582996156185419573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078543139493189928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2461804299694482627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078543139493189928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 20
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Mangolekta ka ng sampung barya
+  startTextIlocano:
+  - Adda orderko para kenka
+  endTextTagalog:
+  - AHHHHHHHH!!!
+  endTextIlocano:
+  - AHHHHHHHH!!!
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Coin
+  isEnemyQuest: 0
+  targetEnemy: Grape
+  enemiesToKill: 3
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &3555936566681154665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 481704154495018625}
+  - component: {fileID: 3416964961738391423}
+  m_Layer: 5
+  m_Name: Quest 25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &481704154495018625
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555936566681154665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3416964961738391423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555936566681154665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 25
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - ......
+  - '[Player] Ako ay si Lam-Ang na anak nina Namorang at Don Juan mula sa Nayon ng
+    Nalbuan, narito ako upang ipaalam sainyo na gusto kong ligawan ang inyong anak
+    na si Ines'
+  startTextIlocano:
+  - ......
+  - '[Player] Siak ni Lam-Ang, anak da Namorang ken Don Juan a taga Nayon ng Nalbuan,
+    addaak ditoy tapno ipakaammok kadakayo a kayatko a kurtesan ti balasangyo nga
+    Ines'
+  endTextTagalog:
+  - Lam-Ang ang iyong mga mahiwagang hayop na kasama ay nakakamangha, nais mo bang
+    tumuloy muna dito sa amin upang kumain ng hapunan
+  - '[Player] Nakakatuwa naman at kayo ay namanha'
+  - Kami ay pumapayag na sainyo ni Ines, at bukas na bukas ay ipapakasal ko na kayo,
+    kausapin mo ang isang igorot sa ibaba para makuha ang bangka na handog namin
+    sa iyo.
+  endTextIlocano:
+  - Lam-Nakaskasdaaw dagiti mahiko a kakaduam nga animal, kayatmo kadi ti agtalinaed
+    ditoy a kaduami para iti pangrabii?
+  - '[Player] Naragsak ket immaykayo'
+  - Umanamongkami ken Ines kenka, ket inton bigat kasarennaka, kasaritam ti maysa
+    nga igorot iti baba tapno alaenna ti bangka nga ituktukonmi kenka.
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Magulang
+  isEnemyQuest: 0
+  targetEnemy: Slime
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &3730204714575869170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8152418408255719188}
+  - component: {fileID: 5039030793912444964}
+  m_Layer: 5
+  m_Name: Quest 22
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8152418408255719188
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3730204714575869170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5039030793912444964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3730204714575869170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 22
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Bago ka makapunta sa iyong paroroonan, kailangan mong patayin si Sumarang.
+  - Siya ay hindi nagpapadaan ng mga dayo.
+  startTextIlocano:
+  - Sakbay a makadanonka iti destinasionmo, masapul a patayem ni Sumarang.
+  - Saanna nga ipalubos a lumabas dagiti ganggannaet.
+  endTextTagalog:
+  - May bago akong damit na nakuha
+  endTextIlocano:
+  - Nakaalaak iti baro a bado
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Bahag
+  isEnemyQuest: 0
+  targetEnemy: Slime
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &4036150553813143158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8184755604348986206}
+  - component: {fileID: 2375276721007768321}
+  m_Layer: 5
+  m_Name: Quest 21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8184755604348986206
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036150553813143158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2375276721007768321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036150553813143158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 21
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Kailangan mong patayin si Sumarang
+  startTextIlocano:
+  - Masapul a patayem ti Sumarang
+  endTextTagalog:
+  - Ako si Lam-Ang, huwag na huwag mo akong tatakutin kasi marami na akong naranasan
+    sa mundong ito!
+  endTextIlocano:
+  - Siak ni Lam-Ang, dinak agbuteng ta adu ti napadasak ditoy lubong!
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 0
+  targetItem: Bolang Apoy
+  isEnemyQuest: 1
+  targetEnemy: Sumarang
+  enemiesToKill: 1
+  rewardPrefab: {fileID: 3967095363865046214, guid: aa47534f4b8ae8e458f23a9ca8fe1c31, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &4127071744502837380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3727081144663421982}
+  - component: {fileID: 6276429321933611457}
+  m_Layer: 5
+  m_Name: Quest 24
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3727081144663421982
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127071744502837380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6276429321933611457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127071744502837380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 24
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Ako si Ines Kannayon at ito ang Nayon namin, ano ang pinunta mo rito?
+  - '[Player] Alam ko sino ka, at ako si Lam-Ang matagal na kitang kilala.'
+  - Parang kilala nga kita, ano ang iyong pakay?
+  - '[Player] Nandito ako upang ipagpaalam ka sa iyong mga magulang upang manligaw'
+  startTextIlocano:
+  - Siak ni Ines Kannayon ket daytoy ti purokmi, ania ti nangisangpet kenka ditoy?
+  - '[Player] Ammok no siasinoka, ken siak ni Lam-Nabayagen nga am-ammoka.'
+  - Kasla am-ammoka, ania ti panggepmo?
+  - '[Player] Addaak ditoy tapno ibagak kenka nga agturong kadagiti dadakkelmo tapno
+    makiinnayat'
+  endTextTagalog:
+  - Si Ines ay umalis at kailangan mong kausapin ang kanyang mga magulang.
+  endTextIlocano:
+  - Pimmanawen ni Ines ket masapul a kasaritam dagiti dadakkelna.
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Ines
+  isEnemyQuest: 0
+  targetEnemy: Slime
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &4531423229806010547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9143000509120595051}
+  - component: {fileID: 6870490177786584778}
+  m_Layer: 5
+  m_Name: Quest 27
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &9143000509120595051
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531423229806010547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6870490177786584778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531423229806010547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 27
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - '[Player] Pumayag na ang iyong mga magulang na magpakasal tayo.'
+  startTextIlocano:
+  - '[Player] Immanamong dagiti dadakkelmo a palubosandakami nga agkasar.'
+  endTextTagalog:
+  - Halika na at tuklasan natin ang mga susunod na yugto ng ating mga buhay.
+  - Mauuna na akong pumunta
+  endTextIlocano:
+  - Umaykayo ket takuatentayo dagiti sumaruno a tukad ti biagtayo.
+  - Siak ti umuna a mapan
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Ines
+  isEnemyQuest: 0
+  targetEnemy: Slime
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &4752687294571532250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5944662136497985694}
+  - component: {fileID: 7872403910575221704}
+  m_Layer: 5
+  m_Name: Quest 28
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &5944662136497985694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752687294571532250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7872403910575221704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752687294571532250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 28
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Sumakay ka sa bangka
+  startTextIlocano:
+  - Sumalogka iti bangka
+  endTextTagalog:
+  - Ito ang iyong magagamit patungo sa iyong paroroonan sa kabilang ibayo
+  endTextIlocano:
+  - Daytoy ti mabalinmo nga usaren iti dalanmo nga agturong iti sabali a bangir
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Bangka
+  isEnemyQuest: 0
+  targetEnemy: Igorot
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
 --- !u!1 &5403182486485695018
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +1737,7 @@ MonoBehaviour:
   - Agpakada ken agannadkayo a kanayon!
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
   isItemQuest: 1
-  targetItem: Igorot
+  targetItem: Igorot2
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5
@@ -1135,8 +2015,23 @@ RectTransform:
   - {fileID: 6932982849605638262}
   - {fileID: 8454252197644222620}
   - {fileID: 1964662517195391893}
+  - {fileID: 3582996156185419573}
+  - {fileID: 8184755604348986206}
+  - {fileID: 8152418408255719188}
+  - {fileID: 8290722498167881198}
+  - {fileID: 3727081144663421982}
+  - {fileID: 481704154495018625}
+  - {fileID: 1465976113580686204}
+  - {fileID: 9143000509120595051}
+  - {fileID: 5944662136497985694}
+  - {fileID: 7577722915697950953}
+  - {fileID: 1083020080}
+  - {fileID: 732480956}
+  - {fileID: 495781330}
+  - {fileID: 1969707149}
+  - {fileID: 1319549523}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1176,7 +2071,17 @@ MonoBehaviour:
   - {fileID: 64258724312868159}
   - {fileID: 7437978555866793653}
   - {fileID: 4899137813055775016}
-  questCompleted: 0000000000000000000000000000000000000000
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  - {fileID: 4899137813055775016}
+  questCompleted: 000000000000000000000000000000000000000000000000000000000000
   theDM: {fileID: 0}
   itemCollected: 
   enemyKilled: 
@@ -1376,6 +2281,222 @@ MonoBehaviour:
   enemiesToKill: 0
   rewardPrefab: {fileID: 0}
   rewardSpawnPoint: {fileID: 0}
+--- !u!1 &6683190693107328895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8290722498167881198}
+  - component: {fileID: 4399704000699374523}
+  m_Layer: 5
+  m_Name: Quest 23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8290722498167881198
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683190693107328895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4399704000699374523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683190693107328895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 23
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Pumunta sa kabilang Nayon
+  startTextIlocano:
+  - Mapanka iti sabali a Purok
+  endTextTagalog:
+  - Ika'y nasa Nayon na, dito nakatira sila Ines at ang kayang mga magulang
+  endTextIlocano:
+  - Addaka metten iti Purok, a pagnanaedan ni Ines ken dagiti dadakkelna
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Nayon
+  isEnemyQuest: 0
+  targetEnemy: Slime
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &7177796828948950146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465976113580686204}
+  - component: {fileID: 2122380587525559222}
+  m_Layer: 5
+  m_Name: Quest 26
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1465976113580686204
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177796828948950146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2122380587525559222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177796828948950146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 26
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - '[Player] Pinapasabi ng mga magulang ni Ines na ikaw daw ang kailangan kong kausapin
+    para makuha ko ang bangka na handog nila sa akin.'
+  - Oo, ako nga iyon. Makikita mo ang bangka malapit sa sapa diretso sa iyong direction
+  startTextIlocano:
+  - Kuna dagiti nagannak ni [Player] Ines a sika ti masapul a kasaritak tapno makaalaak
+    iti bangka nga intedda kaniak.
+  - Wen, siak dayta. Makitamto ti bilog iti asideg ti karayan a direkta iti direksionmo
+  endTextTagalog:
+  - Ito na ata ang bangka na handog sa akin ng pamilya ni Ines!
+  endTextIlocano:
+  - Daytoy ti bangka nga inted kaniak ti pamilia ni Ines!
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: Bangka
+  isEnemyQuest: 0
+  targetEnemy: Slime
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
+--- !u!1 &7261248322542218651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7577722915697950953}
+  - component: {fileID: 2962362206389364598}
+  m_Layer: 5
+  m_Name: Quest 29
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &7577722915697950953
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261248322542218651}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5715044814869082156}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2962362206389364598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261248322542218651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d916031eb8a4c30a83313dab587068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expAmount: 800
+  questNumber: 29
+  theQM: {fileID: 5715044814869082157}
+  questDescription: kahit ano lang muna dito hehehe
+  questReward: 3 gallon ng tubig
+  startTextTagalog:
+  - Pumatay ng Limang Kalaban
+  startTextIlocano:
+  - DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA A SIBIBIAG,
+    NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
+  endTextTagalog:
+  - Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang kausapin
+    doon
+  endTextIlocano:
+  - Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
+  characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
+  isItemQuest: 1
+  targetItem: 'Buto '
+  isEnemyQuest: 1
+  targetEnemy: Apoy
+  enemiesToKill: 5
+  rewardPrefab: {fileID: 3967095363865046214, guid: e21e2944df3544dc991ce2ed33eb3e22, type: 3}
+  rewardSpawnPoint: {fileID: 0}
 --- !u!1 &8229077021479775447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,8 +2567,8 @@ MonoBehaviour:
   - Patayek amin a pumurok!
   - "Diak pulos mapakawankayo \u200B\u200Bnga animal"
   characterImage: {fileID: 21300000, guid: 23d115f11eb24485699c7d83ff8375bb, type: 3}
-  isItemQuest: 0
-  targetItem: Bolang Apoy
+  isItemQuest: 1
+  targetItem: Igorot
   isEnemyQuest: 0
   targetEnemy: Slime
   enemiesToKill: 5

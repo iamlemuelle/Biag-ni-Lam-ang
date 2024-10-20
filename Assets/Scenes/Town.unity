@@ -17889,18 +17889,18 @@ PrefabInstance:
     - target: {fileID: 2242474296708880138, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b7900b84707644da2ac931168f01c842, type: 2}
+      objectReference: {fileID: 9100000, guid: f364dd453d8c548029329639732d3afa, type: 2}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: levelText
       value: 
       objectReference: {fileID: 124579626}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: levelSprites.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: levelAnimators.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: levelSprites.Array.data[0]
@@ -17911,6 +17911,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 718178146, guid: 1b95da0b7dd3e445b9645648ecaac4a9, type: 3}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
+      propertyPath: levelSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: d9591a1eba2c03549a4666f3cd0ed676, type: 3}
+    - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: levelAnimators.Array.data[0]
       value: 
       objectReference: {fileID: 9100000, guid: f364dd453d8c548029329639732d3afa, type: 2}
@@ -17918,9 +17922,17 @@ PrefabInstance:
       propertyPath: levelAnimators.Array.data[1]
       value: 
       objectReference: {fileID: 9100000, guid: b7900b84707644da2ac931168f01c842, type: 2}
+    - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
+      propertyPath: levelAnimators.Array.data[2]
+      value: 
+      objectReference: {fileID: 9100000, guid: c9994a35f099e31448606f31eafa8f14, type: 2}
     - target: {fileID: 2242474296708880143, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_Name
       value: Lam-Ang
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242474296708880143, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5223143212795284144, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_IsActive
