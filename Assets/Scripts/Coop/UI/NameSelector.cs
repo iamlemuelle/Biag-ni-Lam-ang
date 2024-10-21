@@ -13,6 +13,7 @@ public class NameSelector : MonoBehaviour
     [SerializeField] private Button connectButton;
     [SerializeField] private Button signUpButton;
     [SerializeField] private Button loginButton;
+    public FirebaseAuthManager firebaseAuthManager;
 
     private void Start()
     {
@@ -85,6 +86,7 @@ public async void Connect()
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(usernameField.text, passwordField.text);
             if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
             {
+                firebaseAuthManager.Login();
                 // Save the username in PlayerPrefs
                 PlayerPrefs.SetString(PlayerNameKey, usernameField.text);
                 PlayerPrefs.Save();  // Ensure it is written to disk
