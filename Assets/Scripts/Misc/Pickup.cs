@@ -21,6 +21,8 @@ public class Pickup : MonoBehaviour
     [SerializeField] private AudioClip pickUpStaminaSFX;
     [SerializeField] private float heightY = 1.5f;
     [SerializeField] private float popDuration = 1f;
+    
+    [SerializeField] private int goldAmount = 1; // Set the amount of gold to give when picked up
 
     private Vector3 moveDir;
     private Rigidbody2D rb;
@@ -82,7 +84,7 @@ public class Pickup : MonoBehaviour
         {
             case PickUpType.GoldCoin:
                 SoundFXManager.instance.PlaySoundFXClip(pickUpGoldSFX, transform, 1f); // PLAY SOUNDFX
-                EconomyManager.Instance.UpdateCurrentGold();
+                EconomyManager.Instance.UpdateCurrentGold(goldAmount); // Pass the gold amount
                 break;
             case PickUpType.HealthGlobe:
                 SoundFXManager.instance.PlaySoundFXClip(pickUpHealthSFX, transform, 1f); // PLAY SOUNDFX

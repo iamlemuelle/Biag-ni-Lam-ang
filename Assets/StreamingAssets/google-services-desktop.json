@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "53258680852",
+    "firebase_url": "https://biag-ni-lam-ang-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "biag-ni-lam-ang",
     "storage_bucket": "biag-ni-lam-ang.appspot.com"
   },
@@ -12,15 +13,35 @@
           "package_name": "com.biagnilamang"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        },
+        {
+          "current_key": "AIzaSyDPRRrgIok3bev0W7zTMkbK4g9jgR4EQ4Y"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "53258680852-1u7cokmq4lleovrtvarv7mm3sb90gu3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "google.auth"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,15 +52,74 @@
           "package_name": "com.biagnilamang.firebase"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        },
+        {
+          "current_key": "AIzaSyDPRRrgIok3bev0W7zTMkbK4g9jgR4EQ4Y"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "53258680852-1u7cokmq4lleovrtvarv7mm3sb90gu3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "google.auth"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53258680852:android:d0e7d91760d4c69882c501",
+        "android_client_info": {
+          "package_name": "com.biagnilamang.firebase.google"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        },
+        {
+          "current_key": "AIzaSyDPRRrgIok3bev0W7zTMkbK4g9jgR4EQ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "53258680852-1u7cokmq4lleovrtvarv7mm3sb90gu3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "google.auth"
+              }
+            }
+          ]
         }
       }
     },
@@ -50,15 +130,82 @@
           "package_name": "com.firebaseanalytic"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "53258680852-fh5pnhnq6qrcvauh450dm7snlu9fgcg3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firebaseanalytic",
+            "certificate_hash": "f107353f5ed9dafd327a97c59faff9c7b0cc41f4"
+          }
+        },
+        {
+          "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        },
+        {
+          "current_key": "AIzaSyDPRRrgIok3bev0W7zTMkbK4g9jgR4EQ4Y"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "53258680852-1u7cokmq4lleovrtvarv7mm3sb90gu3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "google.auth"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53258680852:android:b19e7d5ac3c2236082c501",
+        "android_client_info": {
+          "package_name": "com.google.firebase.biagnilamang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA83MDrnUidUO3vM_I2wuA-udl0YdekpHc"
+        },
+        {
+          "current_key": "AIzaSyDPRRrgIok3bev0W7zTMkbK4g9jgR4EQ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53258680852-3ldtjtride3npu1lm70hibd15d24eip6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "53258680852-1u7cokmq4lleovrtvarv7mm3sb90gu3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "google.auth"
+              }
+            }
+          ]
         }
       }
     }

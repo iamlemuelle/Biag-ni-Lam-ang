@@ -1,4 +1,3 @@
- 
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,7 +5,7 @@ using UnityEngine.UI;
 
 public class NameSelector : MonoBehaviour
 {
-    public const string PlayerNameKey = "PlayerName";  // Add this line
+    public const string PlayerNameKey = "PlayerName";
     [Header("UI Elements")]
     [SerializeField] private TMP_InputField usernameField;
     [SerializeField] private TMP_InputField passwordField;
@@ -18,39 +17,32 @@ public class NameSelector : MonoBehaviour
     private void Start()
     {
         Debug.Log("Start called");
-        
-        // Check if UI elements are assigned
+
         if (connectButton == null) Debug.LogError("connectButton is not assigned!");
         if (signUpButton == null) Debug.LogError("signUpButton is not assigned!");
         if (loginButton == null) Debug.LogError("loginButton is not assigned!");
         if (usernameField == null) Debug.LogError("usernameField is not assigned!");
         if (passwordField == null) Debug.LogError("passwordField is not assigned!");
 
-        // Add listeners to the buttons
         connectButton.onClick.AddListener(Connect);
         signUpButton.onClick.AddListener(SignUp);
         loginButton.onClick.AddListener(Login);
     }
 
-
-    // Anonymous connect
-public async void Connect()
-{
-    bool initialized = await AuthenticationWrapper.InitializeAuthentication();
-    if (initialized && AuthenticationWrapper.AuthState == AuthState.Authenticated)
+    public async void Connect()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        bool initialized = await AuthenticationWrapper.InitializeAuthentication();
+        if (initialized && AuthenticationWrapper.AuthState == AuthState.Authenticated)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            Debug.LogError("Anonymous authentication failed or services not initialized.");
+        }
     }
-    else
-    {
-        Debug.LogError("Anonymous authentication failed or services not initialized.");
-    }
-}
 
-
-
-    // Sign up new user
-   public async void SignUp()
+    public async void SignUp()
     {
         bool initialized = await AuthenticationWrapper.InitializeAuthentication();
 
@@ -59,9 +51,8 @@ public async void Connect()
             await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(usernameField.text, passwordField.text);
             if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
             {
-                // Save the username in PlayerPrefs
                 PlayerPrefs.SetString(PlayerNameKey, usernameField.text);
-                PlayerPrefs.Save();  // Ensure it is written to disk
+                PlayerPrefs.Save();
 
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
@@ -76,9 +67,6 @@ public async void Connect()
         }
     }
 
-
-
-    // Login existing user
     public async void Login()
     {
         if (IsValidInput())
@@ -86,10 +74,12 @@ public async void Connect()
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(usernameField.text, passwordField.text);
             if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
             {
-                firebaseAuthManager.Login();
+                // Pass the username and password to the firebaseAuthManager.Login method
+                Firebase.Auth.FirebaseUser user = await firebaseAuthManager.Login(usernameField.text, passwordField.text);
+
                 // Save the username in PlayerPrefs
                 PlayerPrefs.SetString(PlayerNameKey, usernameField.text);
-                PlayerPrefs.Save();  // Ensure it is written to disk
+                PlayerPrefs.Save();
 
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
@@ -100,12 +90,9 @@ public async void Connect()
         }
     }
 
-
-    // Validate username and password input
     private bool IsValidInput()
     {
         return usernameField.text.Length >= 3 && usernameField.text.Length <= 20 &&
                passwordField.text.Length >= 8 && passwordField.text.Length <= 30;
     }
 }
-

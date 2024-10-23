@@ -204,8 +204,30 @@
                 },
                 {
                     "name": "",
+                    "id": "f0b78c6e-4d3c-40c4-ad31-91f83dcb6523",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "Tap",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "675c4162-ff72-4fcf-b99b-8840ce01039c",
                     "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c766af56-8fdd-426b-8ba7-c197cda22b88",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "Scale(factor=2)",
                     "groups": "",
@@ -226,6 +248,17 @@
                 },
                 {
                     "name": "",
+                    "id": "37ef3d3a-a3be-4596-bbcf-62d82942c293",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2b7f986e-877a-493e-ab5f-53c53486823e",
                     "path": "<Keyboard>/4",
                     "interactions": "",
@@ -237,8 +270,30 @@
                 },
                 {
                     "name": "",
+                    "id": "4d4092b3-01f5-41bd-8155-0cf98b454010",
+                    "path": "<Gamepad>/dpad/x",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8f8cecbb-428a-4639-9bbb-a782531009e4",
                     "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "Scale(factor=5)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc4a8d89-4de5-4bcb-a1bd-975750e8c6f5",
+                    "path": "<Gamepad>/dpad/y",
                     "interactions": "",
                     "processors": "Scale(factor=5)",
                     "groups": "",

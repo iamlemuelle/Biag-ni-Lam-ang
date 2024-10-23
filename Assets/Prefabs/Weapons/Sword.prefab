@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 92.334}
 --- !u!212 &8055004129261415744
 SpriteRenderer:
@@ -119,6 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slashAnimPrefab: {fileID: 4793417912652523505, guid: 0eb13a4500eb3488590108bd439fe946, type: 3}
-  slashAnimSpawnPoint: {fileID: 0}
+  slashAnimSpawnPoint: {fileID: 8055004129261415746}
   swordAttackCD: 0.5
   weaponInfo: {fileID: 11400000, guid: 7da874861183042d6bc9f2cea88d14f3, type: 2}

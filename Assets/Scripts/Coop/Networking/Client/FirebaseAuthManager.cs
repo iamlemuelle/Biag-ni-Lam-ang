@@ -1,31 +1,30 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase;
 using Firebase.Auth;
-using System.Threading.Tasks;
-using Unity.Services.Authentication;
-using Unity.Services.Core;
+using Firebase.Database;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
-    // Firebase variable
     [Header("Firebase")]
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser user;
+    private DatabaseReference databaseReference; // Reference to the database
 
-    // UI Elements for Login
     [Space]
     [Header("Login")]
     public TMP_InputField emailLoginField;
     public TMP_InputField passwordLoginField;
     public Button loginButton;
+    public TMP_Text loginFeedbackText;
 
-    // UI Elements for Registration
     [Space]
     [Header("Registration")]
     public TMP_InputField nameRegisterField;
@@ -33,20 +32,10 @@ public class FirebaseAuthManager : MonoBehaviour
     public TMP_InputField passwordRegisterField;
     public TMP_InputField confirmPasswordRegisterField;
     public Button signUpButton;
-
-    // Connect Button for Anonymous Authentication
-    [Space]
-    [Header("Connection")]
-    public Button connectButton;
-
-    public const string PlayerNameKey = "PlayerName";  // Key for Player Name in PlayerPrefs
+    public TMP_Text registrationFeedbackText;
 
     private void Awake()
     {
-        // Initialize Unity Authentication Services
-        InitializeUnityAuthentication();
-
-        // Check Firebase dependencies
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
             dependencyStatus = task.Result;
@@ -62,28 +51,66 @@ public class FirebaseAuthManager : MonoBehaviour
         });
     }
 
-    private async void InitializeUnityAuthentication()
+    void InitializeFirebase()
     {
-        bool initialized = await AuthenticationWrapper.InitializeAuthentication();
-        if (!initialized)
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.DefaultInstance;
+
+        // Initialize Firebase Realtime Database
+        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        // Set up authentication state change listener
+        auth.StateChanged += AuthStateChanged;
+        AuthStateChanged(this, null);
+        signUpButton.onClick.AddListener(() => RegisterAsync());
+        loginButton.onClick.AddListener(() => LoginAsync());
+    }
+
+    public async Task<FirebaseUser> Login(string email, string password)
+    {
+        try
         {
-            Debug.LogError("Failed to initialize Unity Authentication.");
+            AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
+            user = authResult.User;
+
+            // Load user data after successful login
+            StartCoroutine(LoadUserData(user.UserId)); // Start the coroutine here
+
+            // Pass the data to Unity's auth
+            await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
+
+            return user;  
+        }
+        catch (FirebaseException e)
+        {
+            Debug.LogError($"Login failed: {e.Message}");
+            return null;  
         }
     }
 
-    void InitializeFirebase()
+    public async Task<FirebaseUser> SignUp(string email, string password)
     {
-        auth = FirebaseAuth.DefaultInstance;
-        auth.StateChanged += AuthStateChanged;
-        AuthStateChanged(this, null);
+        try
+        {
+            AuthResult authResult = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
+            user = authResult.User;
 
-        // Add listeners to buttons
-        connectButton.onClick.AddListener(Connect);
-        signUpButton.onClick.AddListener(Register);
-        loginButton.onClick.AddListener(Login);
+            // After successful Firebase sign-up, register in your authentication wrapper
+            await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
+
+            // Optionally, store additional user info in Firebase
+            await SaveUserProfile(user.UserId, nameRegisterField.text);
+
+            return user;  
+        }
+        catch (FirebaseException e)
+        {
+            Debug.LogError($"Sign up failed: {e.Message}");
+            return null;  
+        }
     }
 
-    void AuthStateChanged(object sender, System.EventArgs eventArgs)
+    void AuthStateChanged(object sender, EventArgs eventArgs)
     {
         if (auth.CurrentUser != user)
         {
@@ -99,129 +126,131 @@ public class FirebaseAuthManager : MonoBehaviour
             if (signedIn)
             {
                 Debug.Log("Signed in " + user.UserId);
-            }
-        }
-    }
-
-    // Connect as an anonymous user
-    public async void Connect()
-    {
-        bool initialized = await AuthenticationWrapper.InitializeAuthentication();
-        if (initialized && AuthenticationWrapper.AuthState == AuthState.Authenticated)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        else
-        {
-            Debug.LogError("Anonymous authentication failed or services not initialized.");
-        }
-    }
-
-    // Register with Firebase and Unity Authentication
-    public void Register()
-    {
-        StartCoroutine(RegisterAsync(nameRegisterField.text, emailRegisterField.text, passwordRegisterField.text, confirmPasswordRegisterField.text));
-    }
-
-    private IEnumerator RegisterAsync(string name, string email, string password, string confirmPassword)
-    {
-        if (name == "")
-        {
-            Debug.LogError("User Name is empty");
-            yield break;
-        }
-        if (email == "")
-        {
-            Debug.LogError("Email field is empty");
-            yield break;
-        }
-        if (password != confirmPassword)
-        {
-            Debug.LogError("Password does not match");
-            yield break;
-        }
-
-        var registerTask = auth.CreateUserWithEmailAndPasswordAsync(email, password);
-        yield return new WaitUntil(() => registerTask.IsCompleted);
-
-        if (registerTask.Exception != null)
-        {
-            HandleFirebaseError(registerTask.Exception, "Registration Failed");
-        }
-        else
-        {
-            user = registerTask.Result.User;
-            UserProfile userProfile = new UserProfile { DisplayName = name };
-            var updateProfileTask = user.UpdateUserProfileAsync(userProfile);
-
-            yield return new WaitUntil(() => updateProfileTask.IsCompleted);
-
-            if (updateProfileTask.Exception != null)
-            {
-                user.DeleteAsync();
-                HandleFirebaseError(updateProfileTask.Exception, "Profile Update Failed");
-            }
-            else
-            {
-                Debug.Log("Registration Successful. Welcome " + user.DisplayName);
-                PlayerPrefs.SetString(PlayerNameKey, name);
-                PlayerPrefs.Save(); // Ensure it is written to disk
-
-                // Authenticate with Unity Services after successful registration
-                AuthenticateWithUnityServices();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }
 
-    // Login with Firebase and Unity Authentication
-    public void Login()
+    public async void RegisterAsync()
     {
-        StartCoroutine(LoginAsync(emailLoginField.text, passwordLoginField.text));
+        // Sign out the current user before registering a new one
+        auth.SignOut();
+
+        string name = nameRegisterField.text;
+        string email = emailRegisterField.text;
+        string password = passwordRegisterField.text;
+        string confirmPassword = confirmPasswordRegisterField.text;
+
+        if (string.IsNullOrEmpty(name))
+        {
+            registrationFeedbackText.text = "Name field is empty";
+            return;
+        }
+
+        if (string.IsNullOrEmpty(email))
+        {
+            registrationFeedbackText.text = "Email field is empty";
+            return;
+        }
+
+        if (password != confirmPassword)
+        {
+            registrationFeedbackText.text = "Passwords do not match";
+            return;
+        }
+
+        try
+        {
+            var userCredential = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
+            user = userCredential.User;  
+            UserProfile userProfile = new UserProfile { DisplayName = name };
+            await user.UpdateUserProfileAsync(userProfile);
+            Debug.Log("Registration Successful. Welcome " + user.DisplayName);
+            registrationFeedbackText.text = "Registration successful!";
+        }
+        catch (FirebaseException ex)
+        {
+            HandleFirebaseError(ex, "Registration Failed");
+        }
     }
 
-    private IEnumerator LoginAsync(string email, string password)
+    public async void LoginAsync()
     {
-        var loginTask = auth.SignInWithEmailAndPasswordAsync(email, password);
-        yield return new WaitUntil(() => loginTask.IsCompleted);
+        string email = emailLoginField.text;
+        string password = passwordLoginField.text;
 
-        if (loginTask.Exception != null)
+        if (string.IsNullOrEmpty(email))
         {
-            HandleFirebaseError(loginTask.Exception, "Login Failed");
+            loginFeedbackText.text = "Email field is empty";
+            return;
         }
-        else
-        {
-            user = loginTask.Result.User; 
-            Debug.LogFormat("{0} You Are Successfully Logged In", user.DisplayName);
-            PlayerPrefs.SetString(PlayerNameKey, user.DisplayName);
-            PlayerPrefs.Save(); // Ensure it is written to disk
 
-            AuthenticateWithUnityServices();
+        if (string.IsNullOrEmpty(password))
+        {
+            loginFeedbackText.text = "Password field is empty";
+            return;
+        }
+
+        try
+        {
+            var userCredential = await auth.SignInWithEmailAndPasswordAsync(email, password);
+            user = userCredential.User; 
+            Debug.LogFormat("{0} You Are Successfully Logged In", user.DisplayName);
+            loginFeedbackText.text = "Login successful!";
+            
+            // Start loading user data after login
+            StartCoroutine(LoadUserData(user.UserId));
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-    }
-
-    // Authenticate with Unity services after Firebase sign-in or sign-up
-    private async void AuthenticateWithUnityServices()
-    {
-        await AuthenticationWrapper.PrepareAuthentication();
-        if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
+        catch (FirebaseException ex)
         {
-            Debug.Log("Successfully authenticated with Unity Services.");
-        }
-        else
-        {
-            Debug.LogError("Failed to authenticate with Unity Services.");
+            HandleFirebaseError(ex, "Login Failed");
         }
     }
 
-    // Handle Firebase authentication errors
-    private void HandleFirebaseError(AggregateException exception, string errorPrefix)
+    public IEnumerator LoadUserData(string userId)
     {
-        FirebaseException firebaseException = exception.GetBaseException() as FirebaseException;
-        AuthError authError = (AuthError)firebaseException.ErrorCode;
+        // Wait until the Firebase tasks are completed
+        var task = FirebaseDatabase.DefaultInstance
+            .GetReference("users")
+            .Child(userId)
+            .GetValueAsync();
+
+        // Wait for the task to complete
+        yield return new WaitUntil(() => task.IsCompleted);
+
+        if (task.IsFaulted)
+        {
+            Debug.LogError("Failed to load user data: " + task.Exception);
+        }
+        else if (task.IsCompleted)
+        {
+            DataSnapshot snapshot = task.Result;
+            // Process the loaded data here
+            Debug.Log("User data loaded successfully.");
+            // Example: Access user data from snapshot
+            var userData = snapshot.Value as Dictionary<string, object>;
+            // Do something with userData
+        }
+    }
+
+    private async Task SaveUserProfile(string userId, string name)
+    {
+        // Save user profile information in the Firebase database
+        var userProfile = new Dictionary<string, object>
+        {
+            { "displayName", name }
+            // Add other user fields as necessary
+        };
+
+        await databaseReference.Child("users").Child(userId).SetValueAsync(userProfile);
+    }
+
+    private void HandleFirebaseError(FirebaseException exception, string errorPrefix)
+    {
         string errorMessage = errorPrefix + ": ";
-
+        AuthError authError = (AuthError)exception.ErrorCode;
         switch (authError)
         {
             case AuthError.InvalidEmail:
@@ -240,7 +269,6 @@ public class FirebaseAuthManager : MonoBehaviour
                 errorMessage += "Unknown error occurred";
                 break;
         }
-
         Debug.LogError(errorMessage);
     }
 }
