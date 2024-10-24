@@ -64,15 +64,13 @@ public static class AuthenticationWrapper
 
     public static async Task<AuthState> DoAuth(int maxRetries = 5)
     {
-        if (AuthState == AuthState.Authenticated)
-        {
-            return AuthState;
-        }
+        // Comment or remove this if you don't want to sign in anonymously
+        // await SignInAnonymouslyAsync(maxRetries);
 
-        await SignInAnonymouslyAsync(maxRetries);
-
+        // Instead, let the Firebase login handle the authentication.
         return AuthState;
     }
+
 
     // Sign-in an existing player with username and password
     public static async Task SignInWithUsernamePasswordAsync(string username, string password)

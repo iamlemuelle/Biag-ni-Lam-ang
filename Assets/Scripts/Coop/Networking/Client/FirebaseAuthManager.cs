@@ -39,7 +39,6 @@ public class FirebaseAuthManager : MonoBehaviour
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
             dependencyStatus = task.Result;
-
             if (dependencyStatus == DependencyStatus.Available)
             {
                 InitializeFirebase();
@@ -73,13 +72,11 @@ public class FirebaseAuthManager : MonoBehaviour
             AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
             user = authResult.User;
 
-            // Load user data after successful login
-            StartCoroutine(LoadUserData(user.UserId)); // Start the coroutine here
-
-            // Pass the data to Unity's auth
+            // Start Unity Authentication here, after Firebase login
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
 
-            return user;  
+            StartCoroutine(LoadUserData(user.UserId)); // Load user data after successful login
+            return user;
         }
         catch (FirebaseException e)
         {
@@ -95,13 +92,12 @@ public class FirebaseAuthManager : MonoBehaviour
             AuthResult authResult = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
             user = authResult.User;
 
-            // After successful Firebase sign-up, register in your authentication wrapper
+            // Start Unity Authentication after successful Firebase sign-up
             await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
 
-            // Optionally, store additional user info in Firebase
             await SaveUserProfile(user.UserId, nameRegisterField.text);
 
-            return user;  
+            return user;
         }
         catch (FirebaseException e)
         {
@@ -114,65 +110,78 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         if (auth.CurrentUser != user)
         {
-            bool signedIn = user != auth.CurrentUser && auth.CurrentUser != null;
-
-            if (!signedIn && user != null)
-            {
-                Debug.Log("Signed out " + user.UserId);
-            }
-
             user = auth.CurrentUser;
-
-            if (signedIn)
+            if (user != null)
             {
                 Debug.Log("Signed in " + user.UserId);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                Debug.Log("User is signed out.");
             }
         }
     }
 
     public async void RegisterAsync()
+{
+    // Sign out the current user before registering a new one
+    auth.SignOut();
+
+    string name = nameRegisterField.text;
+    string email = emailRegisterField.text;
+    string password = passwordRegisterField.text;
+    string confirmPassword = confirmPasswordRegisterField.text;
+
+    if (string.IsNullOrEmpty(name))
     {
-        // Sign out the current user before registering a new one
-        auth.SignOut();
+        StartCoroutine(ShowRegistrationFeedback("Name field is empty"));
+        return;
+    }
 
-        string name = nameRegisterField.text;
-        string email = emailRegisterField.text;
-        string password = passwordRegisterField.text;
-        string confirmPassword = confirmPasswordRegisterField.text;
+    if (string.IsNullOrEmpty(email))
+    {
+        StartCoroutine(ShowRegistrationFeedback("Email field is empty"));
+        return;
+    }
 
-        if (string.IsNullOrEmpty(name))
+    if (password != confirmPassword)
+    {
+        StartCoroutine(ShowRegistrationFeedback("Passwords do not match"));
+        return;
+    }
+
+    // Check if AuthenticationWrapper is initialized
+    bool initialized = await AuthenticationWrapper.InitializeAuthentication();
+    if (!initialized)
+    {
+        Debug.LogError("Authentication services not initialized.");
+        return;
+    }
+
+    try
+    {
+        // Sign-up process
+        user = await SignUp(email, password);
+        if (user != null)
         {
-            StartCoroutine(ShowLoginFeedback("Name field is empty"));
-            return;
+            PlayerPrefs.SetString("PlayerNameKey", name);
+            PlayerPrefs.Save();
+            Debug.Log("Registration Successful. Welcome " + name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-
-        if (string.IsNullOrEmpty(email))
+        else
         {
-            StartCoroutine(ShowLoginFeedback("Email field is empty"));
-            return;
-        }
-
-        if (password != confirmPassword)
-        {
-            StartCoroutine(ShowLoginFeedback("Passwords do not match"));
-            return;
-        }
-
-        try
-        {
-            var userCredential = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
-            user = userCredential.User;  
-            UserProfile userProfile = new UserProfile { DisplayName = name };
-            await user.UpdateUserProfileAsync(userProfile);
-            Debug.Log("Registration Successful. Welcome " + user.DisplayName);
-            StartCoroutine(ShowLoginFeedback("Registration successful!"));
-        }
-        catch (FirebaseException ex)
-        {
-            HandleFirebaseError(ex, "Registration Failed");
+            Debug.LogError("Sign-up failed.");
         }
     }
+    catch (FirebaseException ex)
+    {
+        HandleFirebaseError(ex, "Registration Failed");
+    }
+}
+
+
 
     public async void LoginAsync()
     {
@@ -191,17 +200,29 @@ public class FirebaseAuthManager : MonoBehaviour
             return;
         }
 
+        bool initialized = await AuthenticationWrapper.InitializeAuthentication();
+        if (!initialized)
+        {
+            Debug.LogError("Authentication services not initialized.");
+            return;
+        }
+
         try
         {
-            var userCredential = await auth.SignInWithEmailAndPasswordAsync(email, password);
-            user = userCredential.User; 
-            Debug.LogFormat("{0} You Are Successfully Logged In", user.DisplayName);
-            StartCoroutine(ShowLoginFeedback("Login successful!"));
-
-            // Start loading user data after login
-            StartCoroutine(LoadUserData(user.UserId));
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            // Start login process
+            await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
+            if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
+            {
+                PlayerPrefs.SetString("PlayerNameKey", email);
+                PlayerPrefs.Save();
+                Debug.LogFormat("{0} You Are Successfully Logged In", email);
+                StartCoroutine(ShowLoginFeedback("Login successful!"));
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                Debug.LogError("Login failed.");
+            }
         }
         catch (FirebaseException ex)
         {
@@ -220,6 +241,15 @@ public class FirebaseAuthManager : MonoBehaviour
         loginFeedbackText.gameObject.SetActive(false); // Hide the feedback text
     }
 
+     private IEnumerator ShowRegistrationFeedback(string message)
+    {
+        registrationFeedbackText.text = message;
+        registrationFeedbackText.gameObject.SetActive(true); // Show the feedback text
+
+        yield return new WaitForSeconds(4); // Wait for 4 seconds
+
+        registrationFeedbackText.gameObject.SetActive(false); // Hide the feedback text
+    }
 
 
     public IEnumerator LoadUserData(string userId)
