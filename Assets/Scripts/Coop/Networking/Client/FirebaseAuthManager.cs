@@ -143,19 +143,19 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(name))
         {
-            registrationFeedbackText.text = "Name field is empty";
+            StartCoroutine(ShowLoginFeedback("Name field is empty"));
             return;
         }
 
         if (string.IsNullOrEmpty(email))
         {
-            registrationFeedbackText.text = "Email field is empty";
+            StartCoroutine(ShowLoginFeedback("Email field is empty"));
             return;
         }
 
         if (password != confirmPassword)
         {
-            registrationFeedbackText.text = "Passwords do not match";
+            StartCoroutine(ShowLoginFeedback("Passwords do not match"));
             return;
         }
 
@@ -166,7 +166,7 @@ public class FirebaseAuthManager : MonoBehaviour
             UserProfile userProfile = new UserProfile { DisplayName = name };
             await user.UpdateUserProfileAsync(userProfile);
             Debug.Log("Registration Successful. Welcome " + user.DisplayName);
-            registrationFeedbackText.text = "Registration successful!";
+            StartCoroutine(ShowLoginFeedback("Registration successful!"));
         }
         catch (FirebaseException ex)
         {
@@ -181,13 +181,13 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email))
         {
-            loginFeedbackText.text = "Email field is empty";
+            StartCoroutine(ShowLoginFeedback("Email field is empty"));
             return;
         }
 
         if (string.IsNullOrEmpty(password))
         {
-            loginFeedbackText.text = "Password field is empty";
+            StartCoroutine(ShowLoginFeedback("Password field is empty"));
             return;
         }
 
@@ -196,8 +196,8 @@ public class FirebaseAuthManager : MonoBehaviour
             var userCredential = await auth.SignInWithEmailAndPasswordAsync(email, password);
             user = userCredential.User; 
             Debug.LogFormat("{0} You Are Successfully Logged In", user.DisplayName);
-            loginFeedbackText.text = "Login successful!";
-            
+            StartCoroutine(ShowLoginFeedback("Login successful!"));
+
             // Start loading user data after login
             StartCoroutine(LoadUserData(user.UserId));
 
@@ -205,9 +205,22 @@ public class FirebaseAuthManager : MonoBehaviour
         }
         catch (FirebaseException ex)
         {
-            HandleFirebaseError(ex, "Login Failed");
+            StartCoroutine(ShowLoginFeedback("Wrong Credentials"));
         }
     }
+
+    // Coroutine to show and hide login feedback text
+    private IEnumerator ShowLoginFeedback(string message)
+    {
+        loginFeedbackText.text = message;
+        loginFeedbackText.gameObject.SetActive(true); // Show the feedback text
+
+        yield return new WaitForSeconds(4); // Wait for 2 seconds
+
+        loginFeedbackText.gameObject.SetActive(false); // Hide the feedback text
+    }
+
+
 
     public IEnumerator LoadUserData(string userId)
     {

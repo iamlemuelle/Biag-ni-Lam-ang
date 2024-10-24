@@ -16290,7 +16290,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95087420, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 186441468, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16372,6 +16372,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1660087566, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 507
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660087567, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 903421616, guid: 6e5e8f511a2408a489408bfed51bfaec, type: 3}
     - target: {fileID: 1909912778, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -16388,6 +16396,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 194703537}
+    - target: {fileID: 4261479050769628104, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 903421616, guid: 6e5e8f511a2408a489408bfed51bfaec, type: 3}
     - target: {fileID: 5100572024789265259, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_Name
       value: UI_Canvas
