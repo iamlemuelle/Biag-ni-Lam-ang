@@ -9,6 +9,7 @@ using Firebase.Auth;
 using Firebase.Database;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class FirebaseAuthManager : MonoBehaviour
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
             dependencyStatus = task.Result;
+            Debug.Log($"Dependency Status: {dependencyStatus}");
             if (dependencyStatus == DependencyStatus.Available)
             {
                 InitializeFirebase();
@@ -49,7 +51,6 @@ public class FirebaseAuthManager : MonoBehaviour
             }
         });
     }
-
     void InitializeFirebase()
     {
         // Initialize Firebase Auth
@@ -63,6 +64,9 @@ public class FirebaseAuthManager : MonoBehaviour
         AuthStateChanged(this, null);
         signUpButton.onClick.AddListener(() => RegisterAsync());
         loginButton.onClick.AddListener(() => LoginAsync());
+
+        // Enable debug logging for Firebase
+        Firebase.FirebaseApp.LogLevel = Firebase.LogLevel.Debug;
     }
 
     public async Task<FirebaseUser> Login(string email, string password)
@@ -89,23 +93,23 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         try
         {
+            StartCoroutine(ShowRegistrationFeedback("Attempting to create a new user with email: " + email));
             AuthResult authResult = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
             user = authResult.User;
 
-            // Start Unity Authentication after successful Firebase sign-up
+            StartCoroutine(ShowRegistrationFeedback("Firebase user created successfully."));
             await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
 
             await SaveUserProfile(user.UserId, nameRegisterField.text);
-
             return user;
         }
         catch (FirebaseException e)
         {
-            Debug.LogError($"Sign up failed: {e.Message}");
-            return null;  
+            Debug.LogError($"Signup failed: {e.Message} - {e.StackTrace}");
+            StartCoroutine(ShowRegistrationFeedback($"Signup failed: {e.Message}"));
+            return null;
         }
     }
-
     void AuthStateChanged(object sender, EventArgs eventArgs)
     {
         if (auth.CurrentUser != user)
@@ -124,64 +128,72 @@ public class FirebaseAuthManager : MonoBehaviour
     }
 
     public async void RegisterAsync()
-{
-    // Sign out the current user before registering a new one
-    auth.SignOut();
-
-    string name = nameRegisterField.text;
-    string email = emailRegisterField.text;
-    string password = passwordRegisterField.text;
-    string confirmPassword = confirmPasswordRegisterField.text;
-
-    if (string.IsNullOrEmpty(name))
     {
-        StartCoroutine(ShowRegistrationFeedback("Name field is empty"));
-        return;
-    }
+        string name = nameRegisterField.text;
+        string email = emailRegisterField.text;
+        string password = passwordRegisterField.text;
+        string confirmPassword = confirmPasswordRegisterField.text;
 
-    if (string.IsNullOrEmpty(email))
-    {
-        StartCoroutine(ShowRegistrationFeedback("Email field is empty"));
-        return;
-    }
-
-    if (password != confirmPassword)
-    {
-        StartCoroutine(ShowRegistrationFeedback("Passwords do not match"));
-        return;
-    }
-
-    // Check if AuthenticationWrapper is initialized
-    bool initialized = await AuthenticationWrapper.InitializeAuthentication();
-    if (!initialized)
-    {
-        Debug.LogError("Authentication services not initialized.");
-        return;
-    }
-
-    try
-    {
-        // Sign-up process
-        user = await SignUp(email, password);
-        if (user != null)
+        if (string.IsNullOrEmpty(name))
         {
-            PlayerPrefs.SetString("PlayerNameKey", name);
-            PlayerPrefs.Save();
-            Debug.Log("Registration Successful. Welcome " + name);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(ShowRegistrationFeedback("Walang laman ang field ng username"));
+            return;
         }
-        else
+
+        if (string.IsNullOrEmpty(email))
         {
-            Debug.LogError("Sign-up failed.");
+            StartCoroutine(ShowRegistrationFeedback("Walang laman ang field ng email"));
+            return;
+        }
+
+        if (password != confirmPassword)
+        {
+            StartCoroutine(ShowRegistrationFeedback("Hindi magkatugma ang password"));
+            return;
+        }
+
+        // Check internet connectivity before proceeding
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            StartCoroutine(ShowRegistrationFeedback("No internet connection."));
+            return;
+        }
+
+        bool initialized = await AuthenticationWrapper.InitializeAuthentication();
+        if (!initialized)
+        {
+            StartCoroutine(ShowRegistrationFeedback("Authentication services not initialized."));
+            return;
+        }
+
+        try
+        {
+            Debug.Log("Starting the signup process.");
+            user = await SignUp(email, password);
+            if (user != null)
+            {
+                PlayerPrefs.SetString("PlayerNameKey", name);
+                PlayerPrefs.Save();
+                Debug.Log("Registration Successful. Welcome " + name);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                StartCoroutine(ShowRegistrationFeedback("Invalid username or email address"));
+            }
+        }
+        catch (FirebaseException ex)
+        {
+            HandleFirebaseError(ex, "Registration Failed");
         }
     }
-    catch (FirebaseException ex)
+
+
+    private bool IsValidEmail(string email)
     {
-        HandleFirebaseError(ex, "Registration Failed");
+        string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        return Regex.IsMatch(email, pattern);
     }
-}
-
-
 
     public async void LoginAsync()
     {
@@ -190,13 +202,13 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email))
         {
-            StartCoroutine(ShowLoginFeedback("Email field is empty"));
+            StartCoroutine(ShowLoginFeedback("Walang laman ang field ng email"));
             return;
         }
 
         if (string.IsNullOrEmpty(password))
         {
-            StartCoroutine(ShowLoginFeedback("Password field is empty"));
+            StartCoroutine(ShowLoginFeedback("Walang laman ang field ng password"));
             return;
         }
 
@@ -204,6 +216,7 @@ public class FirebaseAuthManager : MonoBehaviour
         if (!initialized)
         {
             Debug.LogError("Authentication services not initialized.");
+            StartCoroutine(ShowLoginFeedback("Hindi wasto ang email o password "));
             return;
         }
 
@@ -221,12 +234,12 @@ public class FirebaseAuthManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Login failed.");
+                StartCoroutine(ShowLoginFeedback("Invalid Username or Password"));
             }
         }
         catch (FirebaseException ex)
         {
-            StartCoroutine(ShowLoginFeedback("Wrong Credentials"));
+            StartCoroutine(ShowLoginFeedback("Invalid Username or Password"));
         }
     }
 

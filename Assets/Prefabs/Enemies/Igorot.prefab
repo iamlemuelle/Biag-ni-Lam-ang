@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873162a1a34084339b0a77bf61d13324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapeProjectilePrefab: {fileID: 7960370297476522519, guid: bb1f0b4b7013c43acbebb600c9dfbec5, type: 3}
+  grapeProjectilePrefab: {fileID: 5246511504165677013, guid: 5d2c7f4b2e76db44cace89183e6dabe7, type: 3}
 --- !u!114 &3916171250306277450
 MonoBehaviour:
   m_ObjectHideFlags: 0
