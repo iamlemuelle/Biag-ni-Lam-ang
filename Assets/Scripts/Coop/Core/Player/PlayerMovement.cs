@@ -18,6 +18,7 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] private float dashCooldown = 0.25f; // Cooldown between dashes
     [SerializeField] private AudioClip dashSFX; // Optional dash sound
 
+    private Animator myAnimator;
     private Vector2 previousMovementInput;
     private bool facingLeft;
     private bool isDashing = false;
@@ -28,6 +29,7 @@ public class PlayerMovement : NetworkBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -67,6 +69,9 @@ public class PlayerMovement : NetworkBehaviour
     private void HandleMove(Vector2 movementInput)
     {
         previousMovementInput = movementInput;
+
+        myAnimator.SetFloat("moveX", movementInput.x);
+        myAnimator.SetFloat("moveY", movementInput.y);
     }
 
     private void AdjustPlayerFacingDirection()

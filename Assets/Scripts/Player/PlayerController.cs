@@ -35,6 +35,7 @@ public class PlayerController : Singleton<PlayerController>
     private SpriteRenderer mySpriteRenderer;
     private Knockback knockBack;
     private float startingMoveSpeed;
+    private Inventory inventory;
 
     private Slider experienceSlider;
 
@@ -54,6 +55,7 @@ public class PlayerController : Singleton<PlayerController>
         myAnimator = GetComponent<Animator>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         knockBack = GetComponent<Knockback>();
+        inventory = GetComponent<Inventory>();
 
         Debug.Log($"Animator found: {myAnimator != null}");
         Debug.Log($"SpriteRenderer found: {mySpriteRenderer != null}");
@@ -64,6 +66,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Start() {
         playerControls.Combat.Dash.performed += _ => Dash();
+        playerControls.ChangeSkin.ChangeSkin.performed += _ => ChangeSkin();
         startingMoveSpeed = moveSpeed;
 
         // Create Experience instance if it's not in the scene
@@ -136,6 +139,16 @@ public class PlayerController : Singleton<PlayerController>
 
     public void OnStop() {
         SavePlayerState();
+    }
+
+    private void ChangeSkin()
+    {
+        Debug.Log("K key pressed (via new Input System)");
+        if (inventory != null) {
+            inventory.ChangeSkin();
+        } else {
+            Debug.LogWarning("Inventory component not found.");
+        }
     }
 
     private void Move() {

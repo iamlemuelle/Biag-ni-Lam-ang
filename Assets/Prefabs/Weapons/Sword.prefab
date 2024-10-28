@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8055004129261415744}
   - component: {fileID: 8055004129261415745}
   - component: {fileID: 8055004129261415751}
+  - component: {fileID: 3071393184854410352}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -122,3 +123,24 @@ MonoBehaviour:
   slashAnimSpawnPoint: {fileID: 8055004129261415746}
   swordAttackCD: 0.5
   weaponInfo: {fileID: 11400000, guid: 7da874861183042d6bc9f2cea88d14f3, type: 2}
+--- !u!114 &3071393184854410352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055004129261415747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639eb675345861349a835a04d4c72b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpriteRenderer: {fileID: 8055004129261415744}
+  skinSprites:
+  - {fileID: 21300000, guid: 2b30cb22131794537897a6a3eb63b40f, type: 3}
+  - {fileID: 21300000, guid: d654fa81ee1754209804cbd0bad64065, type: 3}
+  skinAnimators:
+  - {fileID: 9100000, guid: 7c02c555163d12b409915ea648d96ee4, type: 2}
+  - {fileID: 9100000, guid: 4de6f44ea0d644237af5bc61c6deab2d, type: 2}
+  isSkinUnlocked: 0101
+  playerAnimator: {fileID: 8055004129261415745}

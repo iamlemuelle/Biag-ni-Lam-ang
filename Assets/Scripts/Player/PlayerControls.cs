@@ -324,6 +324,45 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ChangeSkin"",
+            ""id"": ""9cfa6aa0-5a8b-415a-a5f9-4aafbb249d15"",
+            ""actions"": [
+                {
+                    ""name"": ""ChangeSkin"",
+                    ""type"": ""Button"",
+                    ""id"": ""734ca35d-13de-494e-9a4e-93b48b7c6003"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""693cbb6c-a8d1-4ba8-85ef-ccf00d521b7d"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkin"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3e941ed-64b2-4e0a-a17c-facb74ab7697"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkin"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -371,6 +410,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Keyboard = m_Inventory.FindAction("Keyboard", throwIfNotFound: true);
+        // ChangeSkin
+        m_ChangeSkin = asset.FindActionMap("ChangeSkin", throwIfNotFound: true);
+        m_ChangeSkin_ChangeSkin = m_ChangeSkin.FindAction("ChangeSkin", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -533,6 +575,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public InventoryActions @Inventory => new InventoryActions(this);
+
+    // ChangeSkin
+    private readonly InputActionMap m_ChangeSkin;
+    private IChangeSkinActions m_ChangeSkinActionsCallbackInterface;
+    private readonly InputAction m_ChangeSkin_ChangeSkin;
+    public struct ChangeSkinActions
+    {
+        private @PlayerControls m_Wrapper;
+        public ChangeSkinActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ChangeSkin => m_Wrapper.m_ChangeSkin_ChangeSkin;
+        public InputActionMap Get() { return m_Wrapper.m_ChangeSkin; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ChangeSkinActions set) { return set.Get(); }
+        public void SetCallbacks(IChangeSkinActions instance)
+        {
+            if (m_Wrapper.m_ChangeSkinActionsCallbackInterface != null)
+            {
+                @ChangeSkin.started -= m_Wrapper.m_ChangeSkinActionsCallbackInterface.OnChangeSkin;
+                @ChangeSkin.performed -= m_Wrapper.m_ChangeSkinActionsCallbackInterface.OnChangeSkin;
+                @ChangeSkin.canceled -= m_Wrapper.m_ChangeSkinActionsCallbackInterface.OnChangeSkin;
+            }
+            m_Wrapper.m_ChangeSkinActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ChangeSkin.started += instance.OnChangeSkin;
+                @ChangeSkin.performed += instance.OnChangeSkin;
+                @ChangeSkin.canceled += instance.OnChangeSkin;
+            }
+        }
+    }
+    public ChangeSkinActions @ChangeSkin => new ChangeSkinActions(this);
     private int m_NewcontrolschemeSchemeIndex = -1;
     public InputControlScheme NewcontrolschemeScheme
     {
@@ -563,5 +638,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IInventoryActions
     {
         void OnKeyboard(InputAction.CallbackContext context);
+    }
+    public interface IChangeSkinActions
+    {
+        void OnChangeSkin(InputAction.CallbackContext context);
     }
 }

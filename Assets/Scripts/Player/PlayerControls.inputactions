@@ -302,6 +302,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ChangeSkin",
+            "id": "9cfa6aa0-5a8b-415a-a5f9-4aafbb249d15",
+            "actions": [
+                {
+                    "name": "ChangeSkin",
+                    "type": "Button",
+                    "id": "734ca35d-13de-494e-9a4e-93b48b7c6003",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "693cbb6c-a8d1-4ba8-85ef-ccf00d521b7d",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSkin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3e941ed-64b2-4e0a-a17c-facb74ab7697",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSkin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

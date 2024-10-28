@@ -50,7 +50,7 @@ public class EconomyManager : Singleton<EconomyManager>
             currentGold = PlayerPrefs.GetInt(GOLD_PREFS_KEY);
         } else {
             Debug.LogWarning("No saved gold found. Initializing PlayerGold to 0.");
-            currentGold = 100; // Initialize currentGold to 0 if no saved data exists
+            currentGold = 0; // Initialize currentGold to 0 if no saved data exists
             PlayerPrefs.SetInt(GOLD_PREFS_KEY, currentGold); // Set the default value in PlayerPrefs
             PlayerPrefs.Save(); // Save the PlayerPrefs to ensure the value is stored
         }
