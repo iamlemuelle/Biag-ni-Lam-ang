@@ -101,7 +101,7 @@ public class QuestManager : MonoBehaviour
     public void QuestCompleted()
     {
         completedQuestCount++;
-        if (completedQuestCount % 2 == 0)
+        if (completedQuestCount % 1 == 0)
         {
             InstantiateRandomReward();
         }

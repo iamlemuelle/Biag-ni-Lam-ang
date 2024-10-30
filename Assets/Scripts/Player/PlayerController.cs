@@ -23,6 +23,8 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private AudioClip playerDashSFX;
     [SerializeField] private AudioClip playerLevelUpSFX;
     [SerializeField] private int currentAppearanceLevel = 1; // Tracks the currently active appearance level
+    [SerializeField] private List<Image> inventorySlots;  
+    private Dictionary<string, Image> itemSlotMap;
 
 
     private int experienceToNextLevel;
@@ -85,6 +87,15 @@ public class PlayerController : Singleton<PlayerController>
         // Update the level display on start
         UpdateLevelText();
         UpdatePlayerAppearance(); // Update appearance based on initial level
+
+        itemSlotMap = new Dictionary<string, Image>
+        {
+            { "bow", inventorySlots[0] },
+            { "staff", inventorySlots[1] },
+            { "sword", inventorySlots[2] }
+        };
+
+        UpdateInventoryUI();
     }
 
     private void OnEnable() {
@@ -108,8 +119,30 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Update() {
         PlayerInput();
+        UpdateInventoryUI();
         if (movement == Vector2.zero) {
             OnStop();
+        }
+    }
+    private void UpdateInventoryUI()
+    {
+        foreach (var item in itemSlotMap)
+        {
+            item.Value.enabled = inventory.HasItem(item.Key);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Item")) // Ensure item has the "Item" tag
+        {
+            Item item = other.GetComponent<Item>();
+            if (item != null)
+            {
+                inventory.AddItem(item.itemName); // Add item to the inventory
+                Destroy(other.gameObject); // Destroy the item in the scene
+                UpdateInventoryUI(); // Update UI after adding item
+            }
         }
     }
 
