@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Event
   - Item
+  - Collectible
   layers:
   - Default
   - TransparentFX

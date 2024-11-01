@@ -16454,6 +16454,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc07a76cf64a445b94acc9035e2ca14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1096617762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5100572025280243876, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+  m_PrefabInstance: {fileID: 1096617760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1096617763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5100572024786556338, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+  m_PrefabInstance: {fileID: 1096617760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1096617764 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5100572026311060322, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+  m_PrefabInstance: {fileID: 1096617760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1096617765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5100572026081168345, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+  m_PrefabInstance: {fileID: 1096617760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127414548
 GameObject:
   m_ObjectHideFlags: 0
@@ -17776,6 +17820,22 @@ PrefabInstance:
       propertyPath: levelSprites.Array.data[1]
       value: 
       objectReference: {fileID: 718178146, guid: 1b95da0b7dd3e445b9645648ecaac4a9, type: 3}
+    - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
+      propertyPath: inventorySlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 1096617765}
+    - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
+      propertyPath: inventorySlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 1096617764}
+    - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
+      propertyPath: inventorySlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 1096617763}
+    - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
+      propertyPath: inventorySlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1096617762}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: levelAnimators.Array.data[0]
       value: 

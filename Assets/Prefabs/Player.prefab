@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 39617757695246036}
   - component: {fileID: 1672310184}
   m_Layer: 0
-  m_Name: Chimken
+  m_Name: Chicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7487665329323416173
 Transform:
   m_ObjectHideFlags: 0
@@ -596,8 +596,21 @@ MonoBehaviour:
   playerDashSFX: {fileID: 8300000, guid: acd1aba039d7b4105891586432632bc5, type: 3}
   playerLevelUpSFX: {fileID: 8300000, guid: 655725279b0bf449b99366166d7e6ec2, type: 3}
   currentAppearanceLevel: 1
-  levelSprites: []
-  levelAnimators: []
+  inventorySlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  displayedChicken: {fileID: 212434116859524349}
+  displayedDog: {fileID: 5223143212795284144}
+  levelSprites:
+  - {fileID: 21300000, guid: 89566304a92314fe7831b956df882177, type: 3}
+  - {fileID: 718178146, guid: 1b95da0b7dd3e445b9645648ecaac4a9, type: 3}
+  - {fileID: 21300000, guid: d9591a1eba2c03549a4666f3cd0ed676, type: 3}
+  levelAnimators:
+  - {fileID: 9100000, guid: f364dd453d8c548029329639732d3afa, type: 2}
+  - {fileID: 9100000, guid: b7900b84707644da2ac931168f01c842, type: 2}
+  - {fileID: 9100000, guid: c9994a35f099e31448606f31eafa8f14, type: 2}
 --- !u!95 &2242474296708880138
 Animator:
   serializedVersion: 5
@@ -852,7 +865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1649520085064064560
 Transform:
   m_ObjectHideFlags: 0

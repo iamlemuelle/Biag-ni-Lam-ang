@@ -24,12 +24,11 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private AudioClip playerLevelUpSFX;
     [SerializeField] private int currentAppearanceLevel = 1; // Tracks the currently active appearance level
     [SerializeField] private List<Image> inventorySlots;  
+    [SerializeField] private GameObject displayedChicken;  // Reference to player's "chicken" display
+    [SerializeField] private GameObject displayedDog; 
     private Dictionary<string, Image> itemSlotMap;
-
-
+    private Dictionary<string, bool> collectedItemsStatus;
     private int experienceToNextLevel;
-    
-
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -38,7 +37,6 @@ public class PlayerController : Singleton<PlayerController>
     private Knockback knockBack;
     private float startingMoveSpeed;
     private Inventory inventory;
-
     private Slider experienceSlider;
 
     // New fields for sprite and animator changes
@@ -61,6 +59,16 @@ public class PlayerController : Singleton<PlayerController>
 
         Debug.Log($"Animator found: {myAnimator != null}");
         Debug.Log($"SpriteRenderer found: {mySpriteRenderer != null}");
+
+        collectedItemsStatus = new Dictionary<string, bool>
+        {
+            { "chicken", false },
+            { "dog", false }
+        };
+
+        // Ensure displayed collectibles are initially inactive
+        if (displayedChicken != null) displayedChicken.SetActive(false);
+        if (displayedDog != null) displayedDog.SetActive(false);
 
         // Load player data from PlayerPrefs
         LoadPlayerData();
@@ -96,6 +104,7 @@ public class PlayerController : Singleton<PlayerController>
         };
 
         UpdateInventoryUI();
+        UpdateCollectedItemsDisplay();
     }
 
     private void OnEnable() {
@@ -144,6 +153,31 @@ public class PlayerController : Singleton<PlayerController>
                 UpdateInventoryUI(); // Update UI after adding item
             }
         }
+
+        if (other.CompareTag("Collectible")) {
+            string itemName = other.gameObject.name.ToLower();
+
+            if (collectedItemsStatus.ContainsKey(itemName)) {
+                collectedItemsStatus[itemName] = true;  // Mark as collected
+                ActivateDisplayedCollectible(itemName);  // Activate display collectible in inventory
+                Destroy(other.gameObject);  // Remove collected item from scene
+                UpdateCollectedItemsDisplay();
+            }
+        }
+    }
+
+    private void ActivateDisplayedCollectible(string itemName) {
+        if (itemName == "chicken" && displayedChicken != null) {
+            displayedChicken.SetActive(true);
+        } else if (itemName == "dog" && displayedDog != null) {
+            displayedDog.SetActive(true);
+        }
+    }
+
+    private void UpdateCollectedItemsDisplay() {
+        // Ensure the displayed items match the collected status
+        if (displayedChicken != null) displayedChicken.SetActive(collectedItemsStatus["chicken"]);
+        if (displayedDog != null) displayedDog.SetActive(collectedItemsStatus["dog"]);
     }
 
     private void FixedUpdate() {
