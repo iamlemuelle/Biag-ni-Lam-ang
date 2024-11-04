@@ -10,6 +10,10 @@ using Firebase.Database;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -35,6 +39,20 @@ public class FirebaseAuthManager : MonoBehaviour
     public Button signUpButton;
     public TMP_Text registrationFeedbackText;
 
+    [Space]
+    [Header("Forgot Password")]
+    public TMP_InputField emailResetField;
+    public TMP_InputField codeInputField;
+    public TMP_InputField currentPasswordField;
+    public TMP_InputField newPasswordField;
+    public Button sendResetButton;
+    public Button verifyCodeButton;
+    public Button resetPasswordButton;
+    public TMP_Text resetFeedbackText;
+    
+
+    private string generatedResetCode; // Temporary storage for the reset code
+
     private void Awake()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -53,20 +71,183 @@ public class FirebaseAuthManager : MonoBehaviour
     }
     void InitializeFirebase()
     {
-        // Initialize Firebase Auth
+        // Initialize Firebase Auth and Database
         auth = FirebaseAuth.DefaultInstance;
-
-        // Initialize Firebase Realtime Database
         databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
 
         // Set up authentication state change listener
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
+        
+        // Assign button listeners
         signUpButton.onClick.AddListener(() => RegisterAsync());
         loginButton.onClick.AddListener(() => LoginAsync());
+        sendResetButton.onClick.AddListener(SendVerificationCode);
+        verifyCodeButton.onClick.AddListener(VerifyResetCode);
+        resetPasswordButton.onClick.AddListener(ResetPassword);
 
         // Enable debug logging for Firebase
         Firebase.FirebaseApp.LogLevel = Firebase.LogLevel.Debug;
+    }
+    public void SendVerificationCode()
+    {
+        string email = emailResetField.text;  // Get the email from the input field
+
+        if (string.IsNullOrEmpty(email))
+        {
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Please enter an email address."));
+            return;
+        }
+
+        if (!IsValidEmail(email))
+        {
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Invalid email format."));
+            return;
+        }
+
+        try
+        {
+            // Generate a simple verification code (e.g., a 6-digit number)
+            generatedResetCode = UnityEngine.Random.Range(100000, 999999).ToString();
+            Debug.Log($"Generated code: {generatedResetCode}");
+
+            // Send the code via email using SMTP
+            SendEmail(email, generatedResetCode);
+            StartCoroutine(ShowFeedback(resetFeedbackText, "A verification code has been sent to your email."));
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error while sending the verification code: " + e.Message);
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to send verification code."));
+        }
+    }
+
+    private void SendEmail(string recipientEmail, string code)
+    {
+        try
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("baekjiheonie8@gmail.com", "mpzy qwzj nfgs qjwc "),  // Replace with your email and app-specific password
+                EnableSsl = true,
+                Timeout = 10000,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false
+            };
+
+            mail.From = new MailAddress("baekjiheonie8@gmail.com");  // Replace with your email
+            mail.To.Add(new MailAddress(recipientEmail));
+            mail.Subject = "Your Verification Code";
+            mail.Body = $"Your verification code is: {code}";
+
+            // Bypass SSL certificate validation (use cautiously in production)
+            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+            {
+                return true;
+            };
+
+            SmtpServer.Send(mail);
+            Debug.Log("Email sent successfully.");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to send email: " + e.Message);
+            throw;  // Rethrow the exception to handle in the calling method
+        }
+    }
+
+    public void VerifyResetCode()
+    {
+        string inputCode = codeInputField.text;  // Get the code from the input field
+
+        if (string.IsNullOrEmpty(inputCode))
+        {
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Please enter the code sent to your email."));
+            return;
+        }
+
+        if (inputCode == generatedResetCode)
+        {
+            Debug.Log("Verification code matched.");
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Code verified. You can now reset your password."));
+
+            // Disable the send reset button and code input field
+            sendResetButton.gameObject.SetActive(false); // Hide the send reset button
+            codeInputField.gameObject.SetActive(false); // Hide the code input field
+
+            // Enable the new password input field
+            newPasswordField.interactable = true; // Show the new password input field
+            currentPasswordField.gameObject.SetActive(true);
+            resetPasswordButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Invalid verification code.");
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Invalid verification code. Please try again."));
+        }
+    }
+    public void ResetPassword()
+    {
+        string newPassword = newPasswordField.text;
+
+        if (string.IsNullOrEmpty(newPassword))
+        {
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Please enter a new password."));
+            return;
+        }
+
+        // Get the email for the user that is trying to reset their password
+        string email = emailResetField.text;  // Use the email entered earlier
+
+        // Update the password in Firebase
+        user.UpdatePasswordAsync(newPassword).ContinueWith(task =>
+        {
+            if (task.IsCompleted && !task.IsFaulted)
+            {
+                Debug.Log("Password updated successfully in Firebase.");
+                StartCoroutine(ShowFeedback(resetFeedbackText, "Password updated successfully in Firebase."));
+
+                // Call the updated method with the correct parameters
+                UpdatePasswordInUnityAuth(email, newPassword); // Ensure you're passing both email and newPassword
+            }
+            else
+            {
+                Debug.LogError("Failed to update password in Firebase: " + task.Exception);
+                StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to update password in Firebase."));
+            }
+        });
+    }
+
+
+
+
+    private void UpdatePasswordInUnityAuth(string email, string newPassword)
+    {
+        // This method will update the password in your Unity authentication wrapper.
+        // Assuming you have a method similar to SignInWithUsernamePasswordAsync to set the new password.
+        AuthenticationWrapper.UpdatePasswordAsync(email, newPassword).ContinueWith(task =>
+        {
+            if (task.IsCompleted && !task.IsFaulted)
+            {
+                Debug.Log("Password updated successfully in Unity Authentication.");
+            }
+            else
+            {
+                Debug.LogError("Failed to update password in Unity Authentication: " + task.Exception);
+            }
+        });
+    }
+
+    private IEnumerator ShowFeedback(TMP_Text feedbackText, string message)
+    {
+        feedbackText.text = message;
+        feedbackText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(4);
+
+        feedbackText.gameObject.SetActive(false);
     }
 
     public async Task<FirebaseUser> Login(string email, string password)

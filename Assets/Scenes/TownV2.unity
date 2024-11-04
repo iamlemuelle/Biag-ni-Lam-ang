@@ -16872,6 +16872,42 @@ PrefabInstance:
       propertyPath: rewardSpawnPoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Birokem ni Apo Lakay ket baka matulongannaka.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: 'Hanapin mo si Apo Lakay at baka siya ay may maitutulong sa iyo. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: '[Player] Ina! Adda nangibaga kaniak nga agawidak koma, ania ti napasamak?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[1]
+      value: 'Namorang: Nagdardaras ti tribu ti igorot, ket napan ti amam a ni Don
+        Juan iti lugarda ngem saan pay a nagsubli.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[2]
+      value: '[Player] Agpakadaak ket sapulek ni tatangko.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: '[Player] Inay! May nagsabi saakin na dapat na raw akong bumalik sa
+        bahay, ano pong nangyari?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[1]
+      value: 'Namorang: Sumugod ang tribo ng mga igorot, at ang iyong tatay na si
+        Don Juan, ay pumunta sa kanilang lugar ngunit hanggang ngayon hindi pa rin
+        siya bumabalik. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[2]
+      value: '[Player] Ako po ay magpapaalam na at hahanapin ko ang aking tatay.'
+      objectReference: {fileID: 0}
     - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: questNumber
       value: 17
@@ -17988,11 +18024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesIlocano.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesTagalog.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: characterImagesIlocano.Array.size
@@ -18004,9 +18040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesIlocano.Array.data[0]
-      value: Daytoy ti pangrugian ti panagdaliasatmo. Masaksiamto ti biag ni Lam-Ang
-        bayat ti panagay-ayammo. Iti daytoy nga ay-ayam ket adu ti masursurom maipapan
-        iti estoria ni Lam-Ang.
+      value: ....
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesIlocano.Array.data[1]
@@ -18015,8 +18049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesTagalog.Array.data[0]
-      value: Dito na nagtatapos ang pagtuturo ko sa iyo. Galingan mo sa iyong paglalakbay
-        tungo sa buhay ni Lam-Ang. Paalam!
+      value: ....
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesTagalog.Array.data[1]

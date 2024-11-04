@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/FirebaseInitScene.unity
+    guid: 5d0d4f88cc83d77439263ca573ca9c50
+  - enabled: 1
     path: Assets/Scenes/BootStrap.unity
     guid: 7a6e4ec69272d458fae6f577d2012840
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NetBootstrap.unity
     guid: e77e86d6f62714012b493d883c276a15
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 02ab153a61c3b4e73998d511c7e3ad85
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Coop.unity
     guid: 28bee7f29856f401fb9b9a1c80bf9e17
   - enabled: 1

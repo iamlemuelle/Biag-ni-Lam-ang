@@ -15708,8 +15708,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesTagalog.Array.data[0]
-      value: 'Libutin mo ang mundo at ipakita mo ang iyong natatangi at espesyal
-        nakakayahan. '
+      value: 'Namorang: Libutin mo ang mundo at ipakita mo ang iyong natatanging
+        espesyal na kakayahan.'
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesTagalog.Array.data[1]
@@ -17636,6 +17636,14 @@ PrefabInstance:
       propertyPath: isItemQuest
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5715044814230743828, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextIlocano.Array.data[0]
+      value: Adda kayat ni Namorang nga ibaga kadakayo maipapan iti daytoy nga estoria.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814230743828, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: endTextTagalog.Array.data[0]
+      value: May nais sabihin sa iyo si Namorang tungkol sa istoryang ito.
+      objectReference: {fileID: 0}
     - target: {fileID: 5715044814493992541, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: isItemQuest
       value: 0
@@ -17795,6 +17803,26 @@ PrefabInstance:
     - target: {fileID: 5715044814869082159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: m_Name
       value: Quest Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[0]
+      value: Addaka pay laeng iti tutorial ket ibilinko a mapanka kadagiti tallo
+        a pubis iti baba ti mapam.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextIlocano.Array.data[1]
+      value: Kalpasan ti ipapanmo sadiay, mabalinmo ti makisarita iti maysa nga igorot
+        ket ikkannaka iti padas.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[0]
+      value: "Ikaw ay nasa tutorial pa lamang at ika\u2019y inuutusan kong pumunta
+        sa tatlong pubi sa baba ng iyong mapa."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: startTextTagalog.Array.data[1]
+      value: Pagkatapos mong pumunta roon, may makakausap kang igorot at may ibibigay
+        siyang eksperyensa sayo.
       objectReference: {fileID: 0}
     - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: isItemQuest
@@ -18443,11 +18471,11 @@ PrefabInstance:
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: npcImagesIlocano.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: aa39a99b5ab5448779db7c50b59198ed, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: npcImagesTagalog.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: aa39a99b5ab5448779db7c50b59198ed, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: playerImagesIlocano.Array.size
       value: 1
@@ -18475,16 +18503,15 @@ PrefabInstance:
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: playerImagesIlocano.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: aa39a99b5ab5448779db7c50b59198ed, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: playerImagesTagalog.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: aa39a99b5ab5448779db7c50b59198ed, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesIlocano.Array.data[0]
-      value: Daytoy ti pangrugian ti panagdaliasatmo. Masaksiamto ti biag ni Lam-Ang
-        bayat ti panagay-ayammo. Iti daytoy nga ay-ayam ket adu ti masursurom maipapan
-        iti estoria ni Lam-Ang.
+      value: Ditoy nga agpatingga ti tutorial. Maikablaawkayo iti panagdaliasatyo
+        iti biag ni Lam-Ang. Agpakadan!
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesIlocano.Array.data[1]
@@ -18493,8 +18520,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesTagalog.Array.data[0]
-      value: Dito na nagtatapos ang pagtuturo ko sa iyo. Galingan mo sa iyong paglalakbay
-        tungo sa buhay ni Lam-Ang. Paalam!
+      value: Dito na nagtatapos ang tutorial. Galingan mo sa iyong paglalakbay tungo
+        sa buhay ni Lam-Ang. Paalam!
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
       propertyPath: dialogueLinesTagalog.Array.data[1]

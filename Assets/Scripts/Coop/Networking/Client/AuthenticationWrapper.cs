@@ -119,6 +119,46 @@ public static class AuthenticationWrapper
             Debug.LogError($"Failed to add username and password: {ex.Message}");
         }
     }
+    public static async Task UpdatePasswordAsync(string currentPassword, string newPassword)
+    {
+        if (AuthState != AuthState.Authenticated)
+        {
+            Debug.LogError("User must be authenticated to update the password.");
+            return;
+        }
+
+        try
+        {
+            // Call the UpdatePasswordAsync method with current and new password
+            await AuthenticationService.Instance.UpdatePasswordAsync(currentPassword, newPassword);
+            Debug.Log("Password updated successfully in Unity Authentication.");
+        }
+        catch (AuthenticationException ex)
+        {
+            Debug.LogError($"Failed to update password: {ex.Message}");
+        }
+        catch (RequestFailedException ex)
+        {
+            Debug.LogError($"Failed to update password: {ex.Message}");
+        }
+    }
+
+    // AuthenticationWrapper.cs
+    public static void UpdatePasswordInUnityAuth(string email, string newPassword)
+    {
+        // Call the asynchronous method and handle its completion
+        UpdatePasswordAsync(email, newPassword).ContinueWith(task =>
+        {
+            if (task.IsCompleted && !task.IsFaulted)
+            {
+                Debug.Log("Password updated successfully in Unity Authentication.");
+            }
+            else
+            {
+                Debug.LogError("Failed to update password in Unity Authentication: " + task.Exception);
+            }
+        });
+    }
 
     // Anonymous sign-in
     public static async Task<AuthState> SignInAnonymouslyAsync(int maxRetries = 5)
