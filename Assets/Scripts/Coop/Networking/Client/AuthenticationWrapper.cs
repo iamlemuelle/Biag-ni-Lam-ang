@@ -7,6 +7,8 @@ using UnityEngine;
 public static class AuthenticationWrapper
 {
     public static AuthState AuthState { get; private set; } = AuthState.NotAuthenticated;
+    private static string _username; // to hold the username or email
+
 
     // Initialize Unity Services
     public static async Task<bool> InitializeAuthentication()
@@ -51,6 +53,7 @@ public static class AuthenticationWrapper
             await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
             Debug.Log("Sign-up is successful.");
             AuthState = AuthState.Authenticated;
+            _username = username;
         }
         catch (AuthenticationException ex)
         {
@@ -85,6 +88,7 @@ public static class AuthenticationWrapper
             await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(username, password);
             Debug.Log("Sign-in is successful.");
             AuthState = AuthState.Authenticated;
+            _username = username;
         }
         catch (AuthenticationException ex)
         {
@@ -144,20 +148,30 @@ public static class AuthenticationWrapper
     }
 
     // AuthenticationWrapper.cs
-    public static void UpdatePasswordInUnityAuth(string email, string newPassword)
+    public static async Task UpdatePasswordInUnityAuth(string currentPassword, string newPassword)
     {
-        // Call the asynchronous method and handle its completion
-        UpdatePasswordAsync(email, newPassword).ContinueWith(task =>
+        // Ensure the user is authenticated
+        if (AuthState != AuthState.Authenticated)
         {
-            if (task.IsCompleted && !task.IsFaulted)
-            {
-                Debug.Log("Password updated successfully in Unity Authentication.");
-            }
-            else
-            {
-                Debug.LogError("Failed to update password in Unity Authentication: " + task.Exception);
-            }
-        });
+            Debug.LogError("User must be authenticated to update the password.");
+            return;
+        }
+
+        try
+        {
+            // Re-authenticate the user with current password
+            await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(_username, currentPassword);
+            
+            // Now update the password
+            await UpdatePasswordAsync(currentPassword, newPassword);
+            
+            // Optionally, sign in again with the new password
+            await SignInWithUsernamePasswordAsync(_username, newPassword);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Failed to update password in Unity Authentication: {ex.Message}");
+        }
     }
 
     // Anonymous sign-in

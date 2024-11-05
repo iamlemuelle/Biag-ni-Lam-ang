@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Firebase;
@@ -27,13 +28,13 @@ public class FirebaseINIT : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private async void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            InitializeFirebase();
+            await InitializeFirebase(); // Use await for asynchronous initialization
         }
         else if (instance != this)
         {
@@ -41,25 +42,23 @@ public class FirebaseINIT : MonoBehaviour
         }
     }
 
-    private void InitializeFirebase()
+    private async System.Threading.Tasks.Task InitializeFirebase()
     {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
-            var dependencyStatus = task.Result;
-            if (dependencyStatus == DependencyStatus.Available)
-            {
-                // Initialize Firebase app and database
-                app = FirebaseApp.DefaultInstance;
-                databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
-                firebaseReady = true;
+        var dependencyStatus = await FirebaseApp.CheckAndFixDependenciesAsync();
+        if (dependencyStatus == DependencyStatus.Available)
+        {
+            // Initialize Firebase app and database
+            app = FirebaseApp.DefaultInstance;
+            databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+            firebaseReady = true;
 
-                Debug.Log("Firebase is ready to use.");
-                LoadNextScene();
-            }
-            else
-            {
-                Debug.LogError($"Could not resolve all Firebase dependencies: {dependencyStatus}");
-            }
-        });
+            Debug.Log("Firebase is ready to use.");
+            LoadNextScene();
+        }
+        else
+        {
+            Debug.LogError($"Could not resolve all Firebase dependencies: {dependencyStatus}");
+        }
     }
 
     private void LoadNextScene()

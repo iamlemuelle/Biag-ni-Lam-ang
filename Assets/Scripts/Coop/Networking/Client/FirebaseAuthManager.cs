@@ -191,6 +191,7 @@ public class FirebaseAuthManager : MonoBehaviour
     public void ResetPassword()
     {
         string newPassword = newPasswordField.text;
+        string currentPassword = currentPasswordField.text;  // Get the current password from the input field   
 
         if (string.IsNullOrEmpty(newPassword))
         {
@@ -198,30 +199,47 @@ public class FirebaseAuthManager : MonoBehaviour
             return;
         }
 
-        // Get the email for the user that is trying to reset their password
-        string email = emailResetField.text;  // Use the email entered earlier
+        string email = emailResetField.text; // Use the email entered earlier
 
-        // Update the password in Firebase
-        user.UpdatePasswordAsync(newPassword).ContinueWith(task =>
+        // First, re-authenticate the user
+        ReauthenticateUser(email, currentPassword, newPassword); // Use the current password
+        UpdatePasswordInUnityAuth(currentPassword, newPassword);
+    }
+
+    private void ReauthenticateUser(string email, string password, string newPassword)
+    {
+        // Use the email and password to re-authenticate
+        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task =>
         {
             if (task.IsCompleted && !task.IsFaulted)
             {
-                Debug.Log("Password updated successfully in Firebase.");
-                StartCoroutine(ShowFeedback(resetFeedbackText, "Password updated successfully in Firebase."));
+                Debug.Log("Re-authentication successful.");
 
-                // Call the updated method with the correct parameters
-                UpdatePasswordInUnityAuth(email, newPassword); // Ensure you're passing both email and newPassword
+                // Now you can update the password
+                user.UpdatePasswordAsync(newPassword).ContinueWith(updateTask =>
+                {
+                    if (updateTask.IsCompleted && !updateTask.IsFaulted)
+                    {
+                        Debug.Log("Password updated successfully in Firebase.");
+                        StartCoroutine(ShowFeedback(resetFeedbackText, "Password updated successfully in Firebase."));
+
+                        // Update the password in Unity's Authentication system
+                        UpdatePasswordInUnityAuth(email, newPassword);
+                    }
+                    else
+                    {
+                        Debug.LogError("Failed to update password in Firebase: " + updateTask.Exception);
+                        StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to update password in Firebase."));
+                    }
+                });
             }
             else
             {
-                Debug.LogError("Failed to update password in Firebase: " + task.Exception);
-                StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to update password in Firebase."));
+                Debug.LogError("Re-authentication failed: " + task.Exception);
+                StartCoroutine(ShowFeedback(resetFeedbackText, "Re-authentication failed. Please check your credentials."));
             }
         });
     }
-
-
-
 
     private void UpdatePasswordInUnityAuth(string email, string newPassword)
     {

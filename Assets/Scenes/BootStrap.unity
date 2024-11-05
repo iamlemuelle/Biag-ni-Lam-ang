@@ -1781,7 +1781,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 267448291}
   m_TextViewport: {fileID: 594271121}
   m_TextComponent: {fileID: 2011329962}
@@ -7701,7 +7701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ilagay ang bagong password
+  m_text: ilagay ang ngayong password
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9aad881885b914ab08ed2eb1f4c31e8e, type: 2}
   m_sharedMaterial: {fileID: 2699806670637854637, guid: 9aad881885b914ab08ed2eb1f4c31e8e, type: 2}
