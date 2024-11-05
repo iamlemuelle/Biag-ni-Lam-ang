@@ -58,6 +58,8 @@ public class UIFade : Singleton<UIFade>
 
     public void MainMenu()
     {
+        PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.Save();
         // Destroy all objects in DontDestroyOnLoad
         DestroyAllDontDestroyOnLoadObjects();
 

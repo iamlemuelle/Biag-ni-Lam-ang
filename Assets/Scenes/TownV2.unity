@@ -17882,7 +17882,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: b7900b84707644da2ac931168f01c842, type: 2}
     - target: {fileID: 2242474296708880143, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_Name
-      value: Lam-Ang
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5223143212795284144, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_IsActive

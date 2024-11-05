@@ -13,11 +13,11 @@ public class SceneManagement : Singleton<SceneManagement>
 
     public void LoadScene() {
         // Load the saved scene
-        int sceneIndex = PlayerPrefs.GetInt("CurrentScene", 4); // Default to scene index 0
+        int sceneIndex = PlayerPrefs.GetInt("CurrentScene", 5); // Default to scene index 0
         SceneManager.LoadSceneAsync(sceneIndex);
 
-        // After loading the scene, load the player position
-        StartCoroutine(LoadPlayerPosition(sceneIndex));
+        // // After loading the scene, load the player position
+        // StartCoroutine(LoadPlayerPosition(sceneIndex));
     }
 
     public void NewGame() {

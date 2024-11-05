@@ -57,8 +57,6 @@ public class PlayerController : Singleton<PlayerController>
         knockBack = GetComponent<Knockback>();
         inventory = GetComponent<Inventory>();
 
-        Debug.Log($"Animator found: {myAnimator != null}");
-        Debug.Log($"SpriteRenderer found: {mySpriteRenderer != null}");
 
         collectedItemsStatus = new Dictionary<string, bool>
         {
@@ -200,7 +198,7 @@ public class PlayerController : Singleton<PlayerController>
         PlayerPrefs.SetFloat("PlayerPosX", playerPosition.x);
         PlayerPrefs.SetFloat("PlayerPosY", playerPosition.y);
         PlayerPrefs.SetFloat("PlayerPosZ", playerPosition.z);
-        PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
+        // PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.Save();
     }
 
@@ -210,7 +208,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void ChangeSkin()
     {
-        Debug.Log("K key pressed (via new Input System)");
         if (inventory != null) {
             inventory.ChangeSkin();
         } else {
@@ -259,7 +256,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void HandleExperienceChange(int newExperience) {
         currentExperience += newExperience;
-        Debug.Log("Player experience updated: " + currentExperience + " / " + experienceToNextLevel);
 
         while (currentExperience >= experienceToNextLevel) {
             LevelUp();
@@ -294,7 +290,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void CalculateExperienceToNextLevel() {
         experienceToNextLevel = Mathf.FloorToInt(baseExperience * Mathf.Pow(currentLevel, exponent));
-        Debug.Log("Experience required for next level: " + experienceToNextLevel);
     }
 
     private void LevelUp() 
@@ -305,7 +300,6 @@ public class PlayerController : Singleton<PlayerController>
         // Recalculate experience for next level
         CalculateExperienceToNextLevel();
 
-        Debug.Log("Leveled up! Current Level: " + currentLevel + ", Next Max Exp: " + experienceToNextLevel);
         
         // Update experience slider
         UpdateExperienceSlider();
@@ -320,16 +314,13 @@ public class PlayerController : Singleton<PlayerController>
 
     private void UpdatePlayerAppearance() 
     {
-        Debug.Log($"Current Level: {currentLevel}, Current Appearance Level: {currentAppearanceLevel}");
 
         if (currentLevel == 5 && currentAppearanceLevel != 5) {
             currentAppearanceLevel = 5; 
-            Debug.Log("Changing appearance to level 5");
             UpdateAppearanceForLevel(currentAppearanceLevel);
         }
         else if (currentLevel == 15 && currentAppearanceLevel != 15) {
             currentAppearanceLevel = 15; 
-            Debug.Log("Changing appearance to level 15");
             UpdateAppearanceForLevel(currentAppearanceLevel);
         }
         else if (currentLevel < 5) {
@@ -339,12 +330,10 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void UpdateAppearanceForLevel(int level) {
-    Debug.Log($"Updating appearance for level: {level}");
 
     // Update the sprite and animator controller based on the specified level
     if (level - 1 < levelSprites.Length) {
         mySpriteRenderer.sprite = levelSprites[level - 1]; // Update sprite
-        Debug.Log($"Updated sprite: {levelSprites[level - 1].name}");
     } else {
         Debug.LogWarning($"No sprite available for level {level}");
     }

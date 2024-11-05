@@ -16398,6 +16398,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2582846349876352618, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3533988202225711044, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -16707,7 +16711,10 @@ PrefabInstance:
     - {fileID: 399215465, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
     - {fileID: 791194388, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
     - {fileID: 833316468, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1620287289, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+    - {fileID: 4665022710255363881, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+    - {fileID: 2263613100266702653, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
@@ -18316,7 +18323,7 @@ PrefabInstance:
       objectReference: {fileID: 1096617761}
     - target: {fileID: 2242474296708880143, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_Name
-      value: Lam-Ang
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2242474296708880143, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
       propertyPath: m_IsActive
