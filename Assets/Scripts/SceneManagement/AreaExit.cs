@@ -50,6 +50,7 @@ public class AreaExit : MonoBehaviour
         UIFade.Instance.DestroyUI_Canvas();
 
         // Load the next scene
+        UIFade.Instance.MainMenu();
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
     }
 
