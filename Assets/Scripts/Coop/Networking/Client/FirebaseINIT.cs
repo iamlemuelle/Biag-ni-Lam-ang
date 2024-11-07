@@ -1,58 +1,48 @@
-using System;
-using System.Collections;
-using UnityEngine;
 using Firebase;
+using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Extensions;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FirebaseINIT : MonoBehaviour
+public class FirebaseManager : MonoBehaviour
 {
-    private static FirebaseINIT instance;
+    public static FirebaseManager Instance { get; private set; }
     public static bool firebaseReady;
+    
     private FirebaseApp app;
-    private DatabaseReference databaseReference; // Reference to the database
+    private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
 
     // Singleton pattern to ensure only one instance exists
-    public static FirebaseINIT Instance
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (instance == null)
-            {
-                GameObject go = new GameObject("FirebaseINIT");
-                instance = go.AddComponent<FirebaseINIT>();
-                DontDestroyOnLoad(go);
-            }
-            return instance;
-        }
-    }
-
-    private async void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
-            await InitializeFirebase(); // Use await for asynchronous initialization
+            InitializeFirebase();  // Initialize Firebase services on Awake
         }
-        else if (instance != this)
+        else
         {
             Destroy(gameObject);
         }
     }
 
-    private async System.Threading.Tasks.Task InitializeFirebase()
+    private async void InitializeFirebase()
     {
+        // Check Firebase dependencies
         var dependencyStatus = await FirebaseApp.CheckAndFixDependenciesAsync();
         if (dependencyStatus == DependencyStatus.Available)
         {
-            // Initialize Firebase app and database
+            // Initialize Firebase services
             app = FirebaseApp.DefaultInstance;
+            auth = FirebaseAuth.DefaultInstance;
             databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
-            firebaseReady = true;
 
-            Debug.Log("Firebase is ready to use.");
+            firebaseReady = true;  // Set flag to true once Firebase is initialized
+
+            Debug.Log("Firebase initialized successfully.");
             LoadNextScene();
         }
         else
@@ -69,7 +59,11 @@ public class FirebaseINIT : MonoBehaviour
         }
     }
 
-    // Method to write data to the database
+    // Getters for Firebase services
+    public FirebaseAuth GetAuth() => auth;
+    public DatabaseReference GetDatabaseReference() => databaseReference;
+
+    // Write data to Firebase Realtime Database
     public void WriteData(string path, string data)
     {
         if (!firebaseReady)
@@ -91,7 +85,7 @@ public class FirebaseINIT : MonoBehaviour
         });
     }
 
-    // Method to read data from the database
+    // Read data from Firebase Realtime Database
     public void ReadData(string path)
     {
         if (!firebaseReady)
@@ -120,4 +114,6 @@ public class FirebaseINIT : MonoBehaviour
             }
         });
     }
+
+    // You can also add more utility methods as needed (e.g., for handling authentication)
 }

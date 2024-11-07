@@ -125,11 +125,6 @@ public static class AuthenticationWrapper
     }
     public static async Task UpdatePasswordAsync(string currentPassword, string newPassword)
     {
-        if (AuthState != AuthState.Authenticated)
-        {
-            Debug.LogError("User must be authenticated to update the password.");
-            return;
-        }
 
         try
         {
@@ -173,6 +168,32 @@ public static class AuthenticationWrapper
             Debug.LogError($"Failed to update password in Unity Authentication: {ex.Message}");
         }
     }
+
+    // // Add a method to request password reset via email
+    // public static async Task RequestPasswordResetAsync(string email)
+    // {
+    //     if (AuthState != AuthState.Authenticated)
+    //     {
+    //         Debug.LogError("User must be authenticated to request password reset.");
+    //         return;
+    //     }
+
+    //     try
+    //     {
+    //         // Use Unity Authentication or your custom service to send a password reset email
+    //         await AuthenticationService.Instance.RequestPasswordResetAsync(email);
+    //         Debug.Log("Password reset request sent successfully.");
+    //     }
+    //     catch (AuthenticationException ex)
+    //     {
+    //         Debug.LogError($"Password reset failed: {ex.Message}");
+    //     }
+    //     catch (RequestFailedException ex)
+    //     {
+    //         Debug.LogError($"Password reset failed: {ex.Message}");
+    //     }
+    // }
+
 
     // Anonymous sign-in
     public static async Task<AuthState> SignInAnonymouslyAsync(int maxRetries = 5)
