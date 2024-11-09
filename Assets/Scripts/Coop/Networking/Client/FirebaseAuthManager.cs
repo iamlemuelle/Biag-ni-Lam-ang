@@ -160,7 +160,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void VerifyResetCode()
     {
-        string inputCode = codeInputField.text;  // Get the code from the input field
+        string inputCode = codeInputField.text;
 
         if (string.IsNullOrEmpty(inputCode))
         {
@@ -172,13 +172,9 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             Debug.Log("Verification code matched.");
             StartCoroutine(ShowFeedback(resetFeedbackText, "Code verified. You can now reset your password."));
-
-            // Disable the send reset button and code input field
-            sendResetButton.gameObject.SetActive(false); // Hide the send reset button
-            codeInputField.gameObject.SetActive(false); // Hide the code input field
-
-            // Enable the new password input field
-            newPasswordField.interactable = true; // Show the new password input field
+            sendResetButton.gameObject.SetActive(false);
+            codeInputField.gameObject.SetActive(false);
+            newPasswordField.interactable = true;
             currentPasswordField.gameObject.SetActive(true);
             resetPasswordButton.gameObject.SetActive(true);
         }
@@ -335,26 +331,19 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(name))
         {
-            StartCoroutine(ShowRegistrationFeedback("Walang laman ang field ng username"));
+            StartCoroutine(ShowRegistrationFeedback("Please enter a username"));
             return;
         }
 
         if (string.IsNullOrEmpty(email))
         {
-            StartCoroutine(ShowRegistrationFeedback("Walang laman ang field ng email"));
+            StartCoroutine(ShowRegistrationFeedback("Please enter an email"));
             return;
         }
 
         if (password != confirmPassword)
         {
-            StartCoroutine(ShowRegistrationFeedback("Hindi magkatugma ang password"));
-            return;
-        }
-
-        // Check internet connectivity before proceeding
-        if (Application.internetReachability == NetworkReachability.NotReachable)
-        {
-            StartCoroutine(ShowRegistrationFeedback("No internet connection."));
+            StartCoroutine(ShowRegistrationFeedback("Passwords do not match"));
             return;
         }
 
@@ -368,22 +357,16 @@ public class FirebaseAuthManager : MonoBehaviour
         try
         {
             Debug.Log("Starting the signup process.");
-            user = await SignUp(email, password);
-            if (user != null)
-            {
-                PlayerPrefs.SetString("PlayerNameKey", name);
-                PlayerPrefs.Save();
-                Debug.Log("Registration Successful. Welcome " + name);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                StartCoroutine(ShowRegistrationFeedback("Invalid username or email address"));
-            }
+            await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
+            PlayerPrefs.SetString("PlayerNameKey", name);
+            PlayerPrefs.Save();
+            Debug.Log("Registration Successful. Welcome " + name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        catch (FirebaseException ex)
+        catch (Exception ex)
         {
-            HandleFirebaseError(ex, "Registration Failed");
+            Debug.LogError("Signup failed: " + ex.Message);
+            StartCoroutine(ShowRegistrationFeedback("Signup failed. Please try again."));
         }
     }
 
