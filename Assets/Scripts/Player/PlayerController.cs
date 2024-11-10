@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Linq;
+
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -148,19 +150,24 @@ public class PlayerController : Singleton<PlayerController>
             Item item = other.GetComponent<Item>();
             if (item != null)
             {
-                inventory.AddItem(item.itemName); // Add item to the inventory
-                Destroy(other.gameObject); // Destroy the item in the scene
-                UpdateInventoryUI(); // Update UI after adding item
+                inventory.AddItem(item.itemName);  // Add to inventory
+                item.SaveToPlayerPrefs();  // Save collection status
+                Destroy(other.gameObject);  // Remove from scene
+                UpdateInventoryUI();  // Refresh UI
             }
         }
 
-        if (other.CompareTag("Collectible")) {
+        if (other.CompareTag("Collectible"))
+        {
             string itemName = other.gameObject.name.ToLower();
 
-            if (collectedItemsStatus.ContainsKey(itemName)) {
+            if (collectedItemsStatus.ContainsKey(itemName))
+            {
                 collectedItemsStatus[itemName] = true;  // Mark as collected
-                ActivateDisplayedCollectible(itemName);  // Activate display collectible in inventory
-                Destroy(other.gameObject);  // Remove collected item from scene
+                ActivateDisplayedCollectible(itemName);  // Update UI/display collectible
+                PlayerPrefs.SetInt($"Collected_{itemName}", 1);  // Save in PlayerPrefs
+                PlayerPrefs.Save();  // Commit changes to storage
+                Destroy(other.gameObject);  // Remove item from scene
                 UpdateCollectedItemsDisplay();
             }
         }
@@ -370,5 +377,29 @@ public class PlayerController : Singleton<PlayerController>
             currentExperience = PlayerPrefs.GetInt("PlayerExperience");
             CalculateExperienceToNextLevel();
         }
+
+        // Load collected items
+        foreach (var item in collectedItemsStatus.Keys.ToList())
+        {
+            if (PlayerPrefs.GetInt($"Collected_{item}", 0) == 1)  // 1 means collected
+            {
+                collectedItemsStatus[item] = true;
+            }
+        }
+
+        foreach (var itemName in collectedItemsStatus.Keys.ToList())
+        {
+            GameObject itemObject = GameObject.Find(itemName);
+            Item item = itemObject?.GetComponent<Item>();
+            if (item != null && item.IsCollected())     
+            {
+                collectedItemsStatus[itemName] = true;  // Mark as collected
+                ActivateDisplayedCollectible(itemName);  // Update UI
+            }
+        }
+
+        // Ensure the UI matches the loaded state
+        UpdateCollectedItemsDisplay();
     }
+
 }

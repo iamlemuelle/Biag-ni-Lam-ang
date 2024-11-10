@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
 public class QuestManager : MonoBehaviour
 {
     public QuestObject[] quests;
@@ -67,6 +62,9 @@ public class QuestManager : MonoBehaviour
                 quest.theQM = this; // Link QuestManager to each QuestObject
             }
         }
+
+        // Load the completed quest count from PlayerPrefs
+        completedQuestCount = PlayerPrefs.GetInt("CompletedQuestCount", 0); // Default to 0 if no value is found
     }
 
     public void ShowQuestText(string[] questText)
@@ -101,7 +99,10 @@ public class QuestManager : MonoBehaviour
     public void QuestCompleted()
     {
         completedQuestCount++;
-        if (completedQuestCount % 1 == 0)
+        PlayerPrefs.SetInt("CompletedQuestCount", completedQuestCount); // Save to PlayerPrefs
+        PlayerPrefs.Save(); // Ensure the data is saved immediately
+
+        if (completedQuestCount % 5 == 0)
         {
             InstantiateRandomReward();
         }
