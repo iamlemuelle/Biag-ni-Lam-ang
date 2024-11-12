@@ -52,6 +52,7 @@ public class FirebaseAuthManager : MonoBehaviour
     
 
     private string generatedResetCode; // Temporary storage for the reset code
+    public const string PlayerNameKey = "PlayerName";
 
     private void Awake()
     {
@@ -95,7 +96,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email))
         {
-            StartCoroutine(ShowFeedback(resetFeedbackText, "Please enter an email address."));
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Maglagay ng email address."));
             return;
         }
 
@@ -113,7 +114,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
             // Send the code via email using SMTP
             SendEmail(email, generatedResetCode);
-            StartCoroutine(ShowFeedback(resetFeedbackText, "A verification code has been sent to your email."));
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Nagsend na ng beripikasyon sa iyong email."));
         }
         catch (Exception e)
         {
@@ -171,7 +172,7 @@ public class FirebaseAuthManager : MonoBehaviour
         if (inputCode == generatedResetCode)
         {
             Debug.Log("Verification code matched.");
-            StartCoroutine(ShowFeedback(resetFeedbackText, "Code verified. You can now reset your password."));
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Verified na ang code. Pwede ka na magpalit ng password"));
             sendResetButton.gameObject.SetActive(false);
             codeInputField.gameObject.SetActive(false);
             newPasswordField.interactable = true;
@@ -274,6 +275,9 @@ public class FirebaseAuthManager : MonoBehaviour
             // Start Unity Authentication here, after Firebase login
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
 
+            PlayerPrefs.SetString("PlayerName", emailLoginField.text);
+            PlayerPrefs.Save();
+
             StartCoroutine(LoadUserData(user.UserId)); // Load user data after successful login
             return user;
         }
@@ -294,6 +298,9 @@ public class FirebaseAuthManager : MonoBehaviour
 
             StartCoroutine(ShowRegistrationFeedback("Firebase user created successfully."));
             await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
+
+            PlayerPrefs.SetString(NameSelector.PlayerNameKey, nameRegisterField.text);
+            PlayerPrefs.Save();
 
             await SaveUserProfile(user.UserId, nameRegisterField.text);
             return user;
@@ -331,19 +338,19 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(name))
         {
-            StartCoroutine(ShowRegistrationFeedback("Please enter a username"));
+            StartCoroutine(ShowRegistrationFeedback("Maglagay ng username"));
             return;
         }
 
         if (string.IsNullOrEmpty(email))
         {
-            StartCoroutine(ShowRegistrationFeedback("Please enter an email"));
+            StartCoroutine(ShowRegistrationFeedback("Maglagay ng email"));
             return;
         }
 
         if (password != confirmPassword)
         {
-            StartCoroutine(ShowRegistrationFeedback("Passwords do not match"));
+            StartCoroutine(ShowRegistrationFeedback("Hindi tugma ang password"));
             return;
         }
 
@@ -408,7 +415,8 @@ public class FirebaseAuthManager : MonoBehaviour
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
             if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
             {
-                PlayerPrefs.SetString("PlayerNameKey", email);
+                Debug.Log("Email Field Text: " + emailLoginField.text);
+                PlayerPrefs.SetString("PlayerNameKey", emailLoginField.text);
                 PlayerPrefs.Save();
                 Debug.LogFormat("{0} You Are Successfully Logged In", email);
                 StartCoroutine(ShowLoginFeedback("Login successful!"));
