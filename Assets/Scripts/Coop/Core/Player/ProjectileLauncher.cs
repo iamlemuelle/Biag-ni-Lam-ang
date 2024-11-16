@@ -99,7 +99,7 @@ public class ProjectileLauncher : NetworkBehaviour
 
         if (projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {
-            rb.velocity = rb.transform.up * projectileSpeed;
+            rb.linearVelocity = rb.transform.up * projectileSpeed;
         }
 
         SpawnDummyProjectileClientRpc(spawnPos, direction);
@@ -129,7 +129,7 @@ public class ProjectileLauncher : NetworkBehaviour
 
         if (projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {
-            rb.velocity = rb.transform.up * projectileSpeed;
+            rb.linearVelocity = rb.transform.up * projectileSpeed;
         }
     }
 }

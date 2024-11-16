@@ -63,7 +63,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Move()
     {
-        rb.velocity = previousMovementInput * movementSpeed;
+        rb.linearVelocity = previousMovementInput * movementSpeed;
     }
 
     private void HandleMove(Vector2 movementInput)

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4551794816712280510, guid: 97ecc0f70c3e34e1f92a48f111906c82, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 951099334
+      value: 754019070
       objectReference: {fileID: 0}
     - target: {fileID: 3967095363865046213, guid: 97ecc0f70c3e34e1f92a48f111906c82, type: 3}
       propertyPath: m_RootOrder
@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
   SyncPositionZ: 0
@@ -105,8 +106,12 @@ MonoBehaviour:
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
   InLocalSpace: 0
   Interpolate: 1
+  SlerpPosition: 0
 --- !u!114 &6771213228942708808
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,80 @@
+apply plugin: 'com.android.library'
+apply from: '../shared/keepUnitySymbols.gradle'
+**APPLY_PLUGINS**
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
+    // Firebase BoM for consistent Firebase versions
+    implementation platform('com.google.firebase:firebase-bom:33.3.0')
+
+// Android Resolver Dependencies Start
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1' // Assets/LevelPlay/Editor/IronSourceSDKDependencies.xml:17
+    implementation 'com.google.android.gms:play-services-base:18.5.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:17
+    implementation 'com.google.android.gms:play-services-basement:18.1.0' // Assets/LevelPlay/Editor/IronSourceSDKDependencies.xml:25
+    implementation 'com.google.firebase:firebase-analytics:22.1.0' // Assets/Firebase/Editor/FirestoreDependencies.xml:15
+    implementation 'com.google.firebase:firebase-app-unity:12.3.0' // Assets/Firebase/Editor/AppDependencies.xml:22
+    implementation 'com.google.firebase:firebase-auth:23.0.0' // Assets/Firebase/Editor/AuthDependencies.xml:13
+    implementation 'com.google.firebase:firebase-auth-unity:12.3.0' // Assets/Firebase/Editor/AuthDependencies.xml:20
+    implementation 'com.google.firebase:firebase-common:21.0.0' // Assets/Firebase/Editor/AppDependencies.xml:13
+    implementation 'com.google.firebase:firebase-database:21.0.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:13
+    implementation 'com.google.firebase:firebase-database-unity:12.3.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:22
+    implementation 'com.google.firebase:firebase-firestore:25.1.0' // Assets/Firebase/Editor/FirestoreDependencies.xml:13
+    implementation 'com.google.firebase:firebase-firestore-unity:12.3.0' // Assets/Firebase/Editor/FirestoreDependencies.xml:20
+    implementation 'com.ironsource.sdk:mediationsdk:8.3.0' // Assets/LevelPlay/Editor/IronSourceSDKDependencies.xml:9
+    implementation 'com.unity3d.mediation:mediation-sdk:[1.0,2.0[' // Assets/Editor/MediationAdapterDependencies.xml:8
+    implementation 'com.unity3d.mediation:unityads-adapter:[1.0,2.0[' // Assets/Editor/MediationAdapterDependencies.xml:10
+// Android Resolver Dependencies End
+    **DEPS**
+}
+
+// Android Resolver Exclusions Start
+android {
+  packagingOptions {
+      exclude ('/lib/armeabi/*' + '*')
+      exclude ('/lib/mips/*' + '*')
+      exclude ('/lib/mips64/*' + '*')
+      exclude ('/lib/x86/*' + '*')
+      exclude ('/lib/x86_64/*' + '*')
+  }
+}
+// Android Resolver Exclusions End
+android {
+    androidResources {
+    noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+
+    packaging {
+        exclude ('/lib/armeabi/*' + '*')
+        exclude ('/lib/mips/*' + '*')
+        exclude ('/lib/mips64/*' + '*')
+        exclude ('/lib/x86/*' + '*')
+        exclude ('/lib/x86_64/*' + '*')
+    }
+
+    compileSdk 33
+    buildToolsVersion '30.0.3'
+
+    defaultConfig {
+**DEFAULT_CONFIG_SETUP**
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    packaging {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
+}
+
+**IL_CPP_BUILD_SETUP**
+**SOURCE_BUILD_SETUP**
+**EXTERNAL_SOURCES**

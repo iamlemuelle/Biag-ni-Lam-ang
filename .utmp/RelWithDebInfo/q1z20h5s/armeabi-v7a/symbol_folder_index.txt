@@ -1,0 +1,1 @@
+C:\Users\lemue\Documents\GitHub\Biag-ni-Lam-ang-V2\Biag-ni-Lam-ang\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\q1z20h5s\obj\armeabi-v7a
