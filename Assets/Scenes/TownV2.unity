@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -230,13 +226,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166190565}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903389999}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &166190567
 TilemapRenderer:
@@ -255,6 +251,9 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1937,13 +1936,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194703536}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -110.1853, y: -184.6596, z: 4.4143143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251831137
 GameObject:
@@ -1969,13 +1968,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251831137}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.21, y: -3.63, z: -0.6008362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 796263510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &251831139
 SpriteRenderer:
@@ -1994,6 +1993,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2176,6 +2178,7 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317723028}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -2199,9 +2202,9 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.282346}
-  serializedVersion: 2
   m_Radius: 0.5
 --- !u!114 &317723030
 MonoBehaviour:
@@ -2245,13 +2248,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366366543}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903389999}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &366366545
 TilemapRenderer:
@@ -2270,6 +2273,9 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6362,6 +6368,7 @@ CompositeCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366366543}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -6385,7 +6392,8 @@ CompositeCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
   m_GenerationType: 0
@@ -6965,6 +6973,7 @@ TilemapCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366366543}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -6988,14 +6997,15 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_CompositeOperation: 1
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
 --- !u!50 &366366549
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7006,8 +7016,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -7170,13 +7180,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489806191}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903389999}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &489806193
 TilemapRenderer:
@@ -7195,6 +7205,9 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14963,6 +14976,7 @@ TilemapCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489806191}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -14986,7 +15000,8 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -15100,13 +15115,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520733591}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 635918755}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &520733593
 MonoBehaviour:
@@ -15130,6 +15145,7 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520733591}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -15153,9 +15169,9 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: -1.35}
-  serializedVersion: 2
   m_Radius: 0.5
 --- !u!1001 &533820807
 PrefabInstance:
@@ -15244,13 +15260,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556573883}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.21, y: -3.24, z: -0.6008362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 796263510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &556573885
 SpriteRenderer:
@@ -15269,6 +15285,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15326,6 +15345,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556573883}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -15349,7 +15369,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -0.036013603, y: 1.7879853}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -15360,7 +15381,6 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 5.118902, y: 3.714367}
   m_EdgeRadius: 0
 --- !u!1 &608016300
@@ -15391,13 +15411,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608016300}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903389999}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &608016302
 CompositeCollider2D:
@@ -15407,6 +15427,7 @@ CompositeCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608016300}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -15430,7 +15451,8 @@ CompositeCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
   m_GenerationType: 0
@@ -15444,7 +15466,7 @@ CompositeCollider2D:
   m_CompositeGameObject: {fileID: 608016300}
 --- !u!50 &608016303
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15455,8 +15477,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -15477,6 +15499,7 @@ TilemapCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608016300}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -15500,7 +15523,8 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -15522,6 +15546,9 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15669,21 +15696,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: dialogueLinesIlocano.Array.data[0]
+      propertyPath: 'dialogueLinesIlocano.Array.data[0]'
       value: 'Agdaliasatka iti lubong ket ipakitam dagiti naisangsangayan ken naisangsangayan
         nga abilidadmo. Lam-Ang: Sige, Saan Namorang, siak ti umuna a mapan'
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: dialogueLinesTagalog.Array.data[0]
+      propertyPath: 'dialogueLinesTagalog.Array.data[0]'
       value: 'Libutin mo ang mundo at ipakita mo ang iyong natatangi at espesyal
         nakakayahan. Lam-Ang: Sige po Nay Namorang ako''y mauuna na'
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: characterImagesIlocano.Array.data[0]
+      propertyPath: 'characterImagesIlocano.Array.data[0]'
       value: 
       objectReference: {fileID: 21300000, guid: aa39a99b5ab5448779db7c50b59198ed, type: 3}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: characterImagesTagalog.Array.data[0]
+      propertyPath: 'characterImagesTagalog.Array.data[0]'
       value: 
       objectReference: {fileID: 21300000, guid: aa39a99b5ab5448779db7c50b59198ed, type: 3}
     m_RemovedComponents: []
@@ -15882,6 +15909,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796263509}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.14, y: 4.01, z: 0.6008362}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -15891,7 +15919,6 @@ Transform:
   - {fileID: 2102725575}
   - {fileID: 556573884}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &796263511
 PolygonCollider2D:
@@ -15901,6 +15928,7 @@ PolygonCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796263509}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -15924,7 +15952,8 @@ PolygonCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -16442,7 +16471,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6891236857787628466, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+    - {fileID: 8066009943709626465, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+    - {fileID: 791194388, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+    - {fileID: 399215465, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+    - {fileID: 1882173025, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+    - {fileID: 833316468, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16550,6 +16585,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!114 &1127414550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16572,13 +16608,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127414548}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1132574813 stripped
 Transform:
@@ -16715,14 +16751,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
+  m_ComponentVersion: 2
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
   m_Intensity: 0.17
   m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
+  m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
@@ -16732,39 +16768,12 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
+  m_ShadowsEnabled: 0
   m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0
+  m_ShadowSoftnessFalloffIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
-  m_Vertices:
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -16789,13 +16798,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147017238}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -20.666008, y: 3.6956651, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1149440979 stripped
 Transform:
@@ -16848,23 +16857,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Pagyamanan iti panangtulongyo a mangpukaw kadagitoy a peste ditoy.
       objectReference: {fileID: 0}
     - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Salamat sa pagtulong sa pagpuksa nitong mga peste dito.
       objectReference: {fileID: 0}
     - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Papatayem ti sangapulo a kabusor
       objectReference: {fileID: 0}
     - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Pumatay ka ng sampung kalaban
       objectReference: {fileID: 0}
     - target: {fileID: 1832060436, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[1]
+      propertyPath: 'startTextTagalog.Array.data[1]'
       value: Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt
         ka dito para may makuha ka.
       objectReference: {fileID: 0}
@@ -16877,39 +16886,39 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Birokem ni Apo Lakay ket baka matulongannaka.
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: 'Hanapin mo si Apo Lakay at baka siya ay may maitutulong sa iyo. '
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: '[Player] Ina! Adda nangibaga kaniak nga agawidak koma, ania ti napasamak?'
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[1]
+      propertyPath: 'startTextIlocano.Array.data[1]'
       value: 'Namorang: Nagdardaras ti tribu ti igorot, ket napan ti amam a ni Don
         Juan iti lugarda ngem saan pay a nagsubli.'
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[2]
+      propertyPath: 'startTextIlocano.Array.data[2]'
       value: '[Player] Agpakadaak ket sapulek ni tatangko.'
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: '[Player] Inay! May nagsabi saakin na dapat na raw akong bumalik sa
         bahay, ano pong nangyari?'
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[1]
+      propertyPath: 'startTextTagalog.Array.data[1]'
       value: 'Namorang: Sumugod ang tribo ng mga igorot, at ang iyong tatay na si
         Don Juan, ay pumunta sa kanilang lugar ngunit hanggang ngayon hindi pa rin
         siya bumabalik. '
       objectReference: {fileID: 0}
     - target: {fileID: 2080676644, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[2]
+      propertyPath: 'startTextTagalog.Array.data[2]'
       value: '[Player] Ako po ay magpapaalam na at hahanapin ko ang aking tatay.'
       objectReference: {fileID: 0}
     - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -16937,19 +16946,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Kitaem ti tulang ni Don Juan
       objectReference: {fileID: 0}
     - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Hanapin mo ang buto ni Don Juan
       objectReference: {fileID: 0}
     - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Papatayen dagiti kabusor tapno ag-spawn
       objectReference: {fileID: 0}
     - target: {fileID: 64258724312868159, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Patayin ang mga kalaban na igorot
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -16969,45 +16978,45 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Patayek amin a pumurok!
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[1]
+      propertyPath: 'endTextIlocano.Array.data[1]'
       value: "Diak pulos mapakawankayo \u200B\u200Bnga animal"
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Papaslangin ko lahat ng mga taga Nayon!
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[1]
+      propertyPath: 'endTextTagalog.Array.data[1]'
       value: Hinding-hindi ko kayo kayang patawarin mga hayop kayo
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Sadino ti ayan ni tatangko a Don Juan?! iruarmo ta ammok a sika ti naudi
         a kaduana
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[1]
+      propertyPath: 'startTextIlocano.Array.data[1]'
       value: Isu ti nangirugi iti amin ken isu met ti mapabasol iti amin
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[2]
+      propertyPath: 'startTextIlocano.Array.data[2]'
       value: Agsaganaka ket diakto pakawanen
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Nasaan anq aking tatay nas i Don Juan?! ilabas nyo na sya dahila l a
         mko na kayo anq huling nakasamanya
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[1]
+      propertyPath: 'startTextTagalog.Array.data[1]'
       value: Sya ang nagsimula nglahat at sya rin angmay kasalanann g lahat
       objectReference: {fileID: 0}
     - target: {fileID: 2350224730499414816, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[2]
+      propertyPath: 'startTextTagalog.Array.data[2]'
       value: Humanda kayoa t hindi ko kayo mapapatawad
       objectReference: {fileID: 0}
     - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -17031,19 +17040,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Pidutem ti lima nga anting-anting a makitam
       objectReference: {fileID: 0}
     - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[1]
+      propertyPath: 'startTextIlocano.Array.data[1]'
       value: Naikonektar daytoy iti quest a maited kenka inton agangay
       objectReference: {fileID: 0}
     - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: 'Pumulot ka ng limang talisman na iyong makikita '
       objectReference: {fileID: 0}
     - target: {fileID: 3083119759909604536, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[1]
+      propertyPath: 'startTextTagalog.Array.data[1]'
       value: Ito ay konekta sa isang quest na maibibigay sa'yo mamaya
       objectReference: {fileID: 0}
     - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -17071,23 +17080,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Arf arf...
       objectReference: {fileID: 0}
     - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Arf arf...
       objectReference: {fileID: 0}
     - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Sapulen ti nalabbaga nga aso
       objectReference: {fileID: 0}
     - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Hanapin mo ang mahigawang aso
       objectReference: {fileID: 0}
     - target: {fileID: 3158516021696053849, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[1]
+      propertyPath: 'startTextTagalog.Array.data[1]'
       value: Bago ka bumalik, punta ka na muna diyan sa balon at makipag interakt
         ka dito para may makuha ka.
       objectReference: {fileID: 0}
@@ -17116,27 +17125,27 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Agpakada ken agannadkayo a kanayon!
       objectReference: {fileID: 0}
     - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Paalam at mag iingat ka palagi!
       objectReference: {fileID: 0}
     - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Nalpasen ti panagdaliasatmo ditoy maikadua a tukad
       objectReference: {fileID: 0}
     - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[1]
+      propertyPath: 'startTextIlocano.Array.data[1]'
       value: Sumrekka ditoy tapno sumrekka iti maikatlo a paset ti biagmo
       objectReference: {fileID: 0}
     - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Tapos na ang iyong paglalakbay dito sa pangalawang yugto
       objectReference: {fileID: 0}
     - target: {fileID: 4899137813055775016, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[1]
+      propertyPath: 'startTextTagalog.Array.data[1]'
       value: Pumasok ka dito para makapunta ka sa pangatlong yugto ng iyong buhay
       objectReference: {fileID: 0}
     - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -17164,21 +17173,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Agserbi daytoy nga anting-anting a giya a mangsalaknib kaniak iti panagdaliasatko
         ken mangtaginayon iti sigurado a pigsak kadagiti sumaganad nga aldaw.
       objectReference: {fileID: 0}
     - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Ang Anting anting naito ay magsisilbing gabay na mag protection sa aking
         paglalakbay at mapapanatli ang siguradong kalakasan ko sa mga dadaan na araw
       objectReference: {fileID: 0}
     - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Sapulem ay talisman
       objectReference: {fileID: 0}
     - target: {fileID: 5416650599033584224, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Hanapin mo ang talisman
       objectReference: {fileID: 0}
     - target: {fileID: 5715044814493992541, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -17286,39 +17295,39 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[11]
+      propertyPath: 'quests.Array.data[11]'
       value: 
       objectReference: {fileID: 1288723280}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[12]
+      propertyPath: 'quests.Array.data[12]'
       value: 
       objectReference: {fileID: 1288723279}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[13]
+      propertyPath: 'quests.Array.data[13]'
       value: 
       objectReference: {fileID: 1288723278}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[14]
+      propertyPath: 'quests.Array.data[14]'
       value: 
       objectReference: {fileID: 1288723277}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[15]
+      propertyPath: 'quests.Array.data[15]'
       value: 
       objectReference: {fileID: 1288723276}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[16]
+      propertyPath: 'quests.Array.data[16]'
       value: 
       objectReference: {fileID: 1288723275}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[17]
+      propertyPath: 'quests.Array.data[17]'
       value: 
       objectReference: {fileID: 1288723274}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[18]
+      propertyPath: 'quests.Array.data[18]'
       value: 
       objectReference: {fileID: 1288723273}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: quests.Array.data[19]
+      propertyPath: 'quests.Array.data[19]'
       value: 
       objectReference: {fileID: 1288723272}
     - target: {fileID: 5715044814869082157, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -17350,19 +17359,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Asidegka iti destinasionmo
       objectReference: {fileID: 0}
     - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Ikaw ay malapit na sa iyong paroroonan
       objectReference: {fileID: 0}
     - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Dalan nga agturong iti Purok dagiti Igorot".
       objectReference: {fileID: 0}
     - target: {fileID: 5942889585402093368, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Daan patungo sa Nayon ng mga Igorot"
       objectReference: {fileID: 0}
     - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -17394,19 +17403,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Kukkkokok...
       objectReference: {fileID: 0}
     - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Kukkkokok...
       objectReference: {fileID: 0}
     - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: Sapulem ay manok nga nalabbaga
       objectReference: {fileID: 0}
     - target: {fileID: 7199948683806500326, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: Hanapin mo ang mahiwagang manok
       objectReference: {fileID: 0}
     - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
@@ -17434,21 +17443,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextIlocano.Array.data[0]
+      propertyPath: 'endTextIlocano.Array.data[0]'
       value: Umasidegka iti sabali a pagruaran ket adda kasapulam a kasarita
       objectReference: {fileID: 0}
     - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: endTextTagalog.Array.data[0]
+      propertyPath: 'endTextTagalog.Array.data[0]'
       value: Pumunta ka malapit sa kabilang paroroonan at may tao kang kailangang
         kausapin doon
       objectReference: {fileID: 0}
     - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextIlocano.Array.data[0]
+      propertyPath: 'startTextIlocano.Array.data[0]'
       value: DONJUAN TI PANAGDON!!!! ADDAK DITOY KET APAY A SAANKO A MADANON KENKA
         A SIBIBIAG, NAGBAYADAK DAGITI BABASLI ITI BURAY WONDER APAY MANANO TI MAALAK
       objectReference: {fileID: 0}
     - target: {fileID: 7437978555866793653, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
-      propertyPath: startTextTagalog.Array.data[0]
+      propertyPath: 'startTextTagalog.Array.data[0]'
       value: DONJUAN!!!! NANDITO NA AKOAT BAKIT HINDI KO NA NAABUTAN KAYO NA BUHAY,
         PINAGBAYAD KO NA ANG MGA NAGKASALA SA NAYON NATINAT BAKIT GANTO ANG AKING
         MADADATNAN
@@ -17853,35 +17862,35 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: levelSprites.Array.data[0]
+      propertyPath: 'levelSprites.Array.data[0]'
       value: 
       objectReference: {fileID: 21300000, guid: 89566304a92314fe7831b956df882177, type: 3}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: levelSprites.Array.data[1]
+      propertyPath: 'levelSprites.Array.data[1]'
       value: 
       objectReference: {fileID: 718178146, guid: 1b95da0b7dd3e445b9645648ecaac4a9, type: 3}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: inventorySlots.Array.data[0]
+      propertyPath: 'inventorySlots.Array.data[0]'
       value: 
       objectReference: {fileID: 1096617765}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: inventorySlots.Array.data[1]
+      propertyPath: 'inventorySlots.Array.data[1]'
       value: 
       objectReference: {fileID: 1096617764}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: inventorySlots.Array.data[2]
+      propertyPath: 'inventorySlots.Array.data[2]'
       value: 
       objectReference: {fileID: 1096617763}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: inventorySlots.Array.data[3]
+      propertyPath: 'inventorySlots.Array.data[3]'
       value: 
       objectReference: {fileID: 1096617762}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: levelAnimators.Array.data[0]
+      propertyPath: 'levelAnimators.Array.data[0]'
       value: 
       objectReference: {fileID: 9100000, guid: f364dd453d8c548029329639732d3afa, type: 2}
     - target: {fileID: 2242474296708880139, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
-      propertyPath: levelAnimators.Array.data[1]
+      propertyPath: 'levelAnimators.Array.data[1]'
       value: 
       objectReference: {fileID: 9100000, guid: b7900b84707644da2ac931168f01c842, type: 2}
     - target: {fileID: 2242474296708880143, guid: 5b8bbaaceb02c4b2fb4998fb5bf58c59, type: 3}
@@ -18043,30 +18052,30 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: dialogueLinesIlocano.Array.data[0]
+      propertyPath: 'dialogueLinesIlocano.Array.data[0]'
       value: ....
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: dialogueLinesIlocano.Array.data[1]
+      propertyPath: 'dialogueLinesIlocano.Array.data[1]'
       value: Ditoy nga agpatingga ti pannursurok. Maikablaawkayo iti panagdaliasatyo
         iti biag ni Lam-Ang. Agpakadan!
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: dialogueLinesTagalog.Array.data[0]
+      propertyPath: 'dialogueLinesTagalog.Array.data[0]'
       value: ....
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: dialogueLinesTagalog.Array.data[1]
+      propertyPath: 'dialogueLinesTagalog.Array.data[1]'
       value: Ito na ang umpisa ng iyong paglalakbay. Iyong masasaksihan ang buhay
         ni Lam-Ang habang ikaw ay naglalaro. Sa larong ito marami kang matututunan
         sa istorya ni Lam-Ang.
       objectReference: {fileID: 0}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: characterImagesIlocano.Array.data[0]
+      propertyPath: 'characterImagesIlocano.Array.data[0]'
       value: 
       objectReference: {fileID: 21300000, guid: 89566304a92314fe7831b956df882177, type: 3}
     - target: {fileID: 7857578747803097347, guid: cf09b8d5665dd465b83d6c6a1d74818e, type: 3}
-      propertyPath: characterImagesTagalog.Array.data[0]
+      propertyPath: 'characterImagesTagalog.Array.data[0]'
       value: 
       objectReference: {fileID: 21300000, guid: 89566304a92314fe7831b956df882177, type: 3}
     m_RemovedComponents: []
@@ -18313,6 +18322,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903389997}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -18324,7 +18334,6 @@ Transform:
   - {fileID: 489806192}
   - {fileID: 608016301}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1912275418
 PrefabInstance:
@@ -18664,6 +18673,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071884329}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.2428083, y: 3.8550363, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -18689,7 +18699,6 @@ Transform:
   - {fileID: 1612929558}
   - {fileID: 1446243738}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2102725574
 GameObject:
@@ -18717,13 +18726,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102725574}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.21, y: -3.63, z: -0.6008362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 796263510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2102725576
 SpriteRenderer:
@@ -18742,6 +18751,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -18799,6 +18811,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102725574}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -18822,7 +18835,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -0.064940095, y: 1.7882085}
   m_SpriteTilingProperty:
     border: {x: 1.3125, y: 2, z: 1.25, w: 4.9375}
@@ -18833,7 +18847,6 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 5.154916, y: 3.714367}
   m_EdgeRadius: 0
 --- !u!1 &2117227161
@@ -18861,13 +18874,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117227161}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903389999}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &2117227163
 TilemapRenderer:
@@ -18886,6 +18899,9 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -37672,3 +37688,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35ae451747c0455e9e98e1500a78ede, type: 3}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 2071884330}
+  - {fileID: 1127414551}
+  - {fileID: 1147017240}
+  - {fileID: 1903389999}
+  - {fileID: 1672310180}
+  - {fileID: 427579476}
+  - {fileID: 1145034279}
+  - {fileID: 311320718}
+  - {fileID: 1096617760}
+  - {fileID: 796263510}
+  - {fileID: 317723027}
+  - {fileID: 1823711615}
+  - {fileID: 635918754}
+  - {fileID: 1733756809}
+  - {fileID: 194703538}
+  - {fileID: 1288723271}

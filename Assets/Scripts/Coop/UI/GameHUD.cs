@@ -4,6 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI; // Or use TMPro if you are using TextMesh Pro
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameHUD : MonoBehaviour
 {
@@ -25,13 +26,9 @@ public class GameHUD : MonoBehaviour
         }
     }
 
-    // public void LeaveGame()
-    // {
-    //     if (NetworkManager.Singleton.IsHost)
-    //     {
-    //         HostSingleton.Instance.GameManager.Shutdown();
-    //     }
+    public void LeaveGame()
+    {
+        SceneManager.LoadSceneAsync("Menu");
+    }
 
-    //     ClientSingleton.Instance.GameManager.Disconnect();
-    // }
 }

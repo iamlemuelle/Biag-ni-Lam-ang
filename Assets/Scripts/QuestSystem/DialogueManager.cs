@@ -86,7 +86,7 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(TypeSentence(dialogLines[currentLine]));  // Type out the next line
             // Call UpdateCharacterImage to update the character portraits
-            DialogueHolder dialogueHolder = FindObjectOfType<DialogueHolder>(); // Assuming DialogueHolder is a component on a GameObject in the scene
+            DialogueHolder dialogueHolder = FindFirstObjectByType<DialogueHolder>(); // Assuming DialogueHolder is a component on a GameObject in the scene
             if (dialogueHolder != null)
             {
                 dialogueHolder.UpdateCharacterImage(); // Ensure character images are updated
@@ -124,4 +124,3 @@ public class DialogueManager : MonoBehaviour
         currentLine = 0; // Reset current line for the next time dialogue is triggered
     }
 }
-

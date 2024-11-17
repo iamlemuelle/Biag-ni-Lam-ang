@@ -36,7 +36,7 @@ public class Leaderboard : NetworkBehaviour
 
         if (IsServer)
         {
-            TankPlayer[] players = FindObjectsOfType<TankPlayer>();
+            TankPlayer[] players = FindObjectsByType<TankPlayer>(FindObjectsSortMode.None);
             foreach (TankPlayer player in players)
             {
                 HandlePlayerSpawned(player);
@@ -63,6 +63,8 @@ public class Leaderboard : NetworkBehaviour
 
     private void HandleLeaderboardEntitiesChanged(NetworkListEvent<LeaderboardEntityState> changeEvent)
     {
+        if (!gameObject.scene.isLoaded) { return; }
+
         switch (changeEvent.Type)
         {
             case NetworkListEvent<LeaderboardEntityState>.EventType.Add:

@@ -29,7 +29,7 @@ public class EnemyAICoop : MonoBehaviour
         state = State.Roaming;
 
         // Find the player with PlayerMovement script attached
-        var playerMovement = FindObjectOfType<PlayerMovement>();
+        var playerMovement = FindFirstObjectByType<PlayerMovement>();
         if (playerMovement != null) {
             playerTransform = playerMovement.transform;
         }

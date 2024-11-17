@@ -20,7 +20,7 @@ public class ShooterCoop : MonoBehaviour, IEnemy
 
     private void Awake() {
         // Find the player with the PlayerMovement script attached
-        var playerMovement = FindObjectOfType<PlayerMovement>();
+        var playerMovement = FindFirstObjectByType<PlayerMovement>();
         if (playerMovement != null) {
             playerTransform = playerMovement.transform;
         }

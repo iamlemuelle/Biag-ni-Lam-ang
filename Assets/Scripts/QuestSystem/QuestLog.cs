@@ -10,7 +10,7 @@ public class QuestLog : MonoBehaviour
 
     void Start()
     {
-        theQM = FindObjectOfType<QuestManager>();
+        theQM = FindFirstObjectByType<QuestManager>();
         if (theQM == null)
         {
             Debug.LogError("QuestManager not found in the scene. Please ensure it's added.");

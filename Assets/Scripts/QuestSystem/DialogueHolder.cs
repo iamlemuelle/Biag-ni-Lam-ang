@@ -62,32 +62,37 @@ public class DialogueHolder : MonoBehaviour
         if (other.gameObject.name == "Lam-Ang")
         {
             // Check for South button press
-            if (playerControls.Combat.Dash.triggered) // Make sure this matches your South button mapping
+            Debug.Log("Player is within dialogue range.");
+            playerControls.Combat.Dash.performed += _ => showDiag();
+        }
+    }
+
+    public void showDiag()
+    {
+        Debug.Log("Dash button pressed.");
+        if (!dMAn.dialogActive)
+        {
+            // Get the current language from the LanguageManager
+            Debug.Log("Triggering dialogue...");
+            string currentLanguage = LanguageManager.Instance.currentLanguage;
+
+            // Assign the correct dialogue lines based on the current language
+            if (currentLanguage == "tag")
             {
-                if (!dMAn.dialogActive)
-                {
-                    // Get the current language from the LanguageManager
-                    string currentLanguage = LanguageManager.Instance.currentLanguage;
-
-                    // Assign the correct dialogue lines based on the current language
-                    if (currentLanguage == "tag")
-                    {
-                        dMAn.dialogLines = dialogueLinesTagalog;
-                    }
-                    else if (currentLanguage == "il")
-                    {
-                        dMAn.dialogLines = dialogueLinesIlocano;
-                    }
-                    else
-                    {
-                        Debug.LogError("Unsupported language: " + currentLanguage);
-                    }
-
-                    dMAn.currentLine = 0;  // Start from the first line
-                    UpdateCharacterImage(); // Update the images based on the first line
-                    dMAn.ShowDialogue();    // Display the dialogue box
-                }
+                dMAn.dialogLines = dialogueLinesTagalog;
             }
+            else if (currentLanguage == "il")
+            {
+                dMAn.dialogLines = dialogueLinesIlocano;
+            }
+            else
+            {
+                Debug.LogError("Unsupported language: " + currentLanguage);
+            }
+
+            dMAn.currentLine = 0;  // Start from the first line
+            UpdateCharacterImage(); // Update the images based on the first line
+            dMAn.ShowDialogue();    // Display the dialogue box
         }
     }
 

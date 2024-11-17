@@ -10,7 +10,7 @@ public class QuestItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        theQM = FindObjectOfType<QuestManager>();
+        theQM = FindFirstObjectByType<QuestManager>();
     }
 
     // Update is called once per frame

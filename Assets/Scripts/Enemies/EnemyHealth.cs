@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = startingHealth;
-        theQM = FindObjectOfType<QuestManager>();
+        theQM = FindFirstObjectByType<QuestManager>();
     }
 
     public void TakeDamage(int damage)

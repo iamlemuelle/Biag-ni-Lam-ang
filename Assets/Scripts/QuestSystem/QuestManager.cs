@@ -47,7 +47,7 @@ public class QuestManager : MonoBehaviour
     {
         if (theDM == null)
         {
-            theDM = FindObjectOfType<DialogueManager>(); // Find DialogueManager dynamically
+            theDM = FindFirstObjectByType<DialogueManager>(); // Find DialogueManager dynamically
             Debug.Log("DialogueManager assigned.");
         }
 
@@ -98,7 +98,7 @@ public class QuestManager : MonoBehaviour
 
     public void UpdateQuestLog()
     {
-        FindObjectOfType<QuestLog>()?.UpdateQuestLog();
+        FindFirstObjectByType<QuestLog>()?.UpdateQuestLog();
     }
 
     public void QuestCompleted()
@@ -106,6 +106,7 @@ public class QuestManager : MonoBehaviour
         completedQuestCount++;
         PlayerPrefs.SetInt("CompletedQuestCount", completedQuestCount); // Save to PlayerPrefs
         PlayerPrefs.Save(); // Ensure the data is saved immediately
+    
 
         if (completedQuestCount % 5 == 0)
         {
