@@ -52,7 +52,6 @@ public class FirebaseAuthManager : MonoBehaviour
     
 
     private string generatedResetCode; // Temporary storage for the reset code
-    public const string PlayerNameKey = "PlayerName";
 
     private void Awake()
     {
@@ -96,7 +95,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email))
         {
-            StartCoroutine(ShowFeedback(resetFeedbackText, "Maglagay ng email address."));
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Please enter an email address."));
             return;
         }
 
@@ -114,7 +113,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
             // Send the code via email using SMTP
             SendEmail(email, generatedResetCode);
-            StartCoroutine(ShowFeedback(resetFeedbackText, "Nagsend na ng beripikasyon sa iyong email."));
+            StartCoroutine(ShowFeedback(resetFeedbackText, "A verification code has been sent to your email."));
         }
         catch (Exception e)
         {
@@ -161,7 +160,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void VerifyResetCode()
     {
-        string inputCode = codeInputField.text;
+        string inputCode = codeInputField.text;  // Get the code from the input field
 
         if (string.IsNullOrEmpty(inputCode))
         {
@@ -172,10 +171,14 @@ public class FirebaseAuthManager : MonoBehaviour
         if (inputCode == generatedResetCode)
         {
             Debug.Log("Verification code matched.");
-            StartCoroutine(ShowFeedback(resetFeedbackText, "Verified na ang code. Pwede ka na magpalit ng password"));
-            sendResetButton.gameObject.SetActive(false);
-            codeInputField.gameObject.SetActive(false);
-            newPasswordField.interactable = true;
+            StartCoroutine(ShowFeedback(resetFeedbackText, "Code verified. You can now reset your password."));
+
+            // Disable the send reset button and code input field
+            sendResetButton.gameObject.SetActive(false); // Hide the send reset button
+            codeInputField.gameObject.SetActive(false); // Hide the code input field
+
+            // Enable the new password input field
+            newPasswordField.interactable = true; // Show the new password input field
             currentPasswordField.gameObject.SetActive(true);
             resetPasswordButton.gameObject.SetActive(true);
         }
@@ -188,7 +191,6 @@ public class FirebaseAuthManager : MonoBehaviour
     public void ResetPassword()
     {
         string newPassword = newPasswordField.text;
-        string currentPassword = currentPasswordField.text;  // Get the current password from the input field   
 
         if (string.IsNullOrEmpty(newPassword))
         {
@@ -196,44 +198,24 @@ public class FirebaseAuthManager : MonoBehaviour
             return;
         }
 
-        string email = emailResetField.text; // Use the email entered earlier
+        // Get the email for the user that is trying to reset their password
+        string email = emailResetField.text;  // Use the email entered earlier
 
-        // First, re-authenticate the user
-        ReauthenticateUser(email, currentPassword, newPassword); // Use the current password
-        UpdatePasswordInUnityAuth(currentPassword, newPassword);
-    }
-
-    private void ReauthenticateUser(string email, string password, string newPassword)
-    {
-        // Use the email and password to re-authenticate
-        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task =>
+        // Update the password in Firebase
+        user.UpdatePasswordAsync(newPassword).ContinueWith(task =>
         {
             if (task.IsCompleted && !task.IsFaulted)
             {
-                Debug.Log("Re-authentication successful.");
+                Debug.Log("Password updated successfully in Firebase.");
+                StartCoroutine(ShowFeedback(resetFeedbackText, "Password updated successfully in Firebase."));
 
-                // Now you can update the password
-                user.UpdatePasswordAsync(newPassword).ContinueWith(updateTask =>
-                {
-                    if (updateTask.IsCompleted && !updateTask.IsFaulted)
-                    {
-                        Debug.Log("Password updated successfully in Firebase.");
-                        StartCoroutine(ShowFeedback(resetFeedbackText, "Password updated successfully in Firebase."));
-
-                        // Update the password in Unity's Authentication system
-                        UpdatePasswordInUnityAuth(email, newPassword);
-                    }
-                    else
-                    {
-                        Debug.LogError("Failed to update password in Firebase: " + updateTask.Exception);
-                        StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to update password in Firebase."));
-                    }
-                });
+                // Call the updated method with the correct parameters
+                UpdatePasswordInUnityAuth(email, newPassword); // Ensure you're passing both email and newPassword
             }
             else
             {
-                Debug.LogError("Re-authentication failed: " + task.Exception);
-                StartCoroutine(ShowFeedback(resetFeedbackText, "Re-authentication failed. Please check your credentials."));
+                Debug.LogError("Failed to update password in Firebase: " + task.Exception);
+                StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to update password in Firebase."));
             }
         });
     }
@@ -275,9 +257,6 @@ public class FirebaseAuthManager : MonoBehaviour
             // Start Unity Authentication here, after Firebase login
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
 
-            PlayerPrefs.SetString("PlayerName", emailLoginField.text);
-            PlayerPrefs.Save();
-
             StartCoroutine(LoadUserData(user.UserId)); // Load user data after successful login
             return user;
         }
@@ -298,9 +277,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
             StartCoroutine(ShowRegistrationFeedback("Firebase user created successfully."));
             await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
-
-            PlayerPrefs.SetString(NameSelector.PlayerNameKey, nameRegisterField.text);
-            PlayerPrefs.Save();
 
             await SaveUserProfile(user.UserId, nameRegisterField.text);
             return user;
@@ -338,19 +314,26 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(name))
         {
-            StartCoroutine(ShowRegistrationFeedback("Maglagay ng username"));
+            StartCoroutine(ShowRegistrationFeedback("Walang laman ang field ng username"));
             return;
         }
 
         if (string.IsNullOrEmpty(email))
         {
-            StartCoroutine(ShowRegistrationFeedback("Maglagay ng email"));
+            StartCoroutine(ShowRegistrationFeedback("Walang laman ang field ng email"));
             return;
         }
 
         if (password != confirmPassword)
         {
-            StartCoroutine(ShowRegistrationFeedback("Hindi tugma ang password"));
+            StartCoroutine(ShowRegistrationFeedback("Hindi magkatugma ang password"));
+            return;
+        }
+
+        // Check internet connectivity before proceeding
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            StartCoroutine(ShowRegistrationFeedback("No internet connection."));
             return;
         }
 
@@ -364,16 +347,27 @@ public class FirebaseAuthManager : MonoBehaviour
         try
         {
             Debug.Log("Starting the signup process.");
-            await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
-            PlayerPrefs.SetString("PlayerNameKey", name);
-            PlayerPrefs.Save();
-            Debug.Log("Registration Successful. Welcome " + name);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            user = await SignUp(email, password);
+            if (user != null)
+            {
+                string playerID = user.UserId; // Unique UID from Firebase
+
+                Debug.Log("Signup successful! PlayerID: " + playerID);
+
+                // Save the PlayerID in the GameManager
+                GameManager.Instance.SetPlayerID(playerID);
+                PlayerPrefs.SetString("PlayerNameKey", name);
+                PlayerPrefs.Save();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                StartCoroutine(ShowRegistrationFeedback("Invalid username or email address"));
+            }
         }
-        catch (Exception ex)
+        catch (FirebaseException ex)
         {
-            Debug.LogError("Signup failed: " + ex.Message);
-            StartCoroutine(ShowRegistrationFeedback("Signup failed. Please try again."));
+            HandleFirebaseError(ex, "Registration Failed");
         }
     }
 
@@ -412,11 +406,15 @@ public class FirebaseAuthManager : MonoBehaviour
         try
         {
             // Start login process
+            AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
+            user = authResult.User;
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
             if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
             {
-                Debug.Log("Email Field Text: " + emailLoginField.text);
-                PlayerPrefs.SetString("PlayerNameKey", emailLoginField.text);
+                Debug.Log("Login successful! PlayerID: " + user.UserId);
+                // Save the PlayerID in the GameManager
+                GameManager.Instance.SetPlayerID(user.UserId);
+                PlayerPrefs.SetString("PlayerNameKey", email);
                 PlayerPrefs.Save();
                 Debug.LogFormat("{0} You Are Successfully Logged In", email);
                 StartCoroutine(ShowLoginFeedback("Login successful!"));
@@ -457,37 +455,33 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public IEnumerator LoadUserData(string userId)
     {
-        // Wait until the Firebase tasks are completed
-        var task = FirebaseDatabase.DefaultInstance
-            .GetReference("users")
-            .Child(userId)
-            .GetValueAsync();
-
-        // Wait for the task to complete
+        var task = databaseReference.Child("users").Child(userId).GetValueAsync();
         yield return new WaitUntil(() => task.IsCompleted);
 
-        if (task.IsFaulted)
-        {
-            Debug.LogError("Failed to load user data: " + task.Exception);
-        }
-        else if (task.IsCompleted)
+        if (task.IsCompleted && !task.IsFaulted)
         {
             DataSnapshot snapshot = task.Result;
-            // Process the loaded data here
-            Debug.Log("User data loaded successfully.");
-            // Example: Access user data from snapshot
             var userData = snapshot.Value as Dictionary<string, object>;
-            // Do something with userData
+            if (userData != null)
+            {
+                Debug.Log("Login successful! PlayerID: " + userId);
+
+                // Save the PlayerID in the GameManager
+                GameManager.Instance.SetPlayerID(userId);
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to load user data.");
         }
     }
 
     private async Task SaveUserProfile(string userId, string name)
     {
-        // Save user profile information in the Firebase database
         var userProfile = new Dictionary<string, object>
         {
-            { "displayName", name }
-            // Add other user fields as necessary
+            { "displayName", name },
+            { "createdAt", DateTime.UtcNow.ToString("o") } // Save creation timestamp
         };
 
         await databaseReference.Child("users").Child(userId).SetValueAsync(userProfile);
