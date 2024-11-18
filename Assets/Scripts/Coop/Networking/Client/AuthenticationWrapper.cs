@@ -99,30 +99,6 @@ public static class AuthenticationWrapper
             Debug.LogError($"Sign-in failed: {ex.Message}");
         }
     }
-
-    // Upgrade an anonymous account to username/password
-    public static async Task AddUsernamePasswordAsync(string username, string password)
-    {
-        if (AuthState != AuthState.Authenticated)
-        {
-            await PrepareAuthentication(); // Ensure services are initialized
-        }
-
-        try
-        {
-            await AuthenticationService.Instance.AddUsernamePasswordAsync(username, password);
-            Debug.Log("Username and password added successfully.");
-            AuthState = AuthState.Authenticated;
-        }
-        catch (AuthenticationException ex)
-        {
-            Debug.LogError($"Failed to add username and password: {ex.Message}");
-        }
-        catch (RequestFailedException ex)
-        {
-            Debug.LogError($"Failed to add username and password: {ex.Message}");
-        }
-    }
     public static async Task UpdatePasswordAsync(string currentPassword, string newPassword)
     {
 
@@ -167,77 +143,6 @@ public static class AuthenticationWrapper
         {
             Debug.LogError($"Failed to update password in Unity Authentication: {ex.Message}");
         }
-    }
-
-    // // Add a method to request password reset via email
-    // public static async Task RequestPasswordResetAsync(string email)
-    // {
-    //     if (AuthState != AuthState.Authenticated)
-    //     {
-    //         Debug.LogError("User must be authenticated to request password reset.");
-    //         return;
-    //     }
-
-    //     try
-    //     {
-    //         // Use Unity Authentication or your custom service to send a password reset email
-    //         await AuthenticationService.Instance.RequestPasswordResetAsync(email);
-    //         Debug.Log("Password reset request sent successfully.");
-    //     }
-    //     catch (AuthenticationException ex)
-    //     {
-    //         Debug.LogError($"Password reset failed: {ex.Message}");
-    //     }
-    //     catch (RequestFailedException ex)
-    //     {
-    //         Debug.LogError($"Password reset failed: {ex.Message}");
-    //     }
-    // }
-
-
-    // Anonymous sign-in
-    public static async Task<AuthState> SignInAnonymouslyAsync(int maxRetries = 5)
-    {
-        if (AuthState == AuthState.Authenticated)
-            return AuthState;
-
-        AuthState = AuthState.Authenticating;
-
-        int retries = 0;
-        while (retries < maxRetries && AuthState == AuthState.Authenticating)
-        {
-            try
-            {
-                await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                if (AuthenticationService.Instance.IsSignedIn)
-                {
-                    Debug.Log("Anonymous sign-in successful.");
-                    AuthState = AuthState.Authenticated;
-                    break;
-                }
-            }
-            catch (AuthenticationException ex)
-            {
-                Debug.LogError(ex.Message);
-                AuthState = AuthState.Error;
-            }
-            catch (RequestFailedException ex)
-            {
-                Debug.LogError(ex.Message);
-                AuthState = AuthState.Error;
-            }
-
-            retries++;
-            await Task.Delay(1000);
-        }
-
-        if (AuthState != AuthState.Authenticated)
-        {
-            Debug.LogWarning($"Anonymous sign-in failed after {retries} attempts.");
-            AuthState = AuthState.TimeOut;
-        }
-
-        return AuthState;
     }
 }
 

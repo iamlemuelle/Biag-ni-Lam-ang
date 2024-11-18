@@ -7,27 +7,34 @@ public class AreaExit : MonoBehaviour
     [SerializeField] private string sceneToLoad;
     [SerializeField] private string sceneTransitionName;
     [SerializeField] private DialogueHolder dialogueHolder; // Reference to DialogueHolder for triggering dialogue
+    [SerializeField] private int requiredLevel = 5;
 
     private float waitToLoadTime = 1f;
     private bool dialogueEnded = false;
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<PlayerController>()) 
+        if (other.gameObject.GetComponent<PlayerController>())
         {
-            SceneManagement.Instance.SetTransitionName(sceneTransitionName); // Keep the existing scene transition logic
-            
-            // Start fading to black without activating text yet
-            UIFade.Instance.FadeToBlack(false);
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
 
-            // Start the dialogue before loading the new scene
-            if (!dialogueEnded) 
+            if (playerController.currentLevel >= requiredLevel)
             {
-                StartCoroutine(WaitForDialogueToEnd());
+                SceneManagement.Instance.SetTransitionName(sceneTransitionName); // Keep the existing scene transition logic
+
+                UIFade.Instance.FadeToBlack(false);
+
+                if (!dialogueEnded)
+                {
+                    StartCoroutine(WaitForDialogueToEnd());
+                }
+            }
+            else
+            {
+                Debug.Log("Player level is too low to enter this area.");
             }
         }
     }
-
     private IEnumerator WaitForDialogueToEnd() 
     {
         // Trigger the specific dialogue in DialogueHolder
@@ -50,7 +57,7 @@ public class AreaExit : MonoBehaviour
         UIFade.Instance.DestroyUI_Canvas();
 
         // Load the next scene
-        UIFade.Instance.MainMenu();
+        UIFade.Instance.LoadingScreen();
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
     }
 

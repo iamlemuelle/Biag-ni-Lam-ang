@@ -20,15 +20,15 @@ MonoBehaviour:
     rid: 5970723451349762070
   m_OverrideGlobalSceneList: 1
   m_Scenes:
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/Scenes/FirebaseInitScene.unity
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/Scenes/BootStrap.unity
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/Scenes/NetBootstrap.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Menu.unity
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/Scenes/Coop.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Town.unity
@@ -42,6 +42,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/Stage4.unity
   - m_enabled: 1
     m_path: Assets/Scenes/TownV2.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/LoadingScreen.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []

@@ -7064,6 +7064,10 @@ PrefabInstance:
       value: Stage1
       objectReference: {fileID: 0}
     - target: {fileID: 6539098050967366103, guid: a74f64fce57434e8781f34cdb91b652b, type: 3}
+      propertyPath: requiredLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539098050967366103, guid: a74f64fce57434e8781f34cdb91b652b, type: 3}
       propertyPath: dialogueHolder
       value: 
       objectReference: {fileID: 1992276165}
@@ -16300,7 +16304,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95087420, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 186441468, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16485,6 +16489,10 @@ PrefabInstance:
     - target: {fileID: 5100572024789265259, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572024789265262, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: fadeSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5100572024789265263, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_Pivot.x

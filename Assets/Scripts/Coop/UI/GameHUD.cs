@@ -28,7 +28,11 @@ public class GameHUD : MonoBehaviour
 
     public void LeaveGame()
     {
-        SceneManager.LoadSceneAsync("Menu");
-    }
+        if(NetworkManager.Singleton.IsHost)
+        {
+            HostSingleton.Instance.GameManager.Shutdown();
+        }
 
+        ClientSingleton.Instance.GameManager.Disconnect();
+    }
 }

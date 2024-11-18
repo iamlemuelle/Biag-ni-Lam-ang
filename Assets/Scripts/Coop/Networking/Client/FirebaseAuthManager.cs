@@ -74,10 +74,6 @@ public class FirebaseAuthManager : MonoBehaviour
         // Initialize Firebase Auth and Database
         auth = FirebaseAuth.DefaultInstance;
         databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        // Set up authentication state change listener
-        auth.StateChanged += AuthStateChanged;
-        AuthStateChanged(this, null);
         
         // Assign button listeners
         signUpButton.onClick.AddListener(() => RegisterAsync());
@@ -288,23 +284,6 @@ public class FirebaseAuthManager : MonoBehaviour
             return null;
         }
     }
-    void AuthStateChanged(object sender, EventArgs eventArgs)
-    {
-        if (auth.CurrentUser != user)
-        {
-            user = auth.CurrentUser;
-            if (user != null)
-            {
-                Debug.Log("Signed in " + user.UserId);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                Debug.Log("User is signed out.");
-            }
-        }
-    }
-
     public async void RegisterAsync()
     {
         string name = nameRegisterField.text;

@@ -65,6 +65,15 @@ public class UIFade : Singleton<UIFade>
         SceneManager.LoadSceneAsync("Menu");
     }
 
+    public void LoadingScreen()
+    {
+         // Destroy all objects in DontDestroyOnLoad
+        DestroyAllDontDestroyOnLoadObjects();
+
+        // Load the main menu scene asynchronously
+        SceneManager.LoadSceneAsync("LoadingScreen");
+    }
+
     public void DestroyUI_Canvas()
     {
         // Find the UI_Canvas object by name

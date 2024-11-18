@@ -18,7 +18,7 @@ public class PlayerController : Singleton<PlayerController>
 
     [SerializeField] private int currentExperience; // current exp
     [SerializeField] private int maxExperience;     // exp needed to level up
-    [SerializeField] private int currentLevel = 1;  // Current level
+    [SerializeField] public int currentLevel = 1;  // Current level
     [SerializeField] private int baseExperience = 100;  // Base XP required for level 2
     [SerializeField] private float exponent = 1.5f;  // Exponent for XP curve
     [SerializeField] private TMP_Text levelText;

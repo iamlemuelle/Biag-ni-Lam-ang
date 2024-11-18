@@ -107,7 +107,12 @@ public class HostGameManager : IDisposable
         }
     }
 
-    public async void Dispose()
+    public void Dispose()
+    {
+        Shutdown();
+    }
+
+    public async void Shutdown()
     {
         HostSingleton.Instance.StopCoroutine(nameof(HearbeatLobby));
 
@@ -125,7 +130,21 @@ public class HostGameManager : IDisposable
             lobbyId = string.Empty;
         }
 
+        NetworkServer.OnClientLeft -= HandleClientLeft;
+
         NetworkServer?.Dispose();
+    }
+
+    private async void HandleClientLeft(string authId)
+    {
+        try
+        {
+            await LobbyService.Instance.RemovePlayerAsync(lobbyId, authId);
+        }
+        catch(LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
     }
 
     public string GetJoinCode()
