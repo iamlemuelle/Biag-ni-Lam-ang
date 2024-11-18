@@ -1,7 +1,7 @@
 {
   "buildFiles": [
-    "C:\\Users\\lemue\\Documents\\GitHub\\Biag-ni-Lam-ang-V2\\Biag-ni-Lam-ang\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\src\\main\\cpp\\CMakeLists.txt",
-    "C:\\Users\\lemue\\Documents\\GitHub\\Biag-ni-Lam-ang-V2\\Biag-ni-Lam-ang\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\src\\main\\cpp\\FramePacing\\CMakeLists.txt"
+    "C:\\Users\\lemue\\Documents\\GitHub\\Biag-ni-Lam-ang-V2\\Biag-ni-Lam-ang\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\CMakeLists.txt",
+    "C:\\Users\\lemue\\Documents\\GitHub\\Biag-ni-Lam-ang-V2\\Biag-ni-Lam-ang\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\FramePacing\\CMakeLists.txt"
   ],
   "cleanCommandsComponents": [
     [
@@ -22,7 +22,7 @@
       "toolchain": "toolchain",
       "abi": "x86",
       "artifactName": "swappywrapper",
-      "output": "C:\\Users\\lemue\\Documents\\GitHub\\Biag-ni-Lam-ang-V2\\Biag-ni-Lam-ang\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\RelWithDebInfo\\q1z20h5s\\obj\\x86\\libswappywrapper.so",
+      "output": "C:\\Users\\lemue\\Documents\\GitHub\\Biag-ni-Lam-ang-V2\\Biag-ni-Lam-ang\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\RelWithDebInfo\\q1z20h5s\\obj\\x86\\libswappywrapper.so",
       "runtimeFiles": []
     }
   },

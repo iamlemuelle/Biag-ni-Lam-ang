@@ -16319,6 +16319,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 186441468, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 186441468, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -16343,6 +16347,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 599452295, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599452295, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -16367,6 +16375,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 911066078, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911066078, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -16380,6 +16392,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1116348055, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116348055, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1620287289, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
@@ -16400,6 +16416,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1909912778, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909912778, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1076950965157938939, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
@@ -16575,6 +16595,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100572025154212594, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572025154212594, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572025154212594, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -16611,6 +16639,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100572025470414573, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572025470414573, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572025470414573, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -16640,6 +16676,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5100572025610067021, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572025610067021, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572025610067021, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100572025610067021, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
@@ -16699,6 +16743,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100572026146725634, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572026146725634, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572026146725634, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -16740,6 +16792,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5100572026497641315, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572026497641315, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100572026497641315, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100572026497641315, guid: 68b38a40ae2174631ac36d82f2fbc9ff, type: 3}
@@ -17697,9 +17757,34 @@ PrefabInstance:
       propertyPath: 'endTextTagalog.Array.data[0]'
       value: May nais sabihin sa iyo si Namorang tungkol sa istoryang ito.
       objectReference: {fileID: 0}
+    - target: {fileID: 5715044814230743828, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextIlocano.Array.data[0]'
+      value: 'Misyon 2: Masapul a mapanka kitaen ni Namorang.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814230743828, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextTagalog.Array.data[0]'
+      value: 'Misyon 2: Kailangan mong puntahan si Namorang.'
+      objectReference: {fileID: 0}
     - target: {fileID: 5715044814493992541, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: isItemQuest
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814493992541, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextIlocano.Array.data[0]'
+      value: 'Misyon 5: Addaka itan iti umuna a tukad ti sarita ni Lam-Ang'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814493992541, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextTagalog.Array.data[0]'
+      value: 'Misyon 5: Nandito ka na sa unang yugto ng istorya ni Lam-Ang'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814844991663, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextIlocano.Array.data[0]'
+      value: 'Misyon 3: Sapulenyo ti libro ta adda dagiti detalyado a probision iti
+        dayta'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044814844991663, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextTagalog.Array.data[0]'
+      value: 'Misyon 3: Hanapin mo ang libro dahil may detalyeng mga nakalaan dito'
       objectReference: {fileID: 0}
     - target: {fileID: 5715044814869082156, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: m_Pivot.x
@@ -17857,10 +17942,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quest Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5715044815315033871, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextIlocano.Array.data[0]'
+      value: 'Misyon 4: Naragsak nga isasangbay! Daytoy ti umuna nga orderko kadakayo
+        para iti daytoy a panagdaliasat.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715044815315033871, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
+      propertyPath: 'startTextTagalog.Array.data[0]'
+      value: 'Misyon 4: Maligayang pagdating! Ito ang aking unang utos sa iyo para
+        sa paglalakbay na ito. '
+      objectReference: {fileID: 0}
     - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: 'startTextIlocano.Array.data[0]'
-      value: Addaka pay laeng iti tutorial ket ibilinko a mapanka kadagiti tallo
-        a pubis iti baba ti mapam.
+      value: 'Misyon 1: Addaka pay laeng iti tutorial ket ibilinko a mapanka kadagiti
+        tallo nga kayo iti baba ti mapam.'
       objectReference: {fileID: 0}
     - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: 'startTextIlocano.Array.data[1]'
@@ -17869,8 +17964,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: 'startTextTagalog.Array.data[0]'
-      value: "Ikaw ay nasa tutorial pa lamang at ika\u2019y inuutusan kong pumunta
-        sa tatlong pubi sa baba ng iyong mapa."
+      value: "Misyon 1: Ikaw ay nasa tutorial pa lamang at ika\u2019y inuutusan kong
+        pumunta sa tatlong puno sa baba ng iyong mapa."
       objectReference: {fileID: 0}
     - target: {fileID: 5715044815723778991, guid: b86ce7b071d504adf8d6eb525b0a8c25, type: 3}
       propertyPath: 'startTextTagalog.Array.data[1]'

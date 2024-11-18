@@ -57,7 +57,7 @@ public class DialogueHolder : MonoBehaviour
         playerControls.Enable(); // Enable the input actions
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "Lam-Ang")
         {
@@ -65,6 +65,20 @@ public class DialogueHolder : MonoBehaviour
             Debug.Log("Player is within dialogue range.");
             playerControls.Combat.Dash.performed += _ => showDiag();
         }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Lam-Ang")
+        {
+            Debug.Log("Player exited dialogue range.");
+            playerControls.Combat.Dash.performed -= _ => showDiag();
+        }
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Combat.Dash.performed -= _ => showDiag();
+        playerControls.Disable(); // Disable input actions
     }
 
     public void showDiag()
@@ -198,8 +212,4 @@ public class DialogueHolder : MonoBehaviour
         return !dMAn.dialogActive; // Returns true if the dialogue is not active
     }
 
-    private void OnDisable()
-    {
-        playerControls.Disable(); // Disable input actions when not in use
-    }
 }

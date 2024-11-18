@@ -21,14 +21,35 @@ public class QuestTrigger : MonoBehaviour
         playerControls.Enable(); // Enable the input actions
     }
 
-    private void OnTriggerStay2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "Lam-Ang")
         {
-            // Check for South button press
-            playerControls.Combat.Dash.performed += _ => showDiag();
-            
-        }    
+            Debug.Log("Player is within dialogue range.");
+            playerControls.Combat.Dash.performed += OnDashPerformed;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Lam-Ang")
+        {
+            Debug.Log("Player exited dialogue range.");
+            playerControls.Combat.Dash.performed -= OnDashPerformed;
+        }
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe when this object is disabled
+        playerControls.Combat.Dash.performed -= OnDashPerformed;
+        playerControls.Disable();
+    }
+
+    private void OnDashPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        Debug.Log("Dash button pressed inside dialogue range.");
+        showDiag();
     }
 
     public void showDiag()
@@ -76,10 +97,5 @@ public class QuestTrigger : MonoBehaviour
         {
             Debug.LogError("Quest number is out of bounds: " + questNumber);
         }
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable(); // Disable the input actions when not in use
     }
 }
