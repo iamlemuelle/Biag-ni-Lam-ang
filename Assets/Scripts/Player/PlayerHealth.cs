@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
-    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private int maxHealth = 10;
     [SerializeField] private float knockBackThrustAmount = 10f;
     [SerializeField] private float damageRecoveryTime = 1f;
 
@@ -38,9 +38,14 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
 
     public void HealPlayer() {
-        currentHealth += 1;
-        UpdateHealthSlider();
+        if (currentHealth < maxHealth) { // Only heal if current health is below max health
+            currentHealth += 1;
+            UpdateHealthSlider();
+        } else {
+            Debug.Log("Health is already at maximum. Cannot heal further.");
+        }
     }
+
 
     public void TakeDamage(int damageAmount, Transform hitTransform) {
         if (!canTakeDamage) { return; }

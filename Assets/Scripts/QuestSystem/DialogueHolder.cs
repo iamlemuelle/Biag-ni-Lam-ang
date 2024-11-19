@@ -24,6 +24,7 @@ public class DialogueHolder : MonoBehaviour
 
     public Sprite[] playerImagesIlocano; // Array for player portraits in Ilocano
     public Sprite[] npcImagesIlocano;    // Array for NPC portraits in Ilocano
+    private bool isPlayerInDialogueRange;
 
     void Awake()
     {
@@ -61,25 +62,38 @@ public class DialogueHolder : MonoBehaviour
     {
         if (other.gameObject.name == "Lam-Ang")
         {
-            // Check for South button press
+            isPlayerInDialogueRange = true;
             Debug.Log("Player is within dialogue range.");
-            playerControls.Combat.Dash.performed += _ => showDiag();
+            playerControls.Combat.Dash.performed += OnDashPerformed;
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.name == "Lam-Ang")
         {
+            isPlayerInDialogueRange = false;
             Debug.Log("Player exited dialogue range.");
-            playerControls.Combat.Dash.performed -= _ => showDiag();
+            playerControls.Combat.Dash.performed -= OnDashPerformed; // Unsubscribe immediately
+        }
+    }
+
+    private void OnDashPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        if (isPlayerInDialogueRange)
+        {
+            Debug.Log("Dash button pressed inside dialogue range.");
+            showDiag();
         }
     }
 
     private void OnDisable()
     {
-        playerControls.Combat.Dash.performed -= _ => showDiag();
-        playerControls.Disable(); // Disable input actions
+        // Unsubscribe when this object is disabled
+        playerControls.Combat.Dash.performed -= OnDashPerformed;
+        playerControls.Disable();
     }
+
 
     public void showDiag()
     {
