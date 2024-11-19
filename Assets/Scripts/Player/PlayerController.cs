@@ -402,4 +402,28 @@ public class PlayerController : Singleton<PlayerController>
         UpdateCollectedItemsDisplay();
     }
 
+    public void RespawnPlayer() 
+    {
+        // Reduce the player's level by 2, ensuring it doesn't drop below 1
+        currentLevel = Mathf.Max(1, currentLevel - 2);
+        UpdateLevelText();
+        UpdatePlayerAppearance();
+
+        // Reset the player's health to max
+        PlayerHealth.Instance.ResetHealth();
+
+        // Respawn the player at the default position (or a checkpoint if implemented)
+        Transform spawnPoint = GameObject.Find("RespawnPoint")?.transform;
+        if (spawnPoint != null) {
+            transform.position = spawnPoint.position;
+        } else {
+            Debug.LogWarning("RespawnPoint not found. Using default position.");
+            transform.position = Vector3.zero; // Default position
+        }
+
+        // Optionally reset any other gameplay states if needed
+        SavePlayerData();
+    }
+
+
 }

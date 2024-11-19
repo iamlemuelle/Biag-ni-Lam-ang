@@ -59,7 +59,12 @@ public class PlayerHealth : Singleton<PlayerHealth>
         if (currentHealth <= 0) {
             currentHealth = 0;
             Debug.Log("Player Death");
+            PlayerController.Instance.RespawnPlayer();
         }
+    }
+    public void ResetHealth() {
+        currentHealth = maxHealth;
+        UpdateHealthSlider();
     }
 
     private IEnumerator DamageRecoveryRoutine() {
