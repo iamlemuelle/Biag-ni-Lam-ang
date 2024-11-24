@@ -103,7 +103,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "31c089be-ad92-46c4-84d8-03818c47bfcd",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -293,7 +293,7 @@
                 {
                     "name": "",
                     "id": "bc4a8d89-4de5-4bcb-a1bd-975750e8c6f5",
-                    "path": "<Gamepad>/dpad/y",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "Scale(factor=5)",
                     "groups": "",
@@ -311,7 +311,7 @@
                     "name": "ChangeSkin",
                     "type": "Button",
                     "id": "734ca35d-13de-494e-9a4e-93b48b7c6003",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
