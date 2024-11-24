@@ -266,8 +266,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/lemue/Documents/GitHub/user.keystore
-  AndroidKeyaliasName: lam-ang
+  AndroidKeystoreName: '{dedicated}: Downloads/user.keystore'
+  AndroidKeyaliasName: user
   AndroidEnableArmv9SecurityFeatures: 1
   AndroidEnableArm64MTE: 0
   AndroidBuildApkPerCpuArchitecture: 0

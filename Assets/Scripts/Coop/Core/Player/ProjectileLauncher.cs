@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -7,129 +6,102 @@ using UnityEngine;
 public class ProjectileLauncher : NetworkBehaviour
 {
     [Header("References")]
-    [SerializeField] private InputReader inputReader;
-    [SerializeField] private CoinWallet wallet;
+    [SerializeField] private InputReader inputReader; // Handles joystick input
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private GameObject serverProjectilePrefab;
     [SerializeField] private GameObject clientProjectilePrefab;
     [SerializeField] private GameObject muzzleFlash;
-    [SerializeField] private Collider2D playerCollider;
 
     [Header("Settings")]
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float fireRate;
     [SerializeField] private float muzzleFlashDuration;
-    [SerializeField] private int costToFire;
 
-    private bool shouldFire;
-    private float timer;
-    private float muzzleFlashTimer;
+    private bool isFiring; // Tracks if fire button is held
+    private float fireCooldown; // Cooldown timer for firing
 
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner) { return; }
+        if (!IsOwner) return;
 
-        inputReader.PrimaryFireEvent += HandlePrimaryFire;
+        inputReader.PrimaryFireEvent += HandlePrimaryFire; // Subscribe to fire input
     }
 
     public override void OnNetworkDespawn()
     {
-        if (!IsOwner) { return; }
+        if (!IsOwner) return;
 
-        inputReader.PrimaryFireEvent -= HandlePrimaryFire;
+        inputReader.PrimaryFireEvent -= HandlePrimaryFire; // Unsubscribe from fire input
     }
 
     private void Update()
     {
-        if (muzzleFlashTimer > 0f)
+        if (!IsOwner) return;
+
+        // Decrease the fire cooldown over time
+        fireCooldown -= Time.deltaTime;
+
+        if (isFiring && fireCooldown <= 0f)
         {
-            muzzleFlashTimer -= Time.deltaTime;
-
-            if (muzzleFlashTimer <= 0f)
-            {
-                muzzleFlash.SetActive(false);
-            }
+            FireProjectile(); // Trigger firing
+            fireCooldown = 1 / fireRate; // Reset cooldown based on fire rate
         }
-
-        if (!IsOwner) { return; }
-
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-
-        if (!shouldFire) { return; }
-
-        if (timer > 0) { return; }
-
-        if (wallet.TotalCoins.Value < costToFire) { return; }
-
-        PrimaryFireServerRpc(projectileSpawnPoint.position, projectileSpawnPoint.up);
-
-        SpawnDummyProjectile(projectileSpawnPoint.position, projectileSpawnPoint.up);
-
-        timer = 1 / fireRate;
     }
 
-    private void HandlePrimaryFire(bool shouldFire)
+    private void HandlePrimaryFire(bool firing)
     {
-        this.shouldFire = shouldFire;
+        isFiring = firing; // Set firing state based on button press
+    }
+
+    private void FireProjectile()
+    {
+        // Get aim direction from joystick input
+        Vector2 aimDirection = inputReader.AimPosition;
+        Debug.Log($"Firing Direction: {aimDirection}");
+
+        if (aimDirection.magnitude < 0.1f) return; // Ignore minimal joystick input
+
+        // Normalize aim direction
+        Vector3 direction = new Vector3(aimDirection.x, aimDirection.y, 0).normalized;
+
+        // Fire on the server
+        PrimaryFireServerRpc(projectileSpawnPoint.position, direction);
+
+        // Simulate locally
+        SpawnDummyProjectile(projectileSpawnPoint.position, direction);
     }
 
     [ServerRpc]
     private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 direction)
     {
-        if (wallet.TotalCoins.Value < costToFire) { return; }
-
-        wallet.SpendCoins(costToFire);
-
-        GameObject projectileInstance = Instantiate(
-            serverProjectilePrefab,
-            spawnPos,
-            Quaternion.identity);
-
+        GameObject projectileInstance = Instantiate(serverProjectilePrefab, spawnPos, Quaternion.identity);
         projectileInstance.transform.up = direction;
-
-        Physics2D.IgnoreCollision(playerCollider, projectileInstance.GetComponent<Collider2D>());
-
-        if (projectileInstance.TryGetComponent<DealDamageOnContact>(out DealDamageOnContact dealDamage))
-        {
-            dealDamage.SetOwner(OwnerClientId);
-        }
 
         if (projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {
-            rb.linearVelocity = rb.transform.up * projectileSpeed;
+            rb.linearVelocity = direction * projectileSpeed; // Set projectile speed
         }
-
-        SpawnDummyProjectileClientRpc(spawnPos, direction);
-    }
-
-    [ClientRpc]
-    private void SpawnDummyProjectileClientRpc(Vector3 spawnPos, Vector3 direction)
-    {
-        if (IsOwner) { return; }
-
-        SpawnDummyProjectile(spawnPos, direction);
     }
 
     private void SpawnDummyProjectile(Vector3 spawnPos, Vector3 direction)
     {
         muzzleFlash.SetActive(true);
-        muzzleFlashTimer = muzzleFlashDuration;
 
-        GameObject projectileInstance = Instantiate(
-            clientProjectilePrefab,
-            spawnPos,
-            Quaternion.identity);
-
+        GameObject projectileInstance = Instantiate(clientProjectilePrefab, spawnPos, Quaternion.identity);
         projectileInstance.transform.up = direction;
-
-        Physics2D.IgnoreCollision(playerCollider, projectileInstance.GetComponent<Collider2D>());
 
         if (projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {
-            rb.linearVelocity = rb.transform.up * projectileSpeed;
+            rb.linearVelocity = direction * projectileSpeed; // Set projectile speed
         }
+
+        // Optional: Disable muzzle flash after a duration
+        StartCoroutine(DisableMuzzleFlashAfterDuration());
+    }
+
+    private IEnumerator DisableMuzzleFlashAfterDuration()
+    {
+        yield return new WaitForSeconds(muzzleFlashDuration);
+        muzzleFlash.SetActive(false);
     }
 }

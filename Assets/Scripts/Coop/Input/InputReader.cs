@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IMovementActions
 {
     public event Action<Vector2> MoveEvent;
     public event Action<bool> PrimaryFireEvent;
+    public event Action<Vector2> AimEvent;
     public event Action DashEvent; // Dash event added
     public Vector2 AimPosition { get; private set; }
 
@@ -46,6 +47,8 @@ public class InputReader : ScriptableObject, IMovementActions
     public void OnAim(InputAction.CallbackContext context)
     {
         AimPosition = context.ReadValue<Vector2>();
+        Debug.Log($"Aim Input: {AimPosition}");
+        AimEvent?.Invoke(AimPosition); // Notify listeners of the aim direction
     }
 
     // New Dash method

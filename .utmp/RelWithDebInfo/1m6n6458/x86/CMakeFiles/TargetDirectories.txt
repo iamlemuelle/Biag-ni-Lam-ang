@@ -1,0 +1,5 @@
+/Users/lem/Biag ni Lam-ang/.utmp/RelWithDebInfo/1m6n6458/x86/CMakeFiles/edit_cache.dir
+/Users/lem/Biag ni Lam-ang/.utmp/RelWithDebInfo/1m6n6458/x86/CMakeFiles/rebuild_cache.dir
+/Users/lem/Biag ni Lam-ang/.utmp/RelWithDebInfo/1m6n6458/x86/FramePacing/CMakeFiles/swappywrapper.dir
+/Users/lem/Biag ni Lam-ang/.utmp/RelWithDebInfo/1m6n6458/x86/FramePacing/CMakeFiles/edit_cache.dir
+/Users/lem/Biag ni Lam-ang/.utmp/RelWithDebInfo/1m6n6458/x86/FramePacing/CMakeFiles/rebuild_cache.dir
