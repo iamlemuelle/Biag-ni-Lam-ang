@@ -281,13 +281,16 @@ public class FirebaseAuthManager : MonoBehaviour
             StartCoroutine(ShowRegistrationFeedback("Firebase user created successfully."));
             await AuthenticationWrapper.SignUpWithUsernamePasswordAsync(email, password);
 
+            PlayerPrefs.SetString(NameSelector.PlayerNameKey, nameRegisterField.text);
+            PlayerPrefs.Save();
+
             await SaveUserProfile(user.UserId, nameRegisterField.text);
             return user;
         }
         catch (FirebaseException e)
         {
             Debug.LogError($"Signup failed: {e.Message} - {e.StackTrace}");
-            StartCoroutine(ShowRegistrationFeedback($"Signup failed: {e.Message}"));
+            // StartCoroutine(ShowRegistrationFeedback($"Signup failed: {e.Message}"));
             return null;
         }
     }
@@ -334,22 +337,10 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             Debug.Log("Starting the signup process.");
             user = await SignUp(email, password);
-            if (user != null)
-            {
-                string playerID = user.UserId; // Unique UID from Firebase
 
-                Debug.Log("Signup successful! PlayerID: " + playerID);
-
-                // Save the PlayerID in the GameManager
-                GameManager.Instance.SetPlayerID(playerID);
-                PlayerPrefs.SetString("PlayerNameKey", name);
-                PlayerPrefs.Save();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                StartCoroutine(ShowRegistrationFeedback("Invalid username or email address"));
-            }
+            PlayerPrefs.SetString("PlayerNameKey", name);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         catch (FirebaseException ex)
         {
