@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
         {
             playerAnimator = GetComponent<Animator>();
         }
+        LoadInventory();
     }
 
     public void ChangeSkin()
@@ -84,4 +85,25 @@ public class Inventory : MonoBehaviour
     {
         return items.Contains(itemName);
     }
+
+    public void LoadInventory()
+    {
+        string inventoryKey = "PlayerInventory";
+        string savedInventory = PlayerPrefs.GetString(inventoryKey, "");
+
+        if (!string.IsNullOrEmpty(savedInventory))
+        {
+            string[] savedItems = savedInventory.Split(',');
+
+            foreach (var itemName in savedItems)
+            {
+                if (!items.Contains(itemName))
+                {
+                    items.Add(itemName);
+                    Debug.Log($"{itemName} loaded into inventory.");
+                }
+            }
+        }
+    }
+
 }

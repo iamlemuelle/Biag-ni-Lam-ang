@@ -14,7 +14,12 @@ public class ShopManagerScript : MonoBehaviour
     {
         economyManager = EconomyManager.Instance; // Get the instance of the EconomyManager
         UpdateCoinsText();
+        InitializeShopItems();
+        LoadPurchasedItems(); // Load purchased item quantities
+    }
 
+    private void InitializeShopItems()
+    {
         // IDs
         shopItems[1, 1] = 1;
         shopItems[1, 2] = 2;
@@ -31,14 +36,13 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[2, 5] = 4440;
         shopItems[2, 6] = 5000;
 
-        // Quantity
+        // Quantity (default is 0, will be overwritten if loaded)
         shopItems[3, 1] = 0;
         shopItems[3, 2] = 0;
         shopItems[3, 3] = 0;
         shopItems[3, 4] = 0;
         shopItems[3, 5] = 0;
         shopItems[3, 6] = 0;
-        
     }
 
     public void Buy()
@@ -52,13 +56,56 @@ public class ShopManagerScript : MonoBehaviour
         {
             economyManager.UpdateCurrentGold(-shopItems[2, itemID]); // Deduct coins from economy manager
             shopItems[3, itemID]++;
+            SavePurchasedItem(itemID); // Save the purchased item's quantity
             UpdateCoinsText(); // Update the coins text after purchase
             ButtonRef.GetComponent<ItemInfo>().QuantityTxt.text = shopItems[3, itemID].ToString();
         }
     }
 
-    private void UpdateCoinsText() // New method to update the coins text
+    private void UpdateCoinsText() // Update the coins text
     {
         CoinsTXT.text = "Coins: " + economyManager.CurrentGold.ToString();
+    }
+
+    private void SavePurchasedItem(int itemID)
+    {
+        // Save the purchased quantity for the specific itemID
+        PlayerPrefs.SetInt($"ShopItem_{itemID}_Quantity", shopItems[3, itemID]);
+
+        // Add item to the player's inventory in PlayerPrefs
+        string inventoryKey = "PlayerInventory";
+        List<string> inventory = new List<string>(PlayerPrefs.GetString(inventoryKey, "").Split(','));
+        string itemName = $"Item_{itemID}";
+
+        if (!inventory.Contains(itemName)) // Avoid duplicates
+        {
+            inventory.Add(itemName);
+            PlayerPrefs.SetString(inventoryKey, string.Join(",", inventory));
+        }
+
+        PlayerPrefs.Save();
+    }
+
+
+    private void LoadPurchasedItems()
+    {
+        // Load quantities for each item
+        for (int itemID = 1; itemID < shopItems.GetLength(1); itemID++)
+        {
+            if (PlayerPrefs.HasKey($"ShopItem_{itemID}_Quantity"))
+            {
+                shopItems[3, itemID] = PlayerPrefs.GetInt($"ShopItem_{itemID}_Quantity");
+            }
+        }
+
+        // Update the UI for all items
+        foreach (var button in FindObjectsOfType<ItemInfo>())
+        {
+            int itemID = button.ItemID;
+            if (itemID > 0 && itemID < shopItems.GetLength(1))
+            {
+                button.QuantityTxt.text = shopItems[3, itemID].ToString();
+            }
+        }
     }
 }
