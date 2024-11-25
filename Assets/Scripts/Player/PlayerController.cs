@@ -102,8 +102,8 @@ public class PlayerController : Singleton<PlayerController>
         {
             { "bow", inventorySlots[0] },
             { "staff", inventorySlots[1] },
-            { "sword", inventorySlots[2] },
-            { "Item_6", inventorySlots[3] },
+            { "Item_6", inventorySlots[2] },
+            { "Item_5", inventorySlots[3] },
         };
 
         inventory.LoadInventory(); // Load inventory items first

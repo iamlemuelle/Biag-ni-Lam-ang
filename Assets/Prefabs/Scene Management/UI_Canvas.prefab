@@ -9033,7 +9033,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5100572024786556300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -9046,7 +9046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1c8d44dc3163746c59aae09769d4fcac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f6a380d8758f492597fb095fe92c34c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10451,6 +10451,7 @@ GameObject:
   - component: {fileID: 5100572026497641313}
   - component: {fileID: 5100572026497641314}
   - component: {fileID: 5100572026497641312}
+  - component: {fileID: 7145031904957362186}
   - component: {fileID: 833316468}
   m_Layer: 5
   m_Name: Inventory Slot (3)
@@ -10530,7 +10531,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9701e7e9a69546e1bd2e800f72d2fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfo: {fileID: 0}
+  weaponInfo: {fileID: 11400000, guid: b42fb8bec3e02854192c6053576ee61a, type: 2}
+--- !u!114 &7145031904957362186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5100572026497641340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Gamepad>/dpad/right
 --- !u!114 &833316468
 MonoBehaviour:
   m_ObjectHideFlags: 0

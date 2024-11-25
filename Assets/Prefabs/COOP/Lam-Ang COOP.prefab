@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2364829094
+  GlobalObjectIdHash: 3803873321
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -898,7 +898,7 @@ MonoBehaviour:
   projectileSpeed: 30
   fireRate: 2
   muzzleFlashDuration: 0.075
-  costToFire: 0
+  costToFire: 3
 --- !u!114 &7467504136420024928
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -271,7 +271,7 @@
                 {
                     "name": "",
                     "id": "4d4092b3-01f5-41bd-8155-0cf98b454010",
-                    "path": "<Gamepad>/dpad/x",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "Scale(factor=4)",
                     "groups": "",

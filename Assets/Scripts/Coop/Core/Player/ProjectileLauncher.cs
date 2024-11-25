@@ -19,7 +19,7 @@ public class ProjectileLauncher : NetworkBehaviour
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float fireRate = 0.5f; // Fire rate in seconds (automatic fire rate)
     [SerializeField] private float muzzleFlashDuration;
-    [SerializeField] private int costToFire;
+    [SerializeField] private int costToFire = 3;
 
     private float timer;
     private float muzzleFlashTimer;

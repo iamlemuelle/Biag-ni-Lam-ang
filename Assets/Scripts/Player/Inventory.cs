@@ -16,13 +16,17 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         isSkinUnlocked = new List<bool>(new bool[skinSprites.Count]);
-        isSkinUnlocked[0] = true;
+        isSkinUnlocked[0] = true; // First skin is always unlocked
 
         if (playerAnimator == null)
         {
             playerAnimator = GetComponent<Animator>();
         }
+
         LoadInventory();
+
+        // Check and unlock skins based on owned items
+        UnlockSkinsBasedOnItems();
     }
 
     public void ChangeSkin()
@@ -33,13 +37,35 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        do
+        // Check if at least one skin is unlocked
+        if (!isSkinUnlocked.Contains(true))
+        {
+            Debug.LogWarning("No skins unlocked to change to.");
+            return;
+        }
+
+        int startingIndex = currentSkinIndex;
+
+        while (true)
         {
             currentSkinIndex = (currentSkinIndex + 1) % skinSprites.Count;
-        } while (!isSkinUnlocked[currentSkinIndex]);
 
-        UpdateAppearanceForSkin(currentSkinIndex);
+            // Check if the current skin is unlocked
+            if (isSkinUnlocked[currentSkinIndex])
+            {
+                UpdateAppearanceForSkin(currentSkinIndex);
+                break; // Exit the loop when a valid skin is found
+            }
+
+            // If we have looped back to the starting index, stop
+            if (currentSkinIndex == startingIndex)
+            {
+                Debug.LogWarning("No other unlocked skins available.");
+                break;
+            }
+        }
     }
+
 
     private void UpdateAppearanceForSkin(int skinIndex)
     {
@@ -67,6 +93,28 @@ public class Inventory : MonoBehaviour
         else
         {
             Debug.LogWarning("Invalid skin index.");
+        }
+    }
+    private void UnlockSkinsBasedOnItems()
+    {
+        if (HasItem("Item_1"))
+        {
+            UnlockSkin(1); // Unlock skin 1
+            Debug.Log("Skin 1 unlocked based on owning Item_1.");
+        }
+        else
+        {
+            Debug.Log("Skin 1 remains locked.");
+        }
+
+        if (HasItem("Item_2"))
+        {
+            UnlockSkin(2); // Unlock skin 2
+            Debug.Log("Skin 2 unlocked based on owning Item_2.");
+        }
+        else
+        {
+            Debug.Log("Skin 2 remains locked.");
         }
     }
 
