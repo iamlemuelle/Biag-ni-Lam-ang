@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAiming : NetworkBehaviour
 {
-    [SerializeField] private InputReader inputReader; // You can still use this if it's handling touch input in your own way.
+    [SerializeField] private InputReader inputReader; // Joystick input
     [SerializeField] private Transform weaponTransform;
 
     private void LateUpdate() {
@@ -15,17 +15,12 @@ public class PlayerAiming : NetworkBehaviour
     }
 
     private void AimWeapon() {
-        if (Input.touchCount > 0) {
-            Touch touch = Input.GetTouch(0);  // Get the first touch on the screen
+        // Get joystick input for aiming direction
+        Vector2 aimDirection = inputReader.AimPosition;
 
-            // Convert the touch position to world space
-            Vector2 aimScreenPosition = touch.position;
-            Vector2 aimWorldPosition = Camera.main.ScreenToWorldPoint(aimScreenPosition);
-
-            // Rotate the weapon transform based on the touch position
-            weaponTransform.up = new Vector2(
-                aimWorldPosition.x - weaponTransform.position.x,
-                aimWorldPosition.y - weaponTransform.position.y);
+        if (aimDirection.magnitude > 0.1f) { // Ignore small input to prevent jitter
+            // Rotate the weapon transform to face the direction of the joystick
+            weaponTransform.up = aimDirection;
         }
     }
 }

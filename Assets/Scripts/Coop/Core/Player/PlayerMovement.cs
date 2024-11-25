@@ -9,22 +9,17 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer mySpriteRenderer;
-    [SerializeField] private TrailRenderer myTrailRenderer; // For dash effect
 
     [Header("Settings")]
     [SerializeField] private float movementSpeed = 4f;
     [SerializeField] private float dashSpeed = 8f; // Dash speed multiplier
     [SerializeField] private float dashDuration = 0.2f; // Dash duration
     [SerializeField] private float dashCooldown = 0.25f; // Cooldown between dashes
-    [SerializeField] private AudioClip dashSFX; // Optional dash sound
 
     private Animator myAnimator;
     private Vector2 previousMovementInput;
-    private bool facingLeft;
     private bool isDashing = false;
     private bool canDash = true; // Controls dash availability
-
-    // Removed singleton pattern from here to avoid conflicts during respawn
 
     private void Awake()
     {
@@ -76,10 +71,17 @@ public class PlayerMovement : NetworkBehaviour
 
     private void AdjustPlayerFacingDirection()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-        mySpriteRenderer.flipX = mousePos.x < playerScreenPoint.x;
-        facingLeft = mySpriteRenderer.flipX;
+        // Adjust facing direction based only on the horizontal (x) movement input
+        if (previousMovementInput.x > 0.1f) 
+        {
+            // Face right
+            mySpriteRenderer.flipX = false;
+        }
+        else if (previousMovementInput.x < -0.1f)
+        {
+            // Face left
+            mySpriteRenderer.flipX = true;
+        }
     }
 
     private void HandleDash()
@@ -95,18 +97,6 @@ public class PlayerMovement : NetworkBehaviour
         isDashing = true;
         canDash = false;
 
-        // Optional: Play dash sound effect
-        if (dashSFX != null)
-        {
-            AudioSource.PlayClipAtPoint(dashSFX, transform.position);
-        }
-
-        // Optional: Enable trail effect during dash
-        if (myTrailRenderer != null)
-        {
-            myTrailRenderer.emitting = true;
-        }
-
         float originalSpeed = movementSpeed;
         movementSpeed *= dashSpeed;
 
@@ -114,12 +104,6 @@ public class PlayerMovement : NetworkBehaviour
 
         movementSpeed = originalSpeed;
         isDashing = false;
-
-        // Disable trail effect after dash
-        if (myTrailRenderer != null)
-        {
-            myTrailRenderer.emitting = false;
-        }
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;

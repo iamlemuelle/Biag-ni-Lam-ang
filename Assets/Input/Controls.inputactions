@@ -18,7 +18,7 @@
                     "name": "Primary Fire",
                     "type": "Button",
                     "id": "1daf0421-6aa4-49f8-a98d-dad2ba79a2b8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +36,7 @@
                     "name": "Dash",
                     "type": "Button",
                     "id": "6fc9efe0-878f-4ed3-a29c-b8ae8b102984",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -144,11 +144,11 @@
                 },
                 {
                     "name": "",
-                    "id": "43f3ba3a-d51e-4e22-84f8-7b22726e4545",
-                    "path": "<Mouse>/position",
+                    "id": "fabaf443-89ff-4017-a8c6-31eba8138a80",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -171,6 +171,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43f3ba3a-d51e-4e22-84f8-7b22726e4545",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard & Mouse",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -14,6 +14,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using Unity.Services.Core;
+using Unity.Services.Authentication;
+
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -69,6 +72,19 @@ public class FirebaseAuthManager : MonoBehaviour
             }
         });
     }
+
+    private async void Start()
+    {
+        try
+        {
+            await UnityServices.InitializeAsync(); // Initialize Unity Services
+            Debug.Log("Unity Services initialized successfully.");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Failed to initialize Unity Services: " + e.Message);
+        }
+    }
     void InitializeFirebase()
     {
         // Initialize Firebase Auth and Database
@@ -117,6 +133,7 @@ public class FirebaseAuthManager : MonoBehaviour
             StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to send verification code."));
         }
     }
+
 
     private void SendEmail(string recipientEmail, string code)
     {
@@ -197,41 +214,31 @@ public class FirebaseAuthManager : MonoBehaviour
         // Get the email for the user that is trying to reset their password
         string email = emailResetField.text;  // Use the email entered earlier
 
-        // Update the password in Firebase
-        user.UpdatePasswordAsync(newPassword).ContinueWith(task =>
-        {
-            if (task.IsCompleted && !task.IsFaulted)
-            {
-                Debug.Log("Password updated successfully in Firebase.");
-                StartCoroutine(ShowFeedback(resetFeedbackText, "Password updated successfully in Firebase."));
+        // Update the password in Unity's authentication system directly
+        UpdatePasswordInUnityAuth(email, newPassword); // Ensure you're passing both email and newPassword
 
-                // Call the updated method with the correct parameters
-                UpdatePasswordInUnityAuth(email, newPassword); // Ensure you're passing both email and newPassword
-            }
-            else
-            {
-                Debug.LogError("Failed to update password in Firebase: " + task.Exception);
-                StartCoroutine(ShowFeedback(resetFeedbackText, "Failed to update password in Firebase."));
-            }
-        });
+        // Provide feedback to the user
+        StartCoroutine(ShowFeedback(resetFeedbackText, "Password updated successfully in Unity authentication."));
     }
 
-    private void UpdatePasswordInUnityAuth(string email, string newPassword)
+
+     public async Task UpdatePasswordInUnityAuth(string currentPassword, string newPassword)
     {
-        // This method will update the password in your Unity authentication wrapper.
-        // Assuming you have a method similar to SignInWithUsernamePasswordAsync to set the new password.
-        AuthenticationWrapper.UpdatePasswordAsync(email, newPassword).ContinueWith(task =>
+        try
         {
-            if (task.IsCompleted && !task.IsFaulted)
-            {
-                Debug.Log("Password updated successfully in Unity Authentication.");
-            }
-            else
-            {
-                Debug.LogError("Failed to update password in Unity Authentication: " + task.Exception);
-            }
-        });
+            // Ensure Unity Services are initialized (Initialize is called in Start())
+            await UnityServices.InitializeAsync(); // Initialize again if necessary
+
+            // Now proceed with the password update
+            await AuthenticationService.Instance.UpdatePasswordAsync(currentPassword, newPassword);
+            Debug.Log("Password updated successfully in Unity Authentication.");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Failed to update password in Unity Authentication: " + e.Message);
+        }
     }
+
 
     private IEnumerator ShowFeedback(TMP_Text feedbackText, string message)
     {
@@ -247,8 +254,8 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         try
         {
-            AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
-            user = authResult.User;
+            // AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
+            // user = authResult.User;
 
             // Start Unity Authentication here, after Firebase login
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);

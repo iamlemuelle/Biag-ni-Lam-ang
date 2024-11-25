@@ -779,7 +779,7 @@ MonoBehaviour:
   SyncPositionZ: 1
   SyncRotAngleX: 1
   SyncRotAngleY: 1
-  SyncRotAngleZ: 1
+  SyncRotAngleZ: 0
   SyncScaleX: 0
   SyncScaleY: 0
   SyncScaleZ: 0
@@ -807,12 +807,10 @@ MonoBehaviour:
   inputReader: {fileID: 11400000, guid: 53e6473bd2e914017a85935f0571c2a3, type: 2}
   rb: {fileID: 2242474296708880142}
   mySpriteRenderer: {fileID: 2242474296708880137}
-  myTrailRenderer: {fileID: 2242474295218993757}
   movementSpeed: 4
   dashSpeed: 8
   dashDuration: 0.2
   dashCooldown: 0.25
-  dashSFX: {fileID: 0}
 --- !u!114 &3670630973690761900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,7 +896,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 4262320687963216249}
   playerCollider: {fileID: 2242474296708880133}
   projectileSpeed: 30
-  fireRate: 0.75
+  fireRate: 2
   muzzleFlashDuration: 0.075
   costToFire: 0
 --- !u!114 &7467504136420024928

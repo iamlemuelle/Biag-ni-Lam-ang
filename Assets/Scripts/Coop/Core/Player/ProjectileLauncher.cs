@@ -7,7 +7,7 @@ using UnityEngine;
 public class ProjectileLauncher : NetworkBehaviour
 {
     [Header("References")]
-    [SerializeField] private InputReader inputReader;
+    [SerializeField] private InputReader inputReader; // Your input reader
     [SerializeField] private CoinWallet wallet;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private GameObject serverProjectilePrefab;
@@ -17,27 +17,12 @@ public class ProjectileLauncher : NetworkBehaviour
 
     [Header("Settings")]
     [SerializeField] private float projectileSpeed;
-    [SerializeField] private float fireRate;
+    [SerializeField] private float fireRate = 0.5f; // Fire rate in seconds (automatic fire rate)
     [SerializeField] private float muzzleFlashDuration;
     [SerializeField] private int costToFire;
 
-    private bool shouldFire;
     private float timer;
     private float muzzleFlashTimer;
-
-    public override void OnNetworkSpawn()
-    {
-        if (!IsOwner) { return; }
-
-        inputReader.PrimaryFireEvent += HandlePrimaryFire;
-    }
-
-    public override void OnNetworkDespawn()
-    {
-        if (!IsOwner) { return; }
-
-        inputReader.PrimaryFireEvent -= HandlePrimaryFire;
-    }
 
     private void Update()
     {
@@ -53,27 +38,30 @@ public class ProjectileLauncher : NetworkBehaviour
 
         if (!IsOwner) { return; }
 
+        // Reduce timer to check fire rate
         if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
 
-        if (!shouldFire) { return; }
+        // Get aim position from InputReader
+        Vector2 aimPosition = inputReader.AimPosition;
 
-        if (timer > 0) { return; }
-
-        if (wallet.TotalCoins.Value < costToFire) { return; }
-
-        PrimaryFireServerRpc(projectileSpawnPoint.position, projectileSpawnPoint.up);
-
-        SpawnDummyProjectile(projectileSpawnPoint.position, projectileSpawnPoint.up);
-
-        timer = 1 / fireRate;
+        if (aimPosition.magnitude > 0.1f && timer <= 0) // Check if the player is aiming and fire rate timer has elapsed
+        {
+            FireProjectile(aimPosition); // Fire in the direction of the aim
+            timer = fireRate; // Reset timer to fire next projectile after specified delay
+        }
     }
 
-    private void HandlePrimaryFire(bool shouldFire)
+    private void FireProjectile(Vector2 direction)
     {
-        this.shouldFire = shouldFire;
+        // Check if we have enough coins to fire
+        if (wallet.TotalCoins.Value < costToFire) { return; }
+
+        // Fire the projectile
+        PrimaryFireServerRpc(projectileSpawnPoint.position, direction);
+        SpawnDummyProjectile(projectileSpawnPoint.position, direction);
     }
 
     [ServerRpc]
@@ -99,7 +87,7 @@ public class ProjectileLauncher : NetworkBehaviour
 
         if (projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {
-            rb.linearVelocity = rb.transform.up * projectileSpeed;
+            rb.linearVelocity = rb.transform.up * projectileSpeed; // Apply velocity in the direction of the projectile
         }
 
         SpawnDummyProjectileClientRpc(spawnPos, direction);
