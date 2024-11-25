@@ -55,6 +55,7 @@ public class FirebaseAuthManager : MonoBehaviour
     
 
     private string generatedResetCode; // Temporary storage for the reset code
+    private bool isSigningIn = false;
 
     private void Awake()
     {
@@ -252,23 +253,51 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public async Task<FirebaseUser> Login(string email, string password)
     {
+        if (isSigningIn)
+        {
+            Debug.LogWarning("Already signing in. Please wait...");
+            return null;
+        }
+
         try
         {
-            // AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
-            // user = authResult.User;
+            isSigningIn = true; // Set flag to true when starting the sign-in process
 
-            // Start Unity Authentication here, after Firebase login
+            // Sign in with Firebase
+            AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
+            user = authResult.User;
+
+            // Sign in with Unity Authentication
             await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
 
-            StartCoroutine(LoadUserData(user.UserId)); // Load user data after successful login
-            return user;
+            if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
+            {
+                Debug.Log("Login successful! PlayerID: " + user.UserId);
+                StartCoroutine(LoadUserData(user.UserId)); // Load additional data
+                return user;
+            }
+            else
+            {
+                Debug.LogError("Unity Authentication failed.");
+                return null;
+            }
         }
-        catch (FirebaseException e)
+        catch (FirebaseException ex)
         {
-            Debug.LogError($"Login failed: {e.Message}");
-            return null;  
+            Debug.LogError($"Firebase login failed: {ex.Message}");
         }
+        catch (AuthenticationException ex)
+        {
+            Debug.LogError($"Unity Authentication failed: {ex.Message}");
+        }
+        finally
+        {
+            isSigningIn = false; // Reset flag when login process is complete
+        }
+
+        return null;
     }
+
 
     public async Task<FirebaseUser> SignUp(string email, string password)
     {
@@ -356,57 +385,50 @@ public class FirebaseAuthManager : MonoBehaviour
     }
 
     public async void LoginAsync()
+{
+    string email = emailLoginField.text;
+    string password = passwordLoginField.text;
+
+    if (string.IsNullOrEmpty(email))
     {
-        string email = emailLoginField.text;
-        string password = passwordLoginField.text;
+        StartCoroutine(ShowLoginFeedback("Walang laman ang field ng email"));
+        return;
+    }
 
-        if (string.IsNullOrEmpty(email))
-        {
-            StartCoroutine(ShowLoginFeedback("Walang laman ang field ng email"));
-            return;
-        }
+    if (string.IsNullOrEmpty(password))
+    {
+        StartCoroutine(ShowLoginFeedback("Walang laman ang field ng password"));
+        return;
+    }
 
-        if (string.IsNullOrEmpty(password))
-        {
-            StartCoroutine(ShowLoginFeedback("Walang laman ang field ng password"));
-            return;
-        }
+    if (isSigningIn)
+    {
+        StartCoroutine(ShowLoginFeedback("Already signing in. Please wait..."));
+        return;
+    }
 
-        bool initialized = await AuthenticationWrapper.InitializeAuthentication();
-        if (!initialized)
+    try
+    {
+        var user = await Login(email, password);
+        if (user != null)
         {
-            Debug.LogError("Authentication services not initialized.");
-            StartCoroutine(ShowLoginFeedback("Hindi wasto ang email o password "));
-            return;
+            // Save the PlayerID in the GameManager
+            GameManager.Instance.SetPlayerID(user.UserId);
+            Debug.Log($"Login successful! Welcome {user.DisplayName ?? email}");
+            StartCoroutine(ShowLoginFeedback("Login successful!"));
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-
-        try
+        else
         {
-            // Start login process
-            AuthResult authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
-            user = authResult.User;
-            await AuthenticationWrapper.SignInWithUsernamePasswordAsync(email, password);
-            if (AuthenticationWrapper.AuthState == AuthState.Authenticated)
-            {
-                Debug.Log("Login successful! PlayerID: " + user.UserId);
-                // Save the PlayerID in the GameManager
-                GameManager.Instance.SetPlayerID(user.UserId);
-                PlayerPrefs.SetString("PlayerNameKey", email);
-                PlayerPrefs.Save();
-                Debug.LogFormat("{0} You Are Successfully Logged In", email);
-                StartCoroutine(ShowLoginFeedback("Login successful!"));
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                StartCoroutine(ShowLoginFeedback("Invalid Username or Password"));
-            }
-        }
-        catch (FirebaseException ex)
-        {
-            StartCoroutine(ShowLoginFeedback("Invalid Username or Password"));
+            StartCoroutine(ShowLoginFeedback("Invalid email or password"));
         }
     }
+    catch (Exception ex)
+    {
+        Debug.LogError($"Unexpected error during login: {ex.Message}");
+        StartCoroutine(ShowLoginFeedback("An unexpected error occurred. Please try again."));
+    }
+}
 
     // Coroutine to show and hide login feedback text
     private IEnumerator ShowLoginFeedback(string message)
