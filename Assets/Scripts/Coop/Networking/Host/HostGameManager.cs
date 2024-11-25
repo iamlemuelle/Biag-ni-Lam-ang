@@ -11,6 +11,7 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using TMPro; // Import TMP namespace
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +25,15 @@ public class HostGameManager : IDisposable
 
     private const int MaxConnections = 20;
     private const string GameSceneName = "Coop";
+
+    private Coroutine shutdownTimerCoroutine; // Track the shutdown timer coroutine
+    private TMP_Text timerText; // Reference to TMP_Text component to display the timer
+
+    // Optionally, set this through your scene or script initialization
+    public void SetTimerText(TMP_Text textComponent)
+    {
+        timerText = textComponent;
+    }
 
     public async Task StartHostAsync()
     {
@@ -95,6 +105,9 @@ public class HostGameManager : IDisposable
         NetworkManager.Singleton.StartHost();
 
         NetworkManager.Singleton.SceneManager.LoadScene(GameSceneName, LoadSceneMode.Single);
+
+        // Start the shutdown timer
+        shutdownTimerCoroutine = HostSingleton.Instance.StartCoroutine(ShutdownAfterTimer(900)); // 15 minutes = 900 seconds
     }
 
     private IEnumerator HearbeatLobby(float waitTimeSeconds)
@@ -107,6 +120,26 @@ public class HostGameManager : IDisposable
         }
     }
 
+    private IEnumerator ShutdownAfterTimer(float seconds)
+    {
+        float remainingTime = seconds;
+        
+        // Update the timer every second
+        while (remainingTime > 0)
+        {
+            if (timerText != null)
+            {
+                TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
+                timerText.text = timeSpan.ToString(@"mm\:ss"); // Display in MM:SS format
+            }
+            remainingTime--;
+            yield return new WaitForSecondsRealtime(1f); // Wait for 1 second
+        }
+
+        Debug.Log("15 minutes are up. Shutting down the host.");
+        Shutdown();
+    }
+
     public void Dispose()
     {
         Shutdown();
@@ -114,6 +147,11 @@ public class HostGameManager : IDisposable
 
     public async void Shutdown()
     {
+        if (shutdownTimerCoroutine != null)
+        {
+            HostSingleton.Instance.StopCoroutine(shutdownTimerCoroutine);
+        }
+
         HostSingleton.Instance.StopCoroutine(nameof(HearbeatLobby));
 
         if (!string.IsNullOrEmpty(lobbyId))
@@ -141,7 +179,7 @@ public class HostGameManager : IDisposable
         {
             await LobbyService.Instance.RemovePlayerAsync(lobbyId, authId);
         }
-        catch(LobbyServiceException e)
+        catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
