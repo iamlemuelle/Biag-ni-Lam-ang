@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 810191058767464904}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0120778605, y: 1.5325357, z: 0}
+  m_LocalPosition: {x: 0.0120778605, y: 0.7, z: 0}
   m_LocalScale: {x: 3.659958, y: 1.0702811, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 1864583528661496404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0033, y: 0.1781, z: 0}
+  m_LocalPosition: {x: -0.0033, y: -0.03, z: 0}
   m_LocalScale: {x: 0.27322719, y: 0.9343339, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3803873321
+  GlobalObjectIdHash: 2364829094
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
