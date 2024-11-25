@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8055004129261415746}
   - component: {fileID: 8055004129261415744}
   - component: {fileID: 8055004129261415745}
+  - component: {fileID: 1566240171347777784}
   - component: {fileID: 3071393184854410352}
-  - component: {fileID: -763273760738286552}
   m_Layer: 0
   m_Name: Golden Sword
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 8055004129261415747}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7c02c555163d12b409915ea648d96ee4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4de6f44ea0d644237af5bc61c6deab2d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -112,6 +112,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1566240171347777784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055004129261415747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98f9302ec67146bb83bc85c77b25ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashAnimPrefab: {fileID: 4793417912652523505, guid: 0eb13a4500eb3488590108bd439fe946, type: 3}
+  slashAnimSpawnPoint: {fileID: 8055004129261415746}
+  swordAttackCD: 0.5
+  weaponInfo: {fileID: 11400000, guid: b42fb8bec3e02854192c6053576ee61a, type: 2}
 --- !u!114 &3071393184854410352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,19 +147,3 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 7c02c555163d12b409915ea648d96ee4, type: 2}
   isSkinUnlocked: 01
   playerAnimator: {fileID: 8055004129261415745}
---- !u!114 &-763273760738286552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055004129261415747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cb8baf7c712abb4c91af62cf3df4946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slashAnimPrefab: {fileID: 4793417912652523505, guid: 0eb13a4500eb3488590108bd439fe946, type: 3}
-  slashAnimSpawnPoint: {fileID: 8055004129261415746}
-  swordAttackCD: 0.5
-  weaponInfo: {fileID: 11400000, guid: b42fb8bec3e02854192c6053576ee61a, type: 2}
