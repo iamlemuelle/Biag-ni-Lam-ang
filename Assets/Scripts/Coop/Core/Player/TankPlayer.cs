@@ -25,10 +25,16 @@ public class TankPlayer : NetworkBehaviour
     {
         if (IsServer)
         {
-            UserData userData =
-                HostSingleton.Instance.GameManager.NetworkServer.GetUserDataByClientId(OwnerClientId);
+            UserData userData = HostSingleton.Instance.GameManager.NetworkServer.GetUserDataByClientId(OwnerClientId);
+            
+            // Use PlayerPrefs as a fallback if UserData is null or userName is empty
+            // userData != null && !string.IsNullOrEmpty(userData.userName) 
+            //     ? userData.userName 
+            //     : 
+            string playerName = PlayerPrefs.GetString("PlayerNameKey", "Jenny");
 
-            PlayerName.Value = userData.userName;
+            PlayerName.Value = playerName;
+            Debug.Log($"Assigned player name: {PlayerName.Value}");
 
             OnPlayerSpawned?.Invoke(this);
         }

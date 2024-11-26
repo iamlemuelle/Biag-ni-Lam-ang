@@ -30,41 +30,37 @@ public class Inventory : MonoBehaviour
     }
 
     public void ChangeSkin()
+{
+    if (skinSprites.Count == 0)
     {
-        if (skinSprites.Count == 0)
-        {
-            Debug.LogWarning("No skins available to change.");
-            return;
-        }
-
-        // Check if at least one skin is unlocked
-        if (!isSkinUnlocked.Contains(true))
-        {
-            Debug.LogWarning("No skins unlocked to change to.");
-            return;
-        }
-
-        int startingIndex = currentSkinIndex;
-
-        while (true)
-        {
-            currentSkinIndex = (currentSkinIndex + 1) % skinSprites.Count;
-
-            // Check if the current skin is unlocked
-            if (isSkinUnlocked[currentSkinIndex])
-            {
-                UpdateAppearanceForSkin(currentSkinIndex);
-                break; // Exit the loop when a valid skin is found
-            }
-
-            // If we have looped back to the starting index, stop
-            if (currentSkinIndex == startingIndex)
-            {
-                Debug.LogWarning("No other unlocked skins available.");
-                break;
-            }
-        }
+        Debug.LogWarning("No skins available to change.");
+        return;
     }
+
+    // Check if at least one skin is unlocked
+    if (!isSkinUnlocked.Contains(true))
+    {
+        Debug.LogWarning("No skins unlocked to change to.");
+        return;
+    }
+
+    int initialSkinIndex = currentSkinIndex;
+
+    // Cycle through skins until finding an unlocked one or returning to the original index
+    do
+    {
+        currentSkinIndex = (currentSkinIndex + 1) % skinSprites.Count;
+
+        if (currentSkinIndex == initialSkinIndex)
+        {
+            Debug.LogWarning("No other skins unlocked.");
+            return; // Stop if no other unlocked skins are found
+        }
+
+    } while (!isSkinUnlocked[currentSkinIndex]);
+
+    UpdateAppearanceForSkin(currentSkinIndex);
+}
 
 
     private void UpdateAppearanceForSkin(int skinIndex)
