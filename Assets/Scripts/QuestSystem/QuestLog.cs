@@ -1,64 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QuestLog : MonoBehaviour
 {
-    public GameObject questItemPrefab; // Drag your QuestItemPrefab here in the Inspector
-    public Transform contentPanel; // This should be assigned to the Content object of your Scroll View
-    private QuestManager theQM;
+    [SerializeField] private Transform questListParent; // Parent object to hold quest UI elements
+    [SerializeField] private GameObject questUIPrefab;  // Prefab for displaying individual quests
 
-    void Start()
+    private Dictionary<int, GameObject> activeQuestUIs = new Dictionary<int, GameObject>();
+
+    public void UpdateQuestLog(QuestManager questManager)
     {
-        theQM = FindFirstObjectByType<QuestManager>();
-        if (theQM == null)
+        foreach (var quest in questManager.quests)
         {
-            Debug.LogError("QuestManager not found in the scene. Please ensure it's added.");
-            return;
-        }
-        
-        UpdateQuestLog();
-    }
+            int questNumber = quest.questNumber;
 
-    public void UpdateQuestLog()
-    {
-        // Clear existing quest items
-        foreach (Transform child in contentPanel)
-        {
-            Destroy(child.gameObject);
-        }
-
-        // Loop through quests and create UI elements
-        for (int i = 0; i < theQM.quests.Length; i++)
-        {
-            QuestObject quest = theQM.quests[i];
-
-            if (quest == null)
+            if (questManager.questCompleted[questNumber])
             {
-                Debug.LogError($"Quest at index {i} is null. Ensure it's assigned in the Inspector.");
-                continue; // Skip to the next iteration if the quest is null
-            }
-
-            if (!theQM.questCompleted[i]) // Only show active quests
-            {
-                // Instantiate the quest item prefab
-                GameObject newQuestItem = Instantiate(questItemPrefab, contentPanel);
-
-                // Check for the required text components
-                var questNameText = newQuestItem.transform.Find("QuestNameText")?.GetComponent<Text>();
-                var questDescriptionText = newQuestItem.transform.Find("QuestDescriptionText")?.GetComponent<Text>();
-                var questRewardText = newQuestItem.transform.Find("QuestRewardText")?.GetComponent<Text>();
-
-                if (questNameText == null || questDescriptionText == null || questRewardText == null)
+                // Remove completed quests from the log
+                if (activeQuestUIs.ContainsKey(questNumber))
                 {
-                    Debug.LogError($"Missing text component in QuestItemPrefab for quest: {quest.questNumber}");
+                    Destroy(activeQuestUIs[questNumber]);
+                    activeQuestUIs.Remove(questNumber);
                 }
-                else
+            }
+            else
+            {
+                // Display active quests
+                if (!activeQuestUIs.ContainsKey(questNumber))
                 {
-                    // Set the quest item texts
-                    questNameText.text = "Quest " + quest.questNumber; // or use a quest name if available
-                    questDescriptionText.text = quest.GetDescription();
-                    questRewardText.text = quest.GetReward();
+                    GameObject questUI = Instantiate(questUIPrefab, questListParent);
+                    questUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = quest.GetDescription();
+                    activeQuestUIs[questNumber] = questUI;
                 }
             }
         }

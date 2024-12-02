@@ -33,7 +33,7 @@ public class AreaExit : MonoBehaviour
             }
             else
             {
-                StartCoroutine(ShowLevelFeedback("Player level is too low to enter this area."));
+                StartCoroutine(ShowLevelFeedback("Kailangan mo muna magpa-level bago makapasok sa susunod na kabanata."));
             }
         }
     }
