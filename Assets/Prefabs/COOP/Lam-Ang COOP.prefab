@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3803873321
+  GlobalObjectIdHash: 2364829094
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -758,9 +758,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0104308715, y: -0.52159065}
-  m_Size: {x: 0.6135301, y: 0.3005779}
-  m_Direction: 1
+  m_Offset: {x: 0.017294645, y: -0.3088113}
+  m_Size: {x: 0.86342, y: 1.5498087}
+  m_Direction: 0
 --- !u!114 &3999233587641911450
 MonoBehaviour:
   m_ObjectHideFlags: 0

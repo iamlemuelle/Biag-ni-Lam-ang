@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class AreaExit : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class AreaExit : MonoBehaviour
 
     private float waitToLoadTime = 1f;
     private bool dialogueEnded = false;
+    public TMP_Text levelFeedbackText;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,9 +33,19 @@ public class AreaExit : MonoBehaviour
             }
             else
             {
-                Debug.Log("Player level is too low to enter this area.");
+                StartCoroutine(ShowLevelFeedback("Player level is too low to enter this area."));
             }
         }
+    }
+
+    private IEnumerator ShowLevelFeedback(string message)
+    {
+        levelFeedbackText.text = message;
+        levelFeedbackText.gameObject.SetActive(true); // Show the feedback text
+
+        yield return new WaitForSeconds(4); // Wait for 2 seconds
+
+        levelFeedbackText.gameObject.SetActive(false); // Hide the feedback text
     }
     private IEnumerator WaitForDialogueToEnd() 
     {
