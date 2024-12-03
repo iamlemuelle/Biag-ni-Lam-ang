@@ -1,33 +1,78 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class QuestLog : MonoBehaviour
 {
-    [SerializeField] private Button[] questButtons; // Array of buttons corresponding to quests
+    [Header("Tagalog Quest Buttons")]
+    [SerializeField] private Button[] tagalogButtons; // Buttons for Tagalog quests
 
-    public void InitializeQuestLog(QuestManager questManager)
+    [Header("Ilocano Quest Buttons")]
+    [SerializeField] private Button[] ilocanoButtons; // Buttons for Ilocano quests
+
+    void Start()
     {
-        // Initialize buttons with quest descriptions
-        for (int i = 0; i < questButtons.Length && i < questManager.quests.Length; i++)
+        // Initialize buttons and update display based on the current language from PlayerPrefs
+        InitializeQuestLog();
+    }
+
+    public void InitializeQuestLog()
+    {
+        // Initialize buttons without changing their text
+        InitializeLanguageButtons(tagalogButtons);
+        InitializeLanguageButtons(ilocanoButtons);
+
+        // Show buttons for the currently selected language based on PlayerPrefs
+        string currentLanguage = PlayerPrefs.GetString("Language", "tag"); // Default to "tag" if not set
+        UpdateLanguageDisplay(currentLanguage);
+    }
+
+    private void InitializeLanguageButtons(Button[] buttons)
+    {
+        for (int i = 0; i < buttons.Length; i++)
         {
-            int questNumber = i; // Local copy for button closure
-            questButtons[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = questManager.quests[i].GetDescription();
-            questButtons[i].gameObject.SetActive(true); // Ensure button is active
-            questButtons[i].onClick.RemoveAllListeners(); // Clear any existing listeners
-            questButtons[i].onClick.AddListener(() => Debug.Log($"Quest {questNumber} clicked!"));
+            buttons[i].gameObject.SetActive(true); // Ensure the button is active
+
+            // Optionally, add custom actions for the buttons if needed
+            buttons[i].onClick.RemoveAllListeners(); // Clear existing listeners
+            buttons[i].onClick.AddListener(() => Debug.Log($"Button {i} clicked"));
         }
     }
 
     public void UpdateQuestLog(QuestManager questManager)
     {
-        // Update button states based on quest completion
-        for (int i = 0; i < questButtons.Length && i < questManager.questCompleted.Length; i++)
+        // Update button visibility for completed quests in both languages
+        UpdateLanguageButtons(tagalogButtons, questManager);
+        UpdateLanguageButtons(ilocanoButtons, questManager);
+    }
+
+    private void UpdateLanguageButtons(Button[] buttons, QuestManager questManager)
+    {
+        for (int i = 0; i < buttons.Length && i < questManager.questCompleted.Length; i++)
         {
             if (questManager.questCompleted[i])
             {
-                questButtons[i].gameObject.SetActive(false); // Hide button for completed quests
+                Debug.Log($"Hiding button for completed quest {i}.");
+                buttons[i].gameObject.SetActive(false); // Hide button for completed quests
             }
+        }
+    }
+
+    public void UpdateLanguageDisplay(string language)
+    {
+        Debug.Log($"Updating language display to: {language}"); // Log the language change
+
+        bool showTagalogButtons = language.Equals("tag", System.StringComparison.OrdinalIgnoreCase);
+        bool showIlocanoButtons = language.Equals("il", System.StringComparison.OrdinalIgnoreCase);
+
+        // Toggle the visibility of the language buttons
+        foreach (var button in tagalogButtons)
+        {
+            button.gameObject.SetActive(showTagalogButtons); // Show Tagalog buttons
+        }
+
+        foreach (var button in ilocanoButtons)
+        {
+            button.gameObject.SetActive(showIlocanoButtons); // Show Ilocano buttons
         }
     }
 }

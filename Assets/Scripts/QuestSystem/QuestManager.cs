@@ -35,7 +35,7 @@ public class QuestManager : MonoBehaviour
     {
         InitializeQuestManager();
         questLog = FindObjectOfType<QuestLog>();
-        questLog?.InitializeQuestLog(this);
+        questLog?.InitializeQuestLog();
     }
 
     private void OnEnable()
@@ -99,6 +99,7 @@ public class QuestManager : MonoBehaviour
         if (questNumber < questCompleted.Length && !questCompleted[questNumber])
         {
             questCompleted[questNumber] = true;
+            Debug.Log($"Quest {questNumber} completed.");
 
             // Notify the QuestLog to update the button visibility
             questLog?.UpdateQuestLog(this);
