@@ -14,6 +14,7 @@ public class QuestManager : MonoBehaviour
 
     private int completedQuestCount = 0; // Track how many quests are completed
     private Transform playerTransform;   // Reference to the player's transform
+    private QuestLog questLog;          // Reference to QuestLog
 
     [Header("Reward System")]
     [SerializeField] private GameObject[] rewardPrefabs; 
@@ -21,6 +22,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private AnimationCurve animCurve;
     [SerializeField] private float heightY = 1.5f;
     [SerializeField] private float popDuration = 1f;
+
+    [Header("UI")]
+    [SerializeField] private Button[] questButtons; // Array of buttons corresponding to quests
 
     void Awake()
     {
@@ -30,6 +34,8 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         InitializeQuestManager();
+        questLog = FindObjectOfType<QuestLog>();
+        questLog?.InitializeQuestLog(this);
     }
 
     private void OnEnable()
@@ -42,36 +48,6 @@ public class QuestManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f); // Slight delay to ensure everything is loaded
         InitializeQuestManager();
     }
-
-    private void InitializeQuestManager()
-    {
-        if (theDM == null)
-        {
-            theDM = FindFirstObjectByType<DialogueManager>(); // Find DialogueManager dynamically
-            Debug.Log("DialogueManager assigned.");
-        }
-
-        playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
-        if (playerTransform == null)
-        {
-            Debug.LogError("Player transform not found!");
-        }
-
-        questCompleted = new bool[quests.Length];
-
-        if (quests.Length == 0) // Dynamically assign quests if not set in Inspector
-        {
-            quests = FindObjectsOfType<QuestObject>();
-            foreach (var quest in quests)
-            {
-                quest.theQM = this; // Link QuestManager to each QuestObject
-            }
-        }
-
-        // Load the completed quest count from PlayerPrefs
-        completedQuestCount = PlayerPrefs.GetInt("CompletedQuestCount", 0); // Default to 0 if no value is found
-    }
-
     public void ShowQuestText(string[] questText)
     {
         if (theDM != null)
@@ -96,9 +72,44 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    private void InitializeQuestManager()
+    {
+        if (theDM == null)
+        {
+            theDM = FindFirstObjectByType<DialogueManager>(); // Find DialogueManager dynamically
+        }
+
+        playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        questCompleted = new bool[quests.Length];
+
+        if (quests.Length == 0)
+        {
+            quests = FindObjectsOfType<QuestObject>();
+            foreach (var quest in quests)
+            {
+                quest.theQM = this; // Link QuestManager to each QuestObject
+            }
+        }
+
+        completedQuestCount = PlayerPrefs.GetInt("CompletedQuestCount", 0);
+    }
+    public void CompleteQuest(int questNumber)
+    {
+        if (questNumber < questCompleted.Length && !questCompleted[questNumber])
+        {
+            questCompleted[questNumber] = true;
+
+            // Notify the QuestLog to update the button visibility
+            questLog?.UpdateQuestLog(this);
+
+            UpdateQuestLog();
+        }
+    }
+
     public void UpdateQuestLog()
     {
-        FindFirstObjectByType<QuestLog>()?.UpdateQuestLog();
+        questLog?.UpdateQuestLog(this);
     }
 
     public void QuestCompleted()
@@ -106,7 +117,6 @@ public class QuestManager : MonoBehaviour
         completedQuestCount++;
         PlayerPrefs.SetInt("CompletedQuestCount", completedQuestCount); // Save to PlayerPrefs
         PlayerPrefs.Save(); // Ensure the data is saved immediately
-    
 
         if (completedQuestCount % 5 == 0)
         {

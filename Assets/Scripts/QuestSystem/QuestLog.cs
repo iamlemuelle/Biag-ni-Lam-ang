@@ -1,37 +1,32 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestLog : MonoBehaviour
 {
-    [SerializeField] private Transform questListParent; // Parent object to hold quest UI elements
-    [SerializeField] private GameObject questUIPrefab;  // Prefab for displaying individual quests
+    [SerializeField] private Button[] questButtons; // Array of buttons corresponding to quests
 
-    private Dictionary<int, GameObject> activeQuestUIs = new Dictionary<int, GameObject>();
+    public void InitializeQuestLog(QuestManager questManager)
+    {
+        // Initialize buttons with quest descriptions
+        for (int i = 0; i < questButtons.Length && i < questManager.quests.Length; i++)
+        {
+            int questNumber = i; // Local copy for button closure
+            questButtons[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = questManager.quests[i].GetDescription();
+            questButtons[i].gameObject.SetActive(true); // Ensure button is active
+            questButtons[i].onClick.RemoveAllListeners(); // Clear any existing listeners
+            questButtons[i].onClick.AddListener(() => Debug.Log($"Quest {questNumber} clicked!"));
+        }
+    }
 
     public void UpdateQuestLog(QuestManager questManager)
     {
-        foreach (var quest in questManager.quests)
+        // Update button states based on quest completion
+        for (int i = 0; i < questButtons.Length && i < questManager.questCompleted.Length; i++)
         {
-            int questNumber = quest.questNumber;
-
-            if (questManager.questCompleted[questNumber])
+            if (questManager.questCompleted[i])
             {
-                // Remove completed quests from the log
-                if (activeQuestUIs.ContainsKey(questNumber))
-                {
-                    Destroy(activeQuestUIs[questNumber]);
-                    activeQuestUIs.Remove(questNumber);
-                }
-            }
-            else
-            {
-                // Display active quests
-                if (!activeQuestUIs.ContainsKey(questNumber))
-                {
-                    GameObject questUI = Instantiate(questUIPrefab, questListParent);
-                    questUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = quest.GetDescription();
-                    activeQuestUIs[questNumber] = questUI;
-                }
+                questButtons[i].gameObject.SetActive(false); // Hide button for completed quests
             }
         }
     }
