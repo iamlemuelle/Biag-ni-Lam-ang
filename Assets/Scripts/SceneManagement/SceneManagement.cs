@@ -11,14 +11,29 @@ public class SceneManagement : Singleton<SceneManagement>
         this.SceneTransitionName = sceneTransitionName;
     }
 
-    public void LoadScene() {
-        // Load the saved scene
-        int sceneIndex = PlayerPrefs.GetInt("CurrentScene", 5); // Default to scene index 0
+    public void LoadScene()
+{
+    // Check if the key exists in PlayerPrefs
+    if (PlayerPrefs.HasKey("CurrentScene"))
+    {
+        // Load the saved scene index
+        int sceneIndex = PlayerPrefs.GetInt("CurrentScene");
         SceneManager.LoadSceneAsync(sceneIndex);
 
         // After loading the scene, load the player position
         StartCoroutine(LoadPlayerPosition(sceneIndex));
     }
+    else
+    {
+        // Fallback to the default scene index (5)
+        int defaultSceneIndex = 5;
+        SceneManager.LoadSceneAsync(defaultSceneIndex);
+
+        // Load the player position for the default scene
+        StartCoroutine(LoadPlayerPosition(defaultSceneIndex));
+    }
+}
+
 
     public void NewGame() {
         // Delete all PlayerPrefs data

@@ -22,7 +22,8 @@ public class DialogueManager : MonoBehaviour
         currentLine = 0;
 
         // Set the initial language, for example, "tag" for Tagalog
-        SetLanguage("tag");
+        string language = LanguageManager.Instance.currentLanguage;
+        SetLanguage(language);
     }
 
     void Update()
