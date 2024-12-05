@@ -1,0 +1,1 @@
+C:\Users\lemue\Documents\GitHub\Biag-ni-Lam-ang\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\ar6j581m\obj\armeabi-v7a
